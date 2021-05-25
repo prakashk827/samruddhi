@@ -39,34 +39,51 @@ if (empty($_POST['razorpay_payment_id']) === false)
 
 if ($success === true)
 {
-   
+             //Updating payment status
              $paymentId = $_POST['razorpay_payment_id'];
              $soldCouponId = $_SESSION['soldCouponId'];
+             $couponId = $_SESSION['couponId'] ;
+             $qty  = $_SESSION['QTY'];
+             $clientUId = $_SESSION['clientUId'];
              $query = "UPDATE `coupons_sold` SET `paymentStatus`='complete',`transactionId`='$paymentId' WHERE id = $soldCouponId ";
              $exe=mysqli_query($conn,$query);
-            if($exe)
-            {
-
+             if($exe){
+                 
+                //Reducing coupons
+                $sel = "SELECT * FROM `coupons` WHERE id = '$couponId'";
+                $exe = mysqli_query($conn, $query);
+                $data = mysqli_fetch_assoc($exe);
+                $leftCoupons = $data['leftCoupons'];
+                $leftCoupons = $leftCoupons - $qty;
+                $query = "UPDATE `coupons` SET `leftCoupons`='$leftCoupons' WHERE id = $couponId "; 
+                $exe=mysqli_query($conn,$query);
+                
+                //Updating coupon history of client
+                $sel = "SELECT * FROM `coupons_history` WHERE couponId = '$couponId' and clientUId = '$clientUId' ";
+                $exe = mysqli_query($conn, $query);
+                $data = mysqli_fetch_assoc($exe);
+                $leftCoupons = $data['boughtQty'] + $qty;
+                
+                $query = "UPDATE `coupons_history` SET `boughtQty`='$leftCoupons' WHERE clientUId = '$clientUId'";
+                $exe=mysqli_query($conn,$query);
+                
+                
                 $_SESSION["message"] = "Your payment was successful..!";
                 $_SESSION["msgClr"] = "green";
                 header("Location:../page-error.php");
-            }
+             }
 }
-else
-{
-    
+else {
 
              $paymentId = $_POST['razorpay_payment_id'];
              $soldCouponId = $_SESSION['soldCouponId'];
              $query = "UPDATE `coupons_sold` SET `paymentStatus`='failed' WHERE id = $soldCouponId ";
-            $exe=mysqli_query($conn,$query);
-             if($exe)
-            {
-
-               $_SESSION["message"] = "Your payment failed..!";
+             $exe=mysqli_query($conn,$query);
+             if($exe){
+                $_SESSION["message"] = "Your payment failed..!";
                 $_SESSION["msgClr"] = "red";
                 header("Location:../page-error.php");
             }
 }
 
-echo $html;
+

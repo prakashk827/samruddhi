@@ -1,6 +1,6 @@
 <?php
 include_once ("../db/db.php");
-$id = $_GET['id'];
+$couponId = $_GET['id'];
 
 session_start();
 if ($_SESSION["clientUId"] == '')
@@ -9,16 +9,13 @@ if ($_SESSION["clientUId"] == '')
 }
 ?>
 <?php
-$query = "SELECT * FROM `coupons` WHERE status='active' and id ='$id'";
+$query = "SELECT * FROM `coupons` WHERE status='active' and id ='$couponId'";
 $exe = mysqli_query($conn, $query);
 
-if (mysqli_num_rows($exe) > 0)
-{
-
+if (mysqli_num_rows($exe) > 0){
     $data = mysqli_fetch_assoc($exe);
 }
-else
-{
+else{
     header("Location:show-all-coupons.php");
 }
 ?>

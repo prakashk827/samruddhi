@@ -12,6 +12,7 @@ if(isset($_POST['couponId']) && isset($_POST['qty'])){
     $paymentStatus="pending";
     $boughtOn=date('Y-m-d');
     $clientUId = $_SESSION["clientUId"];
+    $_SESSION['QTY'] = $qty;
 
     $query="SELECT * FROM `coupons` WHERE  id='$couponId'";
     $exe=mysqli_query($conn,$query);
@@ -19,7 +20,7 @@ if(isset($_POST['couponId']) && isset($_POST['qty'])){
       {
         
          $data=mysqli_fetch_assoc($exe);
-         $id = $data['id'];
+         $couponId = $data['id'];
          $couponName = $data['couponName'];
          $description= $data['description'];
          $startDate = $data['startDate'];
@@ -32,13 +33,15 @@ if(isset($_POST['couponId']) && isset($_POST['qty'])){
 
 
 
-         $query = "INSERT INTO `coupons_sold`(`clientUId`, `couponName`, `couponId`, `paymentStatus`, `description`, `startDate`, `endDate`, `couponPrice`, `status`, `boughtOn`,`boughtQty`,`paidAmt`) VALUES ('$clientUId','$couponName','$couponId','$paymentStatus','$description','$startDate','$endDate','$couponPrice','$status','$boughtOn','$qty','$paidAmt')";
+         $query = "INSERT INTO `coupons_sold`(`clientUId`, `couponName`, `couponId`, `paymentStatus`, `description`, `startDate`, `endDate`, `couponPrice`, `status`, `boughtOn`,`boughtQty`,`paidAmt`) 
+        VALUES ('$clientUId','$couponName','$couponId','$paymentStatus','$description','$startDate','$endDate','$couponPrice','$status','$boughtOn','$qty','$paidAmt')";
         $exe=mysqli_query($conn,$query);
         if(!$exe){
             echo "Error while inserting coupon";
         }
-          $_SESSION['soldCouponId']=mysqli_insert_id($conn);
-
+          $_SESSION['soldCouponId']= mysqli_insert_id($conn);
+          $_SESSION['couponId'] = $couponId;
+        
          $query="SELECT * FROM `payment_trials` WHERE clientUId = '$clientUId'";
          $exe=mysqli_query($conn,$query);
          $data=mysqli_fetch_assoc($exe);

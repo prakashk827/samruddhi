@@ -14,7 +14,7 @@ if(isset($_POST['couponId']) && isset($_POST['qty'])){
       {
         
          $data=mysqli_fetch_assoc($exe);
-         $id = $data['id'];
+         $couponId = $data['id'];
          $couponName = $data['couponName'];
          $description= $data['description'];
          $startDate = $data['startDate'];
