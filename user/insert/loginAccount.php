@@ -5,12 +5,12 @@ include_once("../../db/db.php");
 if(isset($_POST['mobile']) && isset($_POST['pwd']))
 {
 
-	 $uName = $_POST['mobile'];
+	 $mobile = $_POST['mobile'];
 	 $pwd = $_POST['pwd'];
 	 
 
 
-	$query="SELECT * FROM `client_profile` WHERE clientUId='$uName' and password = '$pwd'";
+	$query="SELECT * FROM `client_profile` WHERE clientUId='$mobile' and password = '$pwd'";
 	$exe=mysqli_query($conn,$query);
 
 	if(mysqli_num_rows($exe)>0)
