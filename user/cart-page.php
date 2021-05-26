@@ -190,10 +190,14 @@ else{
     <script type="text/javascript">
     var totalCoupons  = "<?php echo $totalCoupons?>";
       $(document).ready(function(){
+          $("#previouCoupons").css('display','none');
           if(totalCoupons != 0){
               if(totalCoupons == 1){
+            	  $("#previouCoupons").css('display','block');
             	  $("#previouCoupons").html("Previouly purchased coupon : "+totalCoupons+" ");
+            	  
               }else{
+            	  $("#previouCoupons").css('display','block');
 	         	  $("#previouCoupons").html("Previouly purchased coupons : "+totalCoupons+" ");
               }
           }
