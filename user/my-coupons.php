@@ -25,7 +25,7 @@ if ($_SESSION["clientUId"] == '')
       <div class="app-title">
         <div>
           <h1><i class="fa fa-tags"></i> My Coupons</h1>
-          <!-- <p>555</p> -->
+          <p>Showing all purchased coupons</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -36,6 +36,9 @@ if ($_SESSION["clientUId"] == '')
 
        
       <div class="row">
+      	<div class="col-md-12">
+      	<a href="show-all-coupons.php"><button class="btn btn-primary"><i class="fa fa-tags"></i> Buy Coupon</button></a><br><br>
+      	</div>
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
@@ -66,7 +69,7 @@ if (mysqli_num_rows($exe) > 0)
     {
 ?>
                  <tr>
-                      <td><?php echo $data['id']; ?></td>
+                      <td><?php echo $data['couponId']; ?></td>
                       <td><?php echo $data['boughtOn']; ?></td>
                       <td class="payment" data-cName="pk"><?php echo $data['couponName']; ?></td>
                       <td><?php echo $data['couponPrice']; ?></td>

@@ -2,6 +2,7 @@
 include_once ("../db/db.php");
 $couponId = $_GET['id'];
 
+
 session_start();
 if ($_SESSION["clientUId"] == '')
 {
@@ -9,10 +10,24 @@ if ($_SESSION["clientUId"] == '')
 }
 ?>
 <?php
+$totalCoupons = 0; 
+$clientUId = $_SESSION["clientUId"];
 $query = "SELECT * FROM `coupons` WHERE status='active' and id ='$couponId'";
 $exe = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($exe) > 0){
+    
+    $count = "SELECT * FROM `coupons_sold` WHERE clientUId = '$clientUId' and couponId='$couponId' and paymentStatus = 'complete'";
+    $execute = mysqli_query($conn, $count);
+
+    while($soldCoupons = mysqli_fetch_assoc($execute)){
+        $totalCoupons = $totalCoupons + $soldCoupons['boughtQty'];
+    }
+    if($totalCoupons >= 10){
+        $_SESSION["message"] = "You are allowed to buy only 10 coupons";
+        $_SESSION["msgClr"] = "red";
+        header("Location:status.php");
+    }
     $data = mysqli_fetch_assoc($exe);
 }
 else{
@@ -114,8 +129,9 @@ else{
                   <p>Coupon Name :  <strong style="color:#007D71"><?php echo $data['couponName']; ?></strong> </p>
                   <p>Coupon Price :  <strong style="color:#007D71">Rs <?php echo $data['couponPrice']; ?>/-</strong>  </p>
                     
-                    <hr>
-
+                    
+					<p style="background: #007D71;color:white;padding:1%;" id="previouCoupons"></p>
+					<hr>
                     <div class="form-group col-md-12">
                   <label class="control-label">Qty</label>
                   <input class="form-control" type="text" id="qty" name="qty" data-bvalidator="required" min="1" max="10">
@@ -129,15 +145,8 @@ else{
 
                 <input type="hidden" id="price" name="price" value="<?php echo $data['couponPrice']; ?>">
                 <div class="col-md-12">
-                 
-
-            <div class="bs-component warn">
-              <div class="alert alert-dismissible alert-danger">
                 
-                <p id="warning"></p>
-              </div>
-            
-          </div>
+                <p class="warn alert alert-dismissible alert-danger" id="warning"></p>
 
                 </div>
 
@@ -148,7 +157,7 @@ else{
                 
                 </div>
                 
-                <!-- onclick="pay_now()" -->
+                
   </div>
 
          </form>
@@ -179,15 +188,35 @@ else{
 
 
     <script type="text/javascript">
-      
+    var totalCoupons  = "<?php echo $totalCoupons?>";
       $(document).ready(function(){
-        $(".warn").css("display",'none');
-
-        $(".payNow").click(function(){
-          if( $("#qty").val() != ''){
-            $(".warn").css("display",'block');
-            $("#warning").html("Please wait..");
+          if(totalCoupons != 0){
+              if(totalCoupons == 1){
+            	  $("#previouCoupons").html("Previouly purchased coupon : "+totalCoupons+" ");
+              }else{
+	         	  $("#previouCoupons").html("Previouly purchased coupons : "+totalCoupons+" ");
+              }
           }
+		
+        $(".warn").css("display",'none');
+        $(".payNow").click(function(e){
+        	
+			var qty = $("#qty").val();
+            if( qty != ''){
+            	$(".warn").css("display",'block');
+
+            	if(qty > (10-totalCoupons)){
+                	  e.preventDefault();
+                	
+                      $("#warning").html('You\'re  allowed to buy less than or equals to '+(10-totalCoupons)+' coupons.');
+              } else {
+            	   
+                	$("#warning").html("Please wait..");
+              }
+                  
+                
+          }  
+          
           
         });
         $("#qty").keyup(function(){

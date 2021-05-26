@@ -58,19 +58,9 @@ if ($success === true)
                 $query = "UPDATE `coupons` SET `leftCoupons`='$leftCoupons' WHERE id = $couponId "; 
                 $exe=mysqli_query($conn,$query);
                 
-                //Updating coupon history of client
-                $sel = "SELECT * FROM `coupons_history` WHERE couponId = '$couponId' and clientUId = '$clientUId' ";
-                $exe = mysqli_query($conn, $query);
-                $data = mysqli_fetch_assoc($exe);
-                $leftCoupons = $data['boughtQty'] + $qty;
-                
-                $query = "UPDATE `coupons_history` SET `boughtQty`='$leftCoupons' WHERE clientUId = '$clientUId'";
-                $exe=mysqli_query($conn,$query);
-                
-                
                 $_SESSION["message"] = "Your payment was successful..!";
                 $_SESSION["msgClr"] = "green";
-                header("Location:../page-error.php");
+                header("Location:../status.php");
              }
 }
 else {
@@ -82,7 +72,7 @@ else {
              if($exe){
                 $_SESSION["message"] = "Your payment failed..!";
                 $_SESSION["msgClr"] = "red";
-                header("Location:../page-error.php");
+                header("Location:../status.php");
             }
 }
 

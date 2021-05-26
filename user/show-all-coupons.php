@@ -34,13 +34,19 @@ if ($_SESSION["clientUId"] == '') {
 		</h1>
 		<!-- <p>Material design inspired cards</p> -->
 	</div>
+	
+	
 	<ul class="app-breadcrumb breadcrumb">
 		<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
 
 		<li class="breadcrumb-item"><a href="dashbord.php">dashboard</a></li>
 	</ul>
 </div>
+
+	<h5 class="alert alert-dismissible alert-danger">You are allowed to buy any coupons with maximum of 10 quantities.</h5>
+
 <div class="row">
+
 <?php
 $date = date('Y-m-d');
 $query = "SELECT * FROM `coupons` WHERE status='active' and startDate = '$date' ORDER BY id DESC";

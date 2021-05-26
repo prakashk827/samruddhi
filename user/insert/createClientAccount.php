@@ -44,14 +44,6 @@ if($_POST['mobile'] !='' &&  $_POST['pwd'] != ''){
 		{
 			echo "Error while inserting payment trials.";
 		}
-		
-		$query = "INSERT INTO `coupons_history`(`clientUId`, `boughtQty`, `date`, `time`)
-        VALUES ('$mobile','0','$date','$time')";
-		$exe=mysqli_query($conn,$query);
-		if(!$exe)
-		{
-		    echo "Error while inserting coupons_history.";
-		}
 
 		$_SESSION["clientUId"] = $mobile;
 		header("Location:../edit-profile.php");

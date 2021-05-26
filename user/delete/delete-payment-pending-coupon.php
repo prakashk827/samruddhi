@@ -11,7 +11,7 @@ $exe=mysqli_query($conn,$query);
 if($exe)
 {
 	
-	echo "<br> Successfully..!";
+	echo "Successfully..!";
 	
 	
 	 
