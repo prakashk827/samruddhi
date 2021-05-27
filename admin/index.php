@@ -27,8 +27,6 @@
 				<h3 class="login-head">
 					Admin Login
 				</h3>
-				 <h4>if you forgot your password kindly contact admin</h4>
-				
 				<div class="form-group">
 					<label class="control-label">User name</label> <input
 						class="form-control" type="text" id="uName"  name="uName">
