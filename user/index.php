@@ -22,11 +22,11 @@
         <h1>Vali</h1>
       </div>
       <div class="login-box">
-
-        <form class="login-form" method="post" action="insert/loginAccount.php" data-bvalidator-validate>
+          <form class="login-form" method="post" action="insert/loginAccount.php" data-bvalidator-validate>
           <h3 class="login-head"></i>Login</h3>
+          <p class="alert alert-primary" data-dismiss="alert">If you forgot password contact admin</p>
           <div class="form-group">
-            <label class="control-label">Registered Mobile Number</label>
+             <label class="control-label">Registered Mobile Number</label>
             <input class="form-control" type="text" name="mobile" data-bvalidator="required">
           </div>
           <div class="form-group">

@@ -13,8 +13,8 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Profile</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
 
-            <li><a class="treeview-item" href="edit-profile.php"><i class="icon fa fa-circle-o"></i> Profile</a></li>
-            <li><a class="treeview-item" href="edit-address.php"><i class="icon fa fa-circle-o"></i> Address</a></li>
+            <li><a class="treeview-item" href="edit-profile.php"><i class="icon fa fa-user"></i> Profile</a></li>
+            <li><a class="treeview-item" href="edit-address.php"><i class="fa fa-address-book"></i> &nbsp;Address</a></li>
 
           </ul>
         </li>
@@ -23,8 +23,8 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-tags"></i><span class="app-menu__label">Coupon</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
 
-            <li><a class="treeview-item" href="show-all-coupons.php"><i class="icon fa fa-circle-o"></i> Buy</a></li>
-              <li><a class="treeview-item" href="my-coupons.php"><i class="icon fa fa-circle-o"></i> My Coupons </a></li>
+            <li><a class="treeview-item" href="show-all-coupons.php"><i class="fa fa-buysellads" aria-hidden="true"></i></i>&nbsp;Buy</a></li>
+              <li><a class="treeview-item" href="my-coupons.php"><i class="fa fa-tags" aria-hidden="true"></i></i> &nbsp;My Coupons </a></li>
             <li><a class="treeview-item" href="pending-payment.php"><i class="icon fa fa-clock-o"></i>  Pending Payment</a></li>
 
           </ul>

@@ -26,12 +26,15 @@
     <section class="login-content">
       <div class="logo">
         <h1>Vali</h1>
+
       </div>
       <div class="login-box">
 
         <form class="login-form" method="post" action="insert/loginAccount.php" data-bvalidator-validate>
           <h3 class="login-head"></i>Login</h3>
+           
           <div class="form-group">
+                
             <label class="control-label">Registered Mobile Number</label>
             <input class="form-control" type="text" name="mobile" data-bvalidator="required">
           </div>
@@ -51,6 +54,7 @@
           </div>
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block"></i>Login</button>
+
           </div>
         </form>
        
