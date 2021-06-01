@@ -22,10 +22,10 @@ include_once ("../db/db.php");
 <div class="app-title">
 	<div>
 		<h1>
-			<i class="fa fa-trophy"></i> Announce Winner
+			<i class="fa fa-trophy"></i> Publish Winners
 		</h1>
 		<p>
-			Showing all clients details who bought coupons <i class="fa fa-tags"></i>
+			Showing all announced winner list <i class="fa fa-tags"></i>
 		</p>
 	</div>
 	<ul class="app-breadcrumb breadcrumb side">
@@ -42,40 +42,12 @@ include_once ("../db/db.php");
 	<div class="col-md-12">
 		<div class="tile">
 			<div class="tile-body">
-			<form class="row" data-bvalidator-validate action="announce-winner.php">
-				<div class="col-md-4">
-						<select class="form-control" name="couponId" required>
-							<option value="">Select Coupon</option>
-							<?php
-                                    $sel = "SELECT * FROM `coupons` WHERE status = 'active' ORDER BY id DESC";
-                                    $exe = mysqli_query($conn, $sel);
-                                    
-                                    if (mysqli_num_rows($exe) > 0) {
-                                        
-                                        while ($data = mysqli_fetch_assoc($exe)) {
-                                            ?>
-                                                                				<option
-                                								value="<?php echo $data['id']  ?>"><?php echo $data['couponName']?></option>			         
-                                                                			<?php
-                                        }
-                                    }
-    ?>
-						</select>
-				
-				</div>
-				<div class="col-md-2">
-
-					<input type="submit" class="form-control btn-danger" value="Search">
-				</div>
-			</div>
-		</div>
-
-		</form>
+			
 	</div>
-				<div class="col-md-4"><a href="publish-winner.php"><button class="btn btn-warning">Publish Winner </button></a></div><br><br>
+	<div class="col-md-4"><a href="announce-winner.php"><button class="btn btn-warning">Announce Winner </button></a></div><br><br>
 	<div class="col-md-12">
 
-		<div class="tile">
+		
 			<div class="tile-body">
 
 				
@@ -83,49 +55,48 @@ include_once ("../db/db.php");
 					<table class="table table-hover table-bordered" id="sampleTable">
 						<thead>
 							<tr>
-								<th>ClientUId</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Announce as</th>
+								<th>Coupon Id</th>
+								<th>Coupon Name</th>
+								<th>Coupon Price</th>
+								<th>Total Coupons</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
 <?php
-if (isset($_GET['couponId']) && $_GET['couponId'] != '') {
-    $couponId =  $_GET['couponId'];
-    $clientUId = $_SESSION['clientUId'];
-    $q = "SELECT DISTINCT client_profile.clientUId,firstName,lastName,client_profile.winner FROM `client_profile` INNER JOIN coupons_sold
-ON  client_profile.clientUId = coupons_sold.clientUId WHERE 
-(coupons_sold.paymentStatus='complete' AND client_profile.winner = 'no' AND coupons_sold.couponId = '$couponId' ) ";
+
+   
+    $sel = "SELECT DISTINCT coupons.id,couponName,couponPrice,totalCoupons,couponId FROM coupons INNER JOIN winner_coupons ON
+    coupons.id = winner_coupons.couponId WHERE published = 'no'";
     
-    $e = mysqli_query($conn, $q);
+    $exe = mysqli_query($conn, $sel);
     
-    if (mysqli_num_rows($e) > 0) {
+    if (mysqli_num_rows($exe) > 0) {
         
-        while ($data = mysqli_fetch_assoc($e)) {
-            $UId = $data['clientUId'];
+        while ($data = mysqli_fetch_assoc($exe)) {
+            
             ?>
                 	 		<tr>
-								<td><?php echo $data['clientUId'] ?></td>
-								<td><?php echo $data['firstName'] ?></td>
-								<td><?php echo $data['lastName'] ?></td>
-								<td><button data-couponId="<?php echo $couponId?>" data-clientUId="<?php   echo $data['clientUId']  ?>"
-										class="btn btn-danger btn-sm winnerBtn">Winner</button></td>
+								<td><?php echo $data['id'] ?></td>
+								<td><?php echo $data['couponName'] ?></td>
+								<td><?php echo $data['couponPrice'] ?></td>
+								<td><?php echo $data['totalCoupons'] ?></td>
+								<td><button data-couponId="<?php echo  $data['id']?>"class="btn btn-success btn-sm publishBtn">Publish Winners</button></td>
 							</tr>
 <?php
         }
     } else {
         echo "No rocords found";
     }
-}
+
 
 ?>
                    
                   </tbody>
 					</table>
 				</div>
-			</div>
-		</div>
+			
+		
 	</div>
 </div>
 </main>
@@ -172,11 +143,11 @@ ON  client_profile.clientUId = coupons_sold.clientUId WHERE
 
 $(document).ready(function(){
  
-  $('.winnerBtn').click(function(){
+  $('.publishBtn').click(function(){
       var clientUId = $(this).attr("data-clientUId");
       var couponId =  $(this).attr("data-couponId");
         swal({
-          title: "Are you sure you ? ",
+          title: "Are you sure you want to publish all winners of this coupon ? ",
           text: "" ,
           type: "warning",
           showCancelButton: true,
@@ -187,15 +158,14 @@ $(document).ready(function(){
         }, function(isConfirm) {
           if (isConfirm) {
 
-             $.post("insert/announceWinner.php",
+             $.post("insert/publish-winner.php",
           {
-            	 clientUId:clientUId,
             	 couponId:couponId
           },
           function(data)
           {
              swal("Done!", data , "success");
-              // window.location.href="announce-winner.php";         
+               //window.location.href="publish-winner.php";         
           });
              
           } else {

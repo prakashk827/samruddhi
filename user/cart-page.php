@@ -204,7 +204,6 @@ else{
 		
         $(".warn").css("display",'none');
         $(".payNow").click(function(e){
-        	
 			var qty = $("#qty").val();
             if( qty != ''){
             	$(".warn").css("display",'block');

@@ -47,24 +47,21 @@ if ($_SESSION["clientUId"] == '')
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Date</th>
+                      <th>Purchased Date</th>
                       <th>Coupon Name</th>
                       <th>Price (Rs)</th>
                       <th>Qty</th>
                       <th>Amount</th>
-                       
-
                     </tr>
                   </thead>
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT * FROM `coupons_sold` WHERE  clientUId='$clientUId' and 
-paymentStatus='complete' ORDER BY id DESC";
+$query = "SELECT coupons.id,couponName,couponPrice,boughtQty,paidAmt,boughtOn,coupons_sold.id,coupons_sold.couponId
+FROM coupons INNER JOIN coupons_sold  ON  coupons.id = coupons_sold.couponId WHERE coupons_sold.clientUId = '$clientUId' AND coupons_sold.paymentStatus='complete'";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0)
 {
-
     while ($data = mysqli_fetch_assoc($exe))
     {
 ?>

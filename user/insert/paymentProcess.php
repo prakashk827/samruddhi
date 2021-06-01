@@ -10,27 +10,19 @@ if(isset($_POST['couponId']) && isset($_POST['qty'])){
 
    $query="SELECT * FROM `coupons` WHERE  id='$couponId'";
 	$exe=mysqli_query($conn,$query);
-	if(mysqli_num_rows($exe)>0)
-      {
+	if(mysqli_num_rows($exe)>0){
         
          $data=mysqli_fetch_assoc($exe);
-         $couponId = $data['id'];
-         $couponName = $data['couponName'];
-         $description= $data['description'];
-         $startDate = $data['startDate'];
-         $endDate = $data['endDate'];
-         $couponPrice = $data['couponPrice'];
-         $status = $data['status'];
-         $displayType = $data['displayType'];
+         echo $couponId = $data['id'];
+         echo $couponPrice = $data['couponPrice'];
+         exit();
 
          $paidAmt = $qty * $couponPrice;
-
-
-
-         $query = "INSERT INTO `coupons_sold`(`clientUId`, `couponName`, `couponId`, `paymentStatus`, `description`, `startDate`, `endDate`, `couponPrice`, `status`, `boughtOn`,`boughtQty`,`paidAmt`) VALUES ('$clientUId','$couponName','$couponId','$paymentStatus','$description','$startDate','$endDate','$couponPrice','$status','$boughtOn','$qty','$paidAmt')";
+         $query =  "INSERT INTO `coupons_sold`(`clientUId`, `couponId`, `paymentStatus`, `boughtOn`, `boughtQty`, `paidAmt`) VALUES ('$clientUId','$couponId','$paymentStatus','$boughtOn','$qty','$paidAmt')";
         $exe=mysqli_query($conn,$query);
         if(!$exe){
-        	echo "Error while inserting coupon";
+        	echo "Error while inserting coupon pk";
+        	exit();
         }
          echo $_SESSION['couponId']=mysqli_insert_id($conn);
 

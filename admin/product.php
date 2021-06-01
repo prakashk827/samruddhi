@@ -17,7 +17,7 @@
 		<h1>
 			<i class="fa fa-tags"></i> Product details
 		</h1>
-		<!--           <p>Start a beautiful journey here</p> -->
+		<!--<p>Start a beautiful journey here</p> -->
 	</div>
 	
 		
@@ -57,14 +57,14 @@
 
 								
 
-								<div class="form-group col-md-2">
+								<div class="form-group col-md-4">
 									<label class="control-label">MRP Price <span
 										style="color: red">*</span></label> <input
 										class="form-control" type="text" placeholder="Rs" id="mrpPrice"
 										name="price" data-bvalidator="number,required">
 								</div>
 
-								<div class="form-group col-md-2">
+								<div class="form-group col-md-4">
 									<label class="control-label">Our Price <span
 										style="color: red">*</span></label> <input
 										class="form-control" type="text" placeholder="Rs" id="ourPrice"
@@ -73,14 +73,14 @@
 
 
 
-								<div class="form-group col-md-2">
+								<div class="form-group col-md-4">
 									<label class="control-label">Discount<span
 										style="color: red">*</span></label> <input
 										class="form-control" type="text" id="totaldiscount"
 										name="totaldiscount" data-bvalidator="number,required"
 										>
 								</div>
-								<div class="form-group col-md-2">
+								<div class="form-group col-md-4">
 									<label class="control-label">Available size<span
 										style="color: red">*</span></label> 
 										 <select class="form-control" >

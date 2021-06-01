@@ -57,12 +57,12 @@ if ($_SESSION["clientUId"] == '')
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT * FROM `coupons_sold` WHERE  clientUId='$clientUId' and 
-paymentStatus='pending' ORDER BY id DESC";
+$query = "SELECT coupons.id,couponName,couponPrice,boughtQty,paidAmt,boughtOn,coupons_sold.id,coupons_sold.couponId 
+FROM coupons INNER JOIN coupons_sold  ON  coupons.id = coupons_sold.couponId WHERE coupons_sold.clientUId = '$clientUId' AND coupons_sold.paymentStatus='pending'";
 $exe = mysqli_query($conn, $query);
+
 if (mysqli_num_rows($exe) > 0)
 {
-
     while ($data = mysqli_fetch_assoc($exe))
     {
 ?>
@@ -75,22 +75,16 @@ if (mysqli_num_rows($exe) > 0)
                       <td><?php echo $data['paidAmt']; ?></td>
                       <td><button  data-id="<?php echo $data['id']; ?>" class="btn btn-danger btn-sm cancel">Cancel</button></td>
                       <td><button data-id="<?php echo $data['couponId'];?>" 
-                        data-qty="<?php echo $data['boughtQty']; ?>"  class="btn btn-success btn-sm payment">Complete</button></td>
+                         class="btn btn-success btn-sm payment">Complete</button></td>
                     </tr>
 <?php
     }
-?>
-         
-        
-
-         
-        
-<?php
-
+    
 }
 else
 {
-    echo "Error while fetching coupon";
+    echo "No records found";
+    
 }
 
 ?>

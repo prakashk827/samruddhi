@@ -56,13 +56,13 @@ if ($_SESSION["clientUId"] == '') {
 						<tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT * FROM `client_profile`  ORDER BY id DESC";
+$query = "SELECT * FROM `client_profile` ORDER BY id DESC";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0) {
     
     while ($data = mysqli_fetch_assoc($exe)) {
         ?>
-                 <tr>
+                 			<tr>
 								<td><?php echo $data['clientUId'] ?></td>
 								<td><?php echo $data['date']; ?></td>
 								<td><?php echo $data['firstName']; ?></td>
@@ -70,8 +70,7 @@ if (mysqli_num_rows($exe) > 0) {
 								<th>
 									<button class="btn btn-success btn-sm moreDetails"
 										data-clientUId="<?php echo $data['clientUId']; ?>">Show</button>
-								</th>
-								
+								</th>								
 
 							</tr>
 <?php
