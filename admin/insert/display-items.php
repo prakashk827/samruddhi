@@ -20,7 +20,7 @@ if(isset($_POST['type'])){
                 $exe = mysqli_query($conn, $query);
                 if (mysqli_num_rows($exe) > 0) {
                     while ($data = mysqli_fetch_assoc($exe)) {
-                        $output .= '<option >'.$data['name'].'</opton>';
+                        $output .= '<option value=" '. $data['id']. '">'.$data['name'].'</opton>';
                     }
                 }
                 

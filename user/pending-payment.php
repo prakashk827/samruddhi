@@ -88,9 +88,6 @@ else
 }
 
 ?>
-
-                   
-                   
                   </tbody>
                 </table>
               </div>

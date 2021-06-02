@@ -53,10 +53,10 @@
 										<div class="clearix"></div>
 										<div class="col-md-12">
 
-											<!-- <h3 class="tile-title">Subscribe</h3> -->
-											<div class="tile-body">
-												<form class="row" method="post" data-bvalidator-validate
-													action="insert/couponController.php">
+											<!-- <h3 class="tile-title">Subscribe</h3> data-bvalidator-validate -->
+											<div class="tile-body"> 
+												<form class="row" method="post" 
+													action="insert/product-add.php">
 													<div class="form-group col-md-4">
 														<label class="control-label">Product Name <span
 															style="color: red">*</span></label> <input
@@ -67,7 +67,7 @@
 													<div class="  col-md-4">
 														<label class="control-label">Fabric <span
 															style="color: red">*</span></label> <select
-															class="form-control displayItems" id="fabrics">
+															class="form-control displayItems" id="fabrics" name="fabric" data-bvalidator="required">
 															<option value="">Please select</option>
 
 														</select>
@@ -76,7 +76,7 @@
 													<div class="form-group col-md-4">
 														<label class="control-label">Category<span
 															style="color: red">*</span></label> <select
-															class="form-control displayItems" id="categories">
+															class="form-control displayItems" id="categories" name="category" data-bvalidator="required">
 															<option value="">Please select</option>
 														</select>
 													</div>
@@ -84,8 +84,8 @@
 
 													<div class="form-group col-md-4">
 														<label class="control-label">Available size<span
-															style="color: red">*</span></label> <select
-															class="form-control displayItems" id="sizes">
+															style="color: red">*</span></label> 
+															<select class="form-control displayItems" id="sizes" name="availSize" data-bvalidator="required">
 															<option value="">Please select</option>
 														</select>
 													</div>
@@ -94,7 +94,7 @@
 														<label class="control-label">MRP Price <span
 															style="color: red">*</span></label> <input
 															class="form-control" type="text" placeholder="Rs"
-															id="mrpPrice" name="price"
+															id="mrpPrice" name="mrpPrice"
 															data-bvalidator="number,required">
 													</div>
 
@@ -112,23 +112,23 @@
 														<label class="control-label">Discount<span
 															style="color: red">*</span></label> <input
 															class="form-control" type="text" id="totaldiscount"
-															name="totaldiscount" data-bvalidator="number,required">
+															name="discount" data-bvalidator="number,required">
 													</div>
 													<div class="form-group col-md-8"></div>
 
 
 
 
-													<div class="form-group col-md-8">
+													<div class="form-group col-md-12">
 														<label class="control-label">Product Description <span
 															style="color: red">*</span></label>
-														<textarea class="form-control" cols="40" rows="5"
+														<textarea class="form-control" cols="40" rows="10"
 															id="description" name="description"
 															data-bvalidator="required"></textarea>
 													</div>
 
 													<div class="form-group col-md-12 align-self-end">
-														<button class="btn btn-primary" type="submit">
+														<button class="btn btn-primary" type="submit" name="save">
 															<i class="fa fa-floppy-o"></i>Save
 														</button>
 													</div>
@@ -270,12 +270,15 @@
 		
 		$(".displayItems").click(function(){
 			var type = $(this).attr('id'); // getting dropdown id
+			var id = "#"+type;
+			var length = $(id + '> option').length;
+			
 				$.post("insert/display-items.php",
 				          {
 					 		type:type
 				          },
 				          function(data) {
-					         $("#"+type).html(data);
+					         $("#"+type).append(data);
 				          }
 		         );
 		});

@@ -43,13 +43,12 @@ if (isset($_POST['clientUId'])) {
 					</tr>
 
 					<tr>
-						<th class="modalTblHeader" width="40%">First Name :</th>
-						<td><?php echo $profile['firstName'] == '' ? 'Not Provided' : $profile['firstName']; ?></td>
+						<th class="modalTblHeader" width="40%">Full Name :</th>
+						<td><?php echo ($profile['firstName'] == '' ? 'Not Provided' : $profile['firstName']) ." " . ($profile['lastName'] == '' ? 'Not Provided' : $profile['lastName']) ; ?>
+						
+						</td>
 					</tr>
-					<tr>
-						<th class="modalTblHeader" width="40%">Last Name :</th>
-						<td><?php echo $profile['lastName'] == '' ? 'Not Provided' : $profile['lastName']; ?></td>
-					</tr>
+					
 
 					<tr>
 						<th class="modalTblHeader" width="40%">Mobile Number :</th>
