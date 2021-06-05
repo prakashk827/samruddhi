@@ -40,12 +40,20 @@ if (empty($_POST['razorpay_payment_id']) === false)
 if ($success === true)
 {
              //Updating payment status
+             $date = date('d-m-Y');
+             $time = date('h:i:sa');
              $paymentId = $_POST['razorpay_payment_id'];
              $soldCouponId = $_SESSION['soldCouponId'];
              $couponId = $_SESSION['couponId'] ;
              $qty  = $_SESSION['QTY'];
              $clientUId = $_SESSION['clientUId'];
-             $query = "UPDATE `coupons_sold` SET `paymentStatus`='complete',`transactionId`='$paymentId' WHERE id = $soldCouponId ";
+             $query = "UPDATE `coupons_sold` SET 
+            `paymentStatus`='complete',
+            `transactionId`='$paymentId',
+            `time`='$time',
+             `boughtOn`='$date'
+             WHERE id = $soldCouponId ";
+             
              $exe=mysqli_query($conn,$query);
              if($exe){
                  
@@ -53,11 +61,9 @@ if ($success === true)
                 $sel = "SELECT * FROM `coupons` WHERE id = '$couponId'";
                 $exe = mysqli_query($conn, $query);
                 $data = mysqli_fetch_assoc($exe);
-                $leftCoupons = $data['leftCoupons'];
-                $leftCoupons = $leftCoupons - $qty;
-                $query = "UPDATE `coupons` SET `leftCoupons`='$leftCoupons' WHERE id = $couponId "; 
+                $soldCoupons = $data['soldCoupons']  + $qty;
+                $query = "UPDATE `coupons` SET `soldCoupons`='$soldCoupons' WHERE id = $couponId"; 
                 $exe=mysqli_query($conn,$query);
-                
                 $_SESSION["message"] = "Your payment was successful..!";
                 $_SESSION["msgClr"] = "green";
                 header("Location:../status.php");

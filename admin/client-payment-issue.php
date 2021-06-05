@@ -49,7 +49,7 @@
               $couponPrice = $data1['couponPrice'];
               $paymentStatus = $data1['paymentStatus'];
               $paidAmt = $data1['paidAmt'];
-              $boughtQty = $data1['boughtQty'];
+              $soldCoupons = $data1['boughtQty'];
               $paidAmt = $data1['paidAmt'];
               $boughtOn = $data1['boughtOn'];
 
@@ -67,7 +67,7 @@
                     <h5>Mobile Number : <a style="text-decoration:none;color:white;" href="tel:<?php echo $clientUId ?>"><?php echo $clientUId ?></a> </h5>
                     <h5>Coupoun Name : <?php echo $couponName ?>  </h5>
                     <h5>Coupon Price : <?php echo $couponPrice ?>  </h5>
-                    <h5>Qty : <?php echo $boughtQty ?>  </h5>
+                    <h5>Qty : <?php echo $soldCoupons ?>  </h5>
                     <h5>Total Amt : <?php echo $paidAmt ?>  </h5>
                     <h5>Payment Status : <?php echo $paymentStatus ?> </h5>
               </blockquote>

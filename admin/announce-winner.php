@@ -1,4 +1,4 @@
-<?php
+-<?php
 session_start();
 include_once ("../db/db.php");
 
@@ -38,47 +38,55 @@ include_once ("../db/db.php");
 	data-toggle="modal" data-target="#myModal">Open Modal</button>
 
 <div class="row">
-	
+
 	<div class="col-md-12">
 		<div class="tile">
 			<div class="tile-body">
-			<form class="row" data-bvalidator-validate action="announce-winner.php">
-				<div class="col-md-4">
+				<form class="row" data-bvalidator-validate
+					action="announce-winner.php">
+					<div class="col-md-4">
 						<select class="form-control" name="couponId" required>
 							<option value="">Select Coupon</option>
 							<?php
-                                    $sel = "SELECT * FROM `coupons` WHERE status = 'active' ORDER BY id DESC";
-                                    $exe = mysqli_query($conn, $sel);
-                                    
-                                    if (mysqli_num_rows($exe) > 0) {
-                                        
-                                        while ($data = mysqli_fetch_assoc($exe)) {
-                                            ?>
+    $sel = "SELECT * FROM `coupons` WHERE status = 'active' ORDER BY id DESC";
+    $exe = mysqli_query($conn, $sel);
+    
+    if (mysqli_num_rows($exe) > 0) {
+        
+        while ($data = mysqli_fetch_assoc($exe)) {
+            ?>
                                                                 				<option
-                                								value="<?php echo $data['id']  ?>"><?php echo $data['couponName']?></option>			         
+								value="<?php echo $data['id']  ?>"><?php echo $data['couponName']?></option>			         
                                                                 			<?php
-                                        }
-                                    }
+        }
+    }
     ?>
 						</select>
-				
-				</div>
-				<div class="col-md-2">
 
-					<input type="submit" class="form-control btn-danger" value="Search">
-				</div>
+					</div>
+					<div class="col-md-2">
+
+						<input type="submit" class="form-control btn-danger"
+							value="Search">
+					</div>
+			
 			</div>
 		</div>
 
 		</form>
 	</div>
-				<div class="col-md-4"><a href="publish-winner.php"><button class="btn btn-warning">Publish Winner </button></a></div><br><br>
+	<div class="col-md-4">
+		<a href="publish-winner.php"><button class="btn btn-warning">Publish
+				Winner</button></a>
+	</div>
+	<br>
+	<br>
 	<div class="col-md-12">
 
 		<div class="tile">
 			<div class="tile-body">
 
-				
+
 				<div class="table-responsive">
 					<table class="table table-hover table-bordered" id="sampleTable">
 						<thead>
@@ -92,15 +100,23 @@ include_once ("../db/db.php");
 						<tbody>
 <?php
 if (isset($_GET['couponId']) && $_GET['couponId'] != '') {
-    $couponId =  $_GET['couponId'];
+    $couponId = $_GET['couponId'];
+    
+    $sel = "SELECT couponName FROM coupons WHERE id = '$couponId'";
+    $exe = mysqli_query($conn, $sel);
+    $cName = mysqli_fetch_assoc($exe);
+    $showMsg = "<h4> Coupon Name : " . $cName['couponName'] . "</h4>";
+    
     $clientUId = $_SESSION['clientUId'];
     $q = "SELECT DISTINCT client_profile.clientUId,firstName,lastName,client_profile.winner FROM `client_profile` INNER JOIN coupons_sold
 ON  client_profile.clientUId = coupons_sold.clientUId WHERE 
-(coupons_sold.paymentStatus='complete' AND client_profile.winner = 'no' AND coupons_sold.couponId = '$couponId' ) ";
+(coupons_sold.paymentStatus='complete' AND client_profile.winner = 'no' AND coupons_sold.couponId = '$couponId' and coupons_sold.status='active') ";
     
     $e = mysqli_query($conn, $q);
     
     if (mysqli_num_rows($e) > 0) {
+        
+        echo $showMsg;
         
         while ($data = mysqli_fetch_assoc($e)) {
             $UId = $data['clientUId'];
@@ -109,13 +125,15 @@ ON  client_profile.clientUId = coupons_sold.clientUId WHERE
 								<td><?php echo $data['clientUId'] ?></td>
 								<td><?php echo $data['firstName'] ?></td>
 								<td><?php echo $data['lastName'] ?></td>
-								<td><button data-couponId="<?php echo $couponId?>" data-clientUId="<?php   echo $data['clientUId']  ?>"
+								<td><button data-couponId="<?php echo $couponId?>"
+										data-clientUId="<?php   echo $data['clientUId']  ?>"
 										class="btn btn-danger btn-sm winnerBtn">Winner</button></td>
 							</tr>
 <?php
         }
     } else {
         echo "No rocords found";
+        echo $showMsg = "";
     }
 }
 

@@ -24,9 +24,10 @@ if ($_SESSION["clientUId"] == '') {
 <div class="app-title">
 	<div>
 		<h1>
-			<i class="fa fa-users"></i> Showing All Clients
+			<i class="fa fa-users"></i> Showing All Clients Who Purchased Coupons
+
 		</h1>
-		<!-- <p>Showing all coupons</p> -->
+		<p>Payment completed clients</p>
 	</div>
 	<ul class="app-breadcrumb breadcrumb side">
 		<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -41,56 +42,110 @@ if ($_SESSION["clientUId"] == '') {
 	<div class="col-md-12">
 		<div class="tile">
 			<div class="tile-body">
+				<form class="row" method="post">
+					<div class="col-md-2">
+						<div class="form-group">
+							<input class="btn btn-danger" name="all" type="submit"
+								value="Show All Clients" data-toggle="tooltip" title="Show both result published and not published clients" />
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<input class="btn btn-danger" name="published" type="submit"
+								value="Show Published" data-toggle="tooltip" title="Show  result published  clients" />
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<input class="btn btn-danger" name="notPublished" type="submit"
+								value="Show Not Published"  data-toggle="tooltip" title="Show  result not published  clients" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="tile">
+			<div class="tile-body">
 				<div class="table-responsive">
 					<table class="table table-hover table-bordered" id="sampleTable">
 						<thead>
 							<tr>
+								<th>Date</th>
+								<th>Time</th>
 								<th>ClientUId</th>
-								<th>Reg.Date</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>View More</th>
-								
+								<th>Coupon Id</th>
+								<th>Coupon Name</th>
+								<th>No. of Time Purchased</th>
+								<th>Purchased Qty</th>
+								<th>Coupoun Price (Rs)</th>
+								<th>Total Amount Paid (Rs)</th>
+								<th>Client Info.</th>
+
 							</tr>
 						</thead>
 						<tbody>
 <?php
+if(isset($_POST['all'])){
+ $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
+ INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
+} else if(isset($_POST['published'])){
+ $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
+ INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' AND coupons_sold.status='inactive' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
+} else if(isset($_POST['notPublished'])){
+    $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
+ INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' AND coupons_sold.status='active' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
+} else {
+    
+ $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
+ INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' AND coupons_sold.status !='active' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
+    
+}
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT * FROM `client_profile` ORDER BY id DESC";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0) {
     
+    $color = "green";
     while ($data = mysqli_fetch_assoc($exe)) {
+        if ($data['status'] == 'inactive') {
+            $color = "red";
+        }
         ?>
-                 			<tr>
+                 			<tr style="color:<?php echo $color;?>">
+								<td><?php echo $data['boughtOn'] ?></td>
+								<td><?php echo $data['time'] ?></td>
 								<td><?php echo $data['clientUId'] ?></td>
-								<td><?php echo $data['date']; ?></td>
-								<td><?php echo $data['firstName']; ?></td>
-								<td><?php echo $data['lastName']; ?></td>
+								<td><?php echo $data['couponId'] ?></td>
+								<td><?php echo $data['couponName'] ?></td>
+								<td><?php echo $data['noOfTimePurchased'];  ?></td>
+								<td><?php echo $data['totalQty'];  ?></td>
+								<td><?php echo $data['couponPrice'];  ?></td>
+								<td><?php echo $data['paidAmt'];  ?></td>
 								<th>
 									<button class="btn btn-success btn-sm moreDetails"
 										data-clientUId="<?php echo $data['clientUId']; ?>">Show</button>
-								</th>								
-
+								</th>
 							</tr>
 <?php
     }
     ?>
-        
 <?php
 } else {
     echo "Error while fetching coupon";
 }
-
 ?>
-                   
-                  </tbody>
+                   </tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 </main>
 <style type="text/css">
 </style>

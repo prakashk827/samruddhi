@@ -12,16 +12,19 @@ if(isset($_POST['couponId'])){
     if(!$exe){
         echo "Error while updatating winners_coupons table"; 
         exit();
-    } 
+    } else{
+        
+        
+    }
     
-    $query = "DELETE FROM `coupons_sold` WHERE couponId = $couponId";
+    $query = "UPDATE `coupons_sold` SET `status`='inactive' WHERE couponId = $couponId";
     $exe = mysqli_query($conn, $query);
     if(!$exe){
-        echo "Error while deleteting coupons_sold  table";
+        echo "Error while updating coupons_sold  table";
         exit();
     } 
     
-    $query = "UPDATE `coupons` SET `displayType`='hide' WHERE couponId = '$couponId' ";
+    $query = "UPDATE `coupons` SET `displayType`='hide' WHERE id= $couponId";
     $exe = mysqli_query($conn, $query);
     if(!$exe){
         echo "Error while updating coupons  table";

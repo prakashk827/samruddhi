@@ -46,19 +46,21 @@ if ($_SESSION["clientUId"] == '')
                 <table class="table table-hover table-bordered" id="sampleTable">
                   <thead>
                     <tr>
-                      <th>Id</th>
+                      
                       <th>Purchased Date</th>
+                      <th>Purchased Time </th>
+                      <th>Coupon Id</th>
                       <th>Coupon Name</th>
                       <th>Price (Rs)</th>
                       <th>Qty</th>
-                      <th>Amount</th>
+                      <th>Amount (Rs)</th>
                     </tr>
                   </thead>
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT coupons.id,couponName,couponPrice,boughtQty,paidAmt,boughtOn,coupons_sold.id,coupons_sold.couponId
-FROM coupons INNER JOIN coupons_sold  ON  coupons.id = coupons_sold.couponId WHERE coupons_sold.clientUId = '$clientUId' AND coupons_sold.paymentStatus='complete'";
+$query = "SELECT couponId,coupons_sold.time,boughtOn,couponName,couponPrice,paidAmt, SUM(`boughtQty`) AS boughtQty , SUM(paidAmt) AS paidAmt FROM coupons INNER JOIN coupons_sold ON coupons.id = couponId 
+WHERE `clientUId`= '$clientUId' AND paymentStatus = 'complete' AND coupons_sold.status !='inactive' GROUP BY `couponId`";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0)
 {
@@ -66,8 +68,10 @@ if (mysqli_num_rows($exe) > 0)
     {
 ?>
                  <tr>
-                      <td><?php echo $data['couponId']; ?></td>
+                     
                       <td><?php echo $data['boughtOn']; ?></td>
+                      <td><?php echo $data['time']; ?></td>
+                       <td><?php echo $data['couponId']; ?></td>
                       <td class="payment" data-cName="pk"><?php echo $data['couponName']; ?></td>
                       <td><?php echo $data['couponPrice']; ?></td>
                       <td><?php echo $data['boughtQty']; ?></td>
@@ -83,7 +87,7 @@ if (mysqli_num_rows($exe) > 0)
 }
 else
 {
-    echo "Error while fetching coupon";
+    echo "No history found.";
 }
 
 ?>

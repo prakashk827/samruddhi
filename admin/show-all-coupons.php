@@ -24,8 +24,8 @@ if ($_SESSION["clientUId"] == '')
       <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-tags"></i> My Coupons</h1>
-           <p>Showing all coupons</p> 
+          <h1><i class="fa fa-tags"></i> Showing All Coupons</h1>
+           <p>If coupon color is red means,it is expired or removed after announcing results.</p> 
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -43,38 +43,41 @@ if ($_SESSION["clientUId"] == '')
                 <table class="table table-hover table-bordered" id="sampleTable">
                   <thead>
                     <tr>
-                      <th>Id</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Coupon Id</th>
                       <th>Coupon Name</th>
                       <th>Price (Rs)</th>
                       <th>Total Coupons</th>
-                      <th>Coupons Left</th>
-                      <th>Delete</th>
-                      <th>Edit</th>
-                       
+                      <th>Left Coupons</th>
 
                     </tr>
                   </thead>
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT * FROM `coupons`  ORDER BY id DESC";
+$query = "SELECT * FROM `coupons` ORDER BY  id DESC;";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0)
 {
-
+    $color = "green";
     while ($data = mysqli_fetch_assoc($exe))
-    {
+    { 
+        if($data['displayType'] == 'hide') {
+            $color = "red";
+        }
 ?>
-                 <tr>
+                 <tr style="color:<?php echo $color; ?>">
+                      <td><?php echo $data['date']; ?></td>
+                      <td><?php echo $data['time']; ?></td>
                       <td><?php echo $data['id']; ?></td>
                       <td><?php echo $data['couponName']; ?></td>
                       <td><?php echo $data['couponPrice']; ?></td>
                       <td><?php echo $data['totalCoupons']; ?></td>
                       <td><?php echo $data['leftCoupons']; ?></td>
-                    <td><button data-id="<?php ?>" class="btn btn-sm btn-danger delete">Delete</button></td>
-                    <td><button class="btn btn-sm btn-warning">Edit</button></td>
+                     
                       
-                    </tr>
+                </tr>
 <?php
     }
 ?>

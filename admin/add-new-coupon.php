@@ -62,6 +62,13 @@
 										value="1000">
 								</div>
 
+								<div class="form-group col-md-2">
+									<label class="control-label">Coupon Worth (Rs) <span
+										style="color: red">*</span></label> <input
+										class="form-control" type="text" id="couponWorth"
+										name="couponWorth" data-bvalidator="number,required">
+								</div>
+
 								<div class="form-group col-md-8">
 									<label class="control-label">Description <span
 										style="color: red">*</span></label>

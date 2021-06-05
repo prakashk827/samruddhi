@@ -6,13 +6,16 @@ session_start();
 use Razorpay\Api\Api;
 
 if(isset($_POST['couponId']) && isset($_POST['qty'])){
-
+   
+    $date = date('d-m-Y');
+    $time = date('h:i:sa');
     $couponId = $_POST['couponId'];
     $qty = $_POST['qty'];
     $paymentStatus="pending";
-    $boughtOn=date('Y-m-d');
+    $boughtOn=date('d-m-Y');
     $clientUId = $_SESSION["clientUId"];
     $_SESSION['QTY'] = $qty;
+    
 
     $query="SELECT * FROM `coupons` WHERE  id='$couponId'";
     $exe=mysqli_query($conn,$query);
@@ -30,10 +33,12 @@ if(isset($_POST['couponId']) && isset($_POST['qty'])){
 
 
           
-         $query =  "INSERT INTO `coupons_sold`(`clientUId`, `couponId`, `paymentStatus`, `boughtOn`, `boughtQty`, `paidAmt`) VALUES ('$clientUId','$couponId','$paymentStatus','$boughtOn','$qty','$paidAmt')";
+         $query =  "INSERT INTO `coupons_sold`(`clientUId`, `couponId`, `paymentStatus`, `boughtQty`, `paidAmt`,`time`,`date`) 
+         VALUES ('$clientUId','$couponId','$paymentStatus','$qty','$paidAmt','$time','$date')";
         $exe=mysqli_query($conn,$query);
         if(!$exe){
-            echo "Error while inserting coupon pk";
+            echo "Error while inserting coupon";
+            exit();
         }
           $_SESSION['soldCouponId']= mysqli_insert_id($conn);
           $_SESSION['couponId'] = $couponId;
@@ -47,12 +52,14 @@ if(isset($_POST['couponId']) && isset($_POST['qty'])){
           $exe=mysqli_query($conn,$query);
          if(!$exe){
             echo "Error while updating payment trials";
+            exit();
          }
 
          //Payment Process
           
       }else{
         echo "Error while fetching coupon";
+        exit();
       }
         
 
