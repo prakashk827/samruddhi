@@ -57,8 +57,10 @@ if ($_SESSION["clientUId"] == '')
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT coupons.id,couponName,couponPrice,boughtQty,paidAmt,boughtOn,coupons_sold.id,coupons_sold.couponId 
-FROM coupons INNER JOIN coupons_sold  ON  coupons.id = coupons_sold.couponId WHERE coupons_sold.clientUId = '$clientUId' AND coupons_sold.paymentStatus='pending'";
+$query = "SELECT coupons.id,couponName,couponPrice,boughtQty,paidAmt,boughtOn,coupons_sold.id,coupons_sold.couponId
+FROM coupons INNER JOIN coupons_sold  ON  coupons.id = coupons_sold.couponId 
+WHERE 
+coupons_sold.clientUId = '$clientUId' AND coupons_sold.paymentStatus='pending' AND coupons.displayType != 'hide'";
 $exe = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($exe) > 0)

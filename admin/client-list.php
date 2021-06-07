@@ -40,30 +40,33 @@ if ($_SESSION["clientUId"] == '') {
 
 <div class="row">
 	<div class="col-md-12">
-		<div class="tile">
-			<div class="tile-body">
-				<form class="row" method="post">
-					<div class="col-md-2">
-						<div class="form-group">
-							<input class="btn btn-danger" name="all" type="submit"
-								value="Show All Clients" data-toggle="tooltip" title="Show both result published and not published clients" />
-						</div>
+
+		<div class="tile-body">
+			<form class="row" method="post">
+				<div class="col-md-2">
+					<div class="form-group">
+						<input class="btn btn-danger" name="all" type="submit"
+							value="Show All Clients" data-toggle="tooltip"
+							title="Show both result published and not published clients" />
 					</div>
-					<div class="col-md-2">
-						<div class="form-group">
-							<input class="btn btn-danger" name="published" type="submit"
-								value="Show Published" data-toggle="tooltip" title="Show  result published  clients" />
-						</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<input class="btn btn-danger" name="published" type="submit"
+							value="Show Published" data-toggle="tooltip"
+							title="Show  result published  clients" />
 					</div>
-					<div class="col-md-2">
-						<div class="form-group">
-							<input class="btn btn-danger" name="notPublished" type="submit"
-								value="Show Not Published"  data-toggle="tooltip" title="Show  result not published  clients" />
-						</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<input class="btn btn-danger" name="notPublished" type="submit"
+							value="Show Not Published" data-toggle="tooltip"
+							title="Show  result not published  clients" />
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
+
 	</div>
 </div>
 
@@ -90,21 +93,20 @@ if ($_SESSION["clientUId"] == '') {
 						</thead>
 						<tbody>
 <?php
-if(isset($_POST['all'])){
- $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
+
+$query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
  INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
-} else if(isset($_POST['published'])){
- $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
+
+if (isset($_POST['all'])) {
+    $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
+ INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
+} else if (isset($_POST['published'])) {
+    $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
  INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' AND coupons_sold.status='inactive' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
-} else if(isset($_POST['notPublished'])){
+} else if (isset($_POST['notPublished'])) {
     $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
  INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' AND coupons_sold.status='active' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
-} else {
-    
- $query = "SELECT coupons_sold.status,boughtOn,coupons_sold.time,couponPrice,couponName,couponId,`clientUId`,SUM(paidAmt) AS paidAmt ,SUM(`boughtQty`) AS totalQty ,COUNT(`boughtQty`) AS noOfTimePurchased FROM coupons_sold
- INNER JOIN coupons ON coupons.id = couponId WHERE `paymentStatus`='complete' AND coupons_sold.status !='active' GROUP BY `clientUId`,`couponId` ORDER BY couponId DESC";
-    
-}
+} 
 $clientUId = $_SESSION['clientUId'];
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0) {

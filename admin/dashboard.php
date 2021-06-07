@@ -1,3 +1,4 @@
+
 <?php
 include_once ("../db/db.php");
 session_start();
@@ -23,7 +24,7 @@ if ($_SESSION["clientUId"] == '') {
 		<h1>
 			<i class="fa fa-dashboard"></i> Dashboard
 		</h1>
-		<p>A free and open source Bootstrap 4 admin template</p>
+		<p></p>
 	</div>
 	<ul class="app-breadcrumb breadcrumb">
 		<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -71,7 +72,7 @@ if ($_SESSION["clientUId"] == '') {
 			<div class="info">
 				<h4>Sold Coupons</h4>
               <?php
-            $sel = "SELECT SUM(boughtQty) as boughtQty from coupons_sold";
+            $sel = "SELECT SUM(boughtQty) as boughtQty from coupons_sold WHERE paymentStatus= 'complete'";
             $exe = mysqli_query($conn, $sel);
             $soldCoupons = mysqli_fetch_assoc($exe);
             
@@ -107,7 +108,7 @@ if ($_SESSION["clientUId"] == '') {
 			<div class="info">
 				<h4>Reached Profit</h4>
               <?php
-            $sel = "SELECT SUM(paidAmt) as paidAmt from coupons_sold";
+            $sel = "SELECT SUM(paidAmt) as paidAmt from coupons_sold WHERE paymentStatus= 'complete'";
             $exe = mysqli_query($conn, $sel);
             $earnings = mysqli_fetch_assoc($exe);
             
@@ -118,6 +119,26 @@ if ($_SESSION["clientUId"] == '') {
 			</div>
 		</div>
 	</div>
+	
+	<div class="col-md-6 col-lg-3">
+		<div class="widget-small danger	 coloured-icon">
+			<i class="icon fa fa-trophy fa-3x"></i>
+			<div class="info">
+				<h4>Total Winners</h4>
+              <?php
+            $sel = "SELECT COUNT(id) as winner from winner_coupons WHERE published= 'yes'";
+            $exe = mysqli_query($conn, $sel);
+            $winnerCount = mysqli_fetch_assoc($exe);
+            
+            ?>
+              <p>
+					<b><?php echo $winnerCount['winner']; ?></b>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	
 
 </div>
 <div class="row">

@@ -55,9 +55,9 @@ include_once ("../db/db.php");
         
         while ($data = mysqli_fetch_assoc($exe)) {
             ?>
-                                                                				<option
-								value="<?php echo $data['id']  ?>"><?php echo $data['couponName']?></option>			         
-                                                                			<?php
+               <option value="<?php echo $data['id']  ?>"><?php echo $data['couponName']?></option>			         
+                                                                			
+                <?php
         }
     }
     ?>
@@ -75,12 +75,7 @@ include_once ("../db/db.php");
 
 		</form>
 	</div>
-	<div class="col-md-4">
-		<a href="publish-winner.php"><button class="btn btn-warning">Publish
-				Winner</button></a>
-	</div>
-	<br>
-	<br>
+	
 	<div class="col-md-12">
 
 		<div class="tile">
@@ -105,7 +100,7 @@ if (isset($_GET['couponId']) && $_GET['couponId'] != '') {
     $sel = "SELECT couponName FROM coupons WHERE id = '$couponId'";
     $exe = mysqli_query($conn, $sel);
     $cName = mysqli_fetch_assoc($exe);
-    $showMsg = "<h4> Coupon Name : " . $cName['couponName'] . "</h4>";
+    $showMsg = "<h5>Selected Coupon Name : " . $cName['couponName'] . "</h5>";
     
     $clientUId = $_SESSION['clientUId'];
     $q = "SELECT DISTINCT client_profile.clientUId,firstName,lastName,client_profile.winner FROM `client_profile` INNER JOIN coupons_sold
@@ -213,7 +208,7 @@ $(document).ready(function(){
           function(data)
           {
              swal("Done!", data , "success");
-              // window.location.href="announce-winner.php";         
+              window.location.href="announce-winner.php";         
           });
              
           } else {

@@ -14,7 +14,18 @@ $_SESSION['clientName']="Prakash";
       </div>
       <ul class="app-menu">
         <li><a class="app-menu__item" href="dashboard.php"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-         <li><a class="app-menu__item" href="announce-winner.php"><i class="app-menu__icon fa fa-trophy"></i><span class="app-menu__label">Announce winner</span></a></li>
+        
+       
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-trophy"></i><span class="app-menu__label">Winner</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+
+            <li><a class="treeview-item" href="announce-winner.php"><i class="icon fa fa-arrow-up"></i> Announce</a></li>
+            <li><a class="treeview-item" href="publish-winner.php"><i class="icon fa fa-bullhorn"></i> Publish</a></li>
+            <li><a class="treeview-item" href="winners-list.php"><i class="icon fa fa-users"></i> Winners List</a></li>
+
+          </ul>
+        </li>
+       
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Client</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
 
@@ -23,6 +34,9 @@ $_SESSION['clientName']="Prakash";
 
           </ul>
         </li>
+        
+        
+        
         
         
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-tags"></i><span class="app-menu__label">Coupon</span><i class="treeview-indicator fa fa-angle-right"></i></a>

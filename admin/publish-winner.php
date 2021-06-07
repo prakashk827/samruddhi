@@ -22,7 +22,7 @@ include_once ("../db/db.php");
 <div class="app-title">
 	<div>
 		<h1>
-			<i class="fa fa-trophy"></i> Publish Winners
+			<i class="fa fa-bullhorn"></i> Publish Winners
 		</h1>
 		<p>
 			Showing all announced winner list <i class="fa fa-tags"></i>
@@ -38,13 +38,15 @@ include_once ("../db/db.php");
 	data-toggle="modal" data-target="#myModal">Open Modal</button>
 
 <div class="row">
-	
+	<div class="col-md-4">
+	<a href="announce-winner.php"><button class="btn btn-danger">Announce Winner </button></a>
+	</div><br><br>
 	<div class="col-md-12">
 		<div class="tile">
 			<div class="tile-body">
 			
 	</div>
-	<div class="col-md-4"><a href="announce-winner.php"><button class="btn btn-warning">Announce Winner </button></a></div><br><br>
+	
 	<div class="col-md-12">
 
 		
@@ -95,7 +97,8 @@ include_once ("../db/db.php");
                   </tbody>
 					</table>
 				</div>
-			
+		</div>
+		</div>	
 		
 	</div>
 </div>
@@ -165,7 +168,7 @@ $(document).ready(function(){
           function(data)
           {
              swal("Done!", data , "success");
-               //window.location.href="publish-winner.php";         
+               window.location.href="publish-winner.php";         
           });
              
           } else {

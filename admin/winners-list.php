@@ -24,8 +24,8 @@ if ($_SESSION["clientUId"] == '')
       <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-tags"></i> Showing All Coupons</h1>
-           <p>If coupon color is red means,it is expired or removed after announcing results.</p> 
+          <h1><i class="fa fa-trophy"></i> Showing All Winners List</h1>
+          <!--  <p>If coupon color is red means,it is expired or removed after announcing results.</p>  -->
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -45,36 +45,41 @@ if ($_SESSION["clientUId"] == '')
                     <tr>
                       <th>Date</th>
                       <th>Time</th>
-                      <th>Coupon Id</th>
+                      <th>ClientUId</th>
+                      <th>Full Name</th>
                       <th>Coupon Name</th>
-                      <th>Price (Rs)</th>
-                      <th>Total Coupons</th>
-                      <th>Left Coupons</th>
+                      <th>Coupon Worth ( Rs )</th>
+                      <th>Published As Winner </th>
+                      <th>Order Shipped</th>
 
                     </tr>
                   </thead>
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT * FROM `coupons` ORDER BY  id DESC;";
-$exe = mysqli_query($conn, $query);
-if (mysqli_num_rows($exe) > 0)
-{
-    $color = "green";
-    while ($data = mysqli_fetch_assoc($exe))
-    { 
-        if($data['displayType'] == 'hide') {
-            $color = "red";
-        }
-?>
+
+$sel = "SELECT client_profile.clientUId,winner_coupons.date,winner_coupons.time,couponId,couponWorth,firstName,lastName,image,city,orderShipped,published FROM winner_coupons
+ INNER JOIN client_profile ON client_profile.clientUId = winner_coupons.clientUId INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId ORDER BY winner_coupons.id DESC ";
+$exe = mysqli_query($conn, $sel);
+
+if (mysqli_num_rows($exe) > 0) {
+    
+    while ($data = mysqli_fetch_assoc($exe)) {
+        $couponId = $data['couponId'];
+        $query = "SELECT couponName FROM coupons WHERE id = '$couponId'";
+        $execute = mysqli_query($conn, $query);
+        $coupons = mysqli_fetch_assoc($execute)
+        
+        ?>
                  <tr style="color:<?php echo $color; ?>">
                       <td><?php echo $data['date']; ?></td>
                       <td><?php echo $data['time']; ?></td>
-                      <td><?php echo $data['id']; ?></td>
-                      <td><?php echo $data['couponName']; ?></td>
-                      <td><?php echo $data['couponPrice']; ?></td>
-                      <td><?php echo $data['totalCoupons']; ?></td>
-                      <td><?php echo $data['soldCoupons']; ?></td>
+                      <td><?php echo $data['clientUId']; ?></td>
+                      <td><?php  echo $data['firstName'] == '' ? 'No Provided': $data['firstName'] ;  ?></td>
+                      <td><?php echo $coupons['couponName']; ?></td>
+                      <td><?php echo $data['couponWorth']; ?></td>
+                      <td><?php echo strtoupper($data['published']); ?></td>
+                      <td><?php echo strtoupper($data['orderShipped']); ?></td>
                      
                       
                 </tr>

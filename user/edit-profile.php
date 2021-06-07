@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-if($_SESSION["clientUId"] == '') {
+if(! isset($_SESSION["clientUId"])) {
   header("Location:index.php");
 }
 
