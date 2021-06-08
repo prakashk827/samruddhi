@@ -21,7 +21,7 @@
 	</div>
 	<ul class="app-breadcrumb breadcrumb">
 		<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-		<li class="breadcrumb-item"><a href="#">Blank Page</a></li>
+		<li class="breadcrumb-item"><a href="dashboard.php">Dashbord</a></li>
 	</ul>
 </div>
 <div class="row">
@@ -59,7 +59,7 @@
 										style="color: red">*</span></label> <input
 										class="form-control" type="text" id="totalCoupons"
 										name="totalCoupons" data-bvalidator="number,required"
-										value="1000">
+										value="100">
 								</div>
 
 								<div class="form-group col-md-2">
@@ -67,6 +67,13 @@
 										style="color: red">*</span></label> <input
 										class="form-control" type="text" id="couponWorth"
 										name="couponWorth" data-bvalidator="number,required">
+								</div>
+								
+								<div class="form-group col-md-2">
+									<label class="control-label">Sale Back Amt. (Rs) <span
+										style="color: red">*</span></label> <input
+										class="form-control" type="text" id="salebackAmt"
+										name="salebackAmt" data-bvalidator="number,required">
 								</div>
 
 								<div class="form-group col-md-8">

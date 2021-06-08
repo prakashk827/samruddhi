@@ -70,10 +70,14 @@ if (mysqli_num_rows($exe) > 0) {
 			<div class="tile-body">
 				<h1 style="color: white; font-size: 45px">
 					<sup>Rs </sup><?php echo $data['couponPrice']?>/-</h1>
-				<h3 style="color: #F74005">
+				<h4 style="color: #F74005">
 					<blink><?php  echo $daysLeft ?> Days Left to Expire.</blink>
-				</h3>
-				<p style="color: white"><?php echo $data['description']?> </p>
+				</h4>
+				<p style="color: white">
+					<?php echo 'Coupon worth Rs : '.$data['couponWorth'] ?><br>
+					<?php echo 'Sale Back Amount Rs : '.$data['salebackAmt'] ?><br>
+					<?php echo $data['description']?> 
+				</p>
 			</div>
 			<div class="tile-footer">
 				<a id="gradient"

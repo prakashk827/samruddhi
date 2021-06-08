@@ -48,16 +48,16 @@ $clientUId = $_SESSION["clientUId"];
 	
 	<?php
 	$clientUId = $_SESSION["clientUId"];
-$sel = "SELECT client_profile.clientUId,winner_coupons.date,winner_coupons.time,couponId,couponWorth,firstName,lastName,image,city FROM winner_coupons
+$sel = "SELECT client_profile.clientUId,winner_coupons.date,winner_coupons.time,couponId,firstName,lastName,image,city FROM winner_coupons
  INNER JOIN client_profile ON client_profile.clientUId = winner_coupons.clientUId INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId 
-WHERE published='yes' ";
+WHERE published='yes' AND orderShipped = 'no' ORDER BY winner_coupons.id DESC ";
 $exe = mysqli_query($conn, $sel);
 
 if (mysqli_num_rows($exe) > 0) {
     
     while ($data = mysqli_fetch_assoc($exe)) {
         $couponId = $data['couponId'];
-        $query = "SELECT couponName FROM coupons WHERE id = '$couponId'";
+        $query = "SELECT * FROM coupons WHERE id = '$couponId'";
         $execute = mysqli_query($conn, $query);
         $coupons = mysqli_fetch_assoc($execute)
         
@@ -69,13 +69,14 @@ if (mysqli_num_rows($exe) > 0) {
 			 <strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
 			 <strong> Published On <br> Date : </strong>   <?php  echo $data['date']; ?> <strong>&</strong> <span><strong>Time : </strong>  <?php  echo $data['time']; ?></span>
 			<br><strong>Coupon Name : </strong>   <?php  echo $coupons['couponName']; ?><br>
-			<strong> Coupon Worth  :</strong>  <?php  echo 'Rs ' .$data['couponWorth'] . ' /-'; ?><br>
-			<strong>City :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br>
+			<strong> Coupon Worth  :</strong>  <?php  echo 'Rs ' .$coupons['couponWorth'] . ' /-'; ?><br>
+			<strong> Sale Back Amt.  :</strong>  <?php  echo 'Rs ' .$coupons['salebackAmt'] . ' /-'; ?><br>
+			<strong>City :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br><br>
 			<?php if($data['clientUId'] == $clientUId ){
 			    ?>
 			  
 			<button class="btn btn-success">Buy Cloth</button>
-			<button class="btn btn-danger">Sale Back</button>    
+			<a href="sale-back.php"><button class="btn btn-danger">Sale Back</button></a>    
 			<?php } else {
 			    ?>
 			    

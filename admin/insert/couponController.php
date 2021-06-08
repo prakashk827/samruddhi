@@ -14,14 +14,15 @@ $couponWorth = $_POST['couponWorth'];
 $totalCoupons = $_POST['totalCoupons'];
 $soldCoupons = 0 ;
 $date = date('d-m-Y');
+$salebackAmt = $_POST['salebackAmt'];
 
 $sel = "SELECT * FROM coupons WHERE couponName = '$name'";
 $exe = mysqli_query($conn, $sel);
 
 if (mysqli_num_rows($exe) == 0) {
     
-    $query = "INSERT INTO `coupons`(`couponName`, `description`, `startDate`, `endDate`, `couponPrice`, `status`, `displayType`,`time`,`totalCoupons`,`soldCoupons`,`couponWorth`,`date`)
-    VALUES ('$name','$description','$startDate','$endDate','$price','$status','$displayType','$time','$totalCoupons','$soldCoupons','$couponWorth','$date')";
+    $query = "INSERT INTO `coupons`(`couponName`, `description`, `startDate`, `endDate`, `couponPrice`, `status`, `displayType`,`time`,`totalCoupons`,`soldCoupons`,`couponWorth`,`date`,salebackAmt)
+    VALUES ('$name','$description','$startDate','$endDate','$price','$status','$displayType','$time','$totalCoupons','$soldCoupons','$couponWorth','$date','$salebackAmt')";
     $exe = mysqli_query($conn, $query);
     if ($exe) {
         

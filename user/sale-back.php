@@ -1,16 +1,11 @@
 <?php
 include_once ("../db/db.php");
 session_start();
-if ($_SESSION["clientUId"] == '') {
+if (!isset($_SESSION["clientUId"])) {
     header("Location:../index.php");
 }
 ?>
-
-
-
-
-
-<title>Add new coupon</title>
+<title>Sale Back</title>
 <?php include_once("includes/head.php");?>
 
 
@@ -22,12 +17,24 @@ if ($_SESSION["clientUId"] == '') {
 <!-- Sidebar menu starts-->
 <?php include_once("includes/sidebar.php");?>
 <!-- Sidebar menu ends-->
+<?php 
+//Go to login page if client does not exits
+$clientUId = $_SESSION['clientUId'];
 
+/* $sel = "SELECT * FROM `winner_coupons` WHERE clientUId = '$clientUId'";
+$exe = mysqli_query($conn, $sel);
+
+if(mysqli_num_rows($exe) == 0) {
+    header("Location:../index.php");
+} */
+
+
+?>
 <main class="app-content">
 <div class="app-title">
 	<div>
 		<h1>
-			<i class="fa fa-tags"></i> Update Profile
+			<i class="fa fa-refresh"></i> Sale Back
 		</h1>
 		<!--           <p>Start a beautiful journey here</p> -->
 	</div>
@@ -43,33 +50,38 @@ if ($_SESSION["clientUId"] == '') {
 
 
 				<div class="row">
-
-
 					<div class="clearix"></div>
 					<div class="col-md-12">
 
 						<!-- <h3 class="tile-title">Subscribe</h3> -->
 						<div class="tile-body">
 							<form class="row" method="post" data-bvalidator-validate
-								action="insert/couponController.php">
+								action="insert/saleBack.php">
 								<div class="form-group col-md-4">
 									<label class="control-label">Coupon Name</label> <select
-										class="form-control">
+										class="form-control" name="couponId" data-bvalidator="required">
+										<option value="">Please Select
+										</option>
                   <?php
-                                    $clientUId = $_SESSION['clientUId'];
-                                    $query = "SELECT * FROM `coupons_sold` WHERE  clientUId='$clientUId' and paymentStatus='complete' ORDER BY id DESC";
-                                    $exe = mysqli_query($conn, $query);
-                                    if (mysqli_num_rows($exe) > 0) {
+                
+$query = "SELECT couponName,couponId FROM coupons INNER JOIN  `winner_coupons` ON coupons.id = winner_coupons.couponId 
+WHERE  winner_coupons.clientUId='$clientUId' AND orderType = '' AND orderShipped = 'no' AND published='yes'";
+                $exe = mysqli_query($conn, $query);
+               
+                if(mysqli_num_rows($exe) > 0){
+
+                    while ($data = mysqli_fetch_assoc($exe)) {
+                        ?>
                                         
-                                        while ($data = mysqli_fetch_assoc($exe)) { ?>
-                                        
-                                        <option value="<?php echo $data['couponId']; ?>"><?php echo $data['couponName']; ?></option>
+                        <option  value="<?php echo $data['couponId']; ?>">
+                        <?php echo $data['couponName']; ?>
+                        </option>
                                             
-                                     <?php   }
-                                    } else {
-                                        echo "Error while fetching coupon";
-                                    }
-                   ?>
+                                     <?php
+                    
+}
+                } 
+                ?>
                   </select>
 								</div>
 								<div class="form-group col-md-8"></div>
@@ -84,8 +96,8 @@ if ($_SESSION["clientUId"] == '') {
 								</div>
 
 								<div class="form-group col-md-12 align-self-end">
-									<button class="btn btn-primary" type="submit">
-										<i class="fa fa-arrow-circle-left"></i>Sale
+									<button class="btn btn-primary" name="saleBack" type="submit">
+										<i class="fa fa-refresh"></i>Sale Back
 									</button>
 								</div>
 
@@ -113,44 +125,7 @@ if ($_SESSION["clientUId"] == '') {
 <!-- Footer Starts-->
 <?php include_once("includes/footer.php");?>
 <!-- Footer Ends-->
-<script type="text/javascript">
-      
-     /* $(document).ready(function(){
- //Add save class in submit form before use.
-$(".save").click(function(){
 
-  var name  = $("#name").val();
-  var price = $("#price").val();
-  var des = $("#description").val();
-  var sDate = $("#startDate").val();
-  var eDate = $("#endDate").val();
-
-
-        $.post("insert/couponController.php",
-          {
-            name:name,
-            price:price,
-            des:des,
-            sDate:sDate,
-            eDate:eDate
-          },
-          function(data)
-          {
-            $("#warning").html(data);
-           
-            
-          });
-        
-      });
-            
-    });
-
-*/
-
-
-
-
-    </script>
 
 </body>
 </html>

@@ -46,7 +46,7 @@ if ($_SESSION["clientUId"] == '') {
 				<div class="col-md-2">
 					<div class="form-group">
 						<input class="btn btn-danger" name="all" type="submit"
-							value="Show All Clients" data-toggle="tooltip"
+							value="Show All Paid Clients" data-toggle="tooltip"
 							title="Show both result published and not published clients" />
 					</div>
 				</div>

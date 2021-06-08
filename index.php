@@ -306,7 +306,8 @@ include_once ('db/db.php');
 					<div class="col-lg-8 mx-auto">
 						<h2 class="section-title text-center">
 							<!-- <span>Listen to the</span> -->
-							Lucky Draw Winners
+							ಈ ದಿನದ ಅದ್ರುಷ್ಠವಂತರು <br>
+							Today's Lucky Draw Winners
 						</h2>
 					</div>
 					<!-- col end-->
@@ -961,7 +962,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 											<div class="contact-info-box">
 												<h3>Tickets info</h3>
 												<p>
-													<strong>Name:</strong> Ronaldo König
+													<strong>Name:</strong> Ronaldo KÃ¶nig
 												</p>
 												<p>
 													<strong>Phone:</strong> 009-215-5595
@@ -976,7 +977,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 											<div class="contact-info-box">
 												<h3>Programme Details</h3>
 												<p>
-													<strong>Name:</strong> Ronaldo König
+													<strong>Name:</strong> Ronaldo KÃ¶nig
 												</p>
 												<p>
 													<strong>Phone:</strong> 009-215-5595
@@ -1003,7 +1004,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 											<div class="contact-info-box">
 												<h3>Tickets info</h3>
 												<p>
-													<strong>Name:</strong> Ronaldo König
+													<strong>Name:</strong> Ronaldo KÃ¶nig
 												</p>
 												<p>
 													<strong>Phone:</strong> 009-215-5595
@@ -1018,7 +1019,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 											<div class="contact-info-box">
 												<h3>Programme Details</h3>
 												<p>
-													<strong>Name:</strong> Ronaldo König
+													<strong>Name:</strong> Ronaldo KÃ¶nig
 												</p>
 												<p>
 													<strong>Phone:</strong> 009-215-5595
@@ -1044,7 +1045,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 											<div class="contact-info-box">
 												<h3>Tickets info</h3>
 												<p>
-													<strong>Name:</strong> Ronaldo König
+													<strong>Name:</strong> Ronaldo KÃ¶nig
 												</p>
 												<p>
 													<strong>Phone:</strong> 009-215-5595
@@ -1059,7 +1060,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 											<div class="contact-info-box">
 												<h3>Programme Details</h3>
 												<p>
-													<strong>Name:</strong> Ronaldo König
+													<strong>Name:</strong> Ronaldo KÃ¶nig
 												</p>
 												<p>
 													<strong>Phone:</strong> 009-215-5595

@@ -51,6 +51,8 @@ if ($_SESSION["clientUId"] == '')
                       <th>Purchased Time </th>
                       <th>Coupon Id</th>
                       <th>Coupon Name</th>
+                      <th>Coupon Worth (Rs)</th>
+                      <th>Sale Back Amt. (Rs)</th>
                       <th>Price (Rs)</th>
                       <th>Qty</th>
                       <th>Amount (Rs)</th>
@@ -59,7 +61,7 @@ if ($_SESSION["clientUId"] == '')
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT couponId,coupons_sold.time,boughtOn,couponName,couponPrice,paidAmt, SUM(`boughtQty`) AS boughtQty , SUM(paidAmt) AS paidAmt FROM coupons INNER JOIN coupons_sold ON coupons.id = couponId 
+$query = "SELECT couponId,couponWorth,salebackAmt,coupons_sold.time,boughtOn,couponName,couponPrice,paidAmt, SUM(`boughtQty`) AS boughtQty , SUM(paidAmt) AS paidAmt FROM coupons INNER JOIN coupons_sold ON coupons.id = couponId 
 WHERE `clientUId`= '$clientUId' AND paymentStatus = 'complete' AND coupons_sold.status !='inactive' GROUP BY `couponId`";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0)
@@ -72,7 +74,9 @@ if (mysqli_num_rows($exe) > 0)
                       <td><?php echo $data['boughtOn']; ?></td>
                       <td><?php echo $data['time']; ?></td>
                        <td><?php echo $data['couponId']; ?></td>
-                      <td class="payment" data-cName="pk"><?php echo $data['couponName']; ?></td>
+                      <td class="payment"><?php echo $data['couponName']; ?></td>
+                      <td><?php echo $data['couponWorth']; ?></td>
+                      <td><?php echo $data['salebackAmt']; ?></td>
                       <td><?php echo $data['couponPrice']; ?></td>
                       <td><?php echo $data['boughtQty']; ?></td>
                       <td><?php echo $data['paidAmt']; ?></td>
