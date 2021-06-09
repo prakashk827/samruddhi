@@ -49,6 +49,15 @@ include_once ('db/db.php');
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
 
+<!-- bValidator Starts -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="user/js/jquery.bvalidator.min.js"></script>
+<script src="user/themes/gray4/gray4.js"></script>
+<script src="user/themes/presenters/default.min.js"></script>
+<link rel="stylesheet" href="user/themes/gray4/gray4.css" />
+<!-- bValidator Ends -->
+
 </head>
 
 <body>
@@ -151,18 +160,20 @@ include_once ('db/db.php');
 								<p>
 									<!--  Coming Soon -->
 								</p>
-								<form action="#" method="POST" class="hero-form">
+								<form action="#" method="POST" class="hero-form"
+									data-bvalidator-validate>
 									<input class="form-control form-control-name"
-										placeholder="Name" name="name" id="f-name" type="text"
-										required=""> <input class="form-control form-control-phone"
-										placeholder="Phone" name="phone" id="f-phone" type="number"> <input
-										class="form-control form-control-email" placeholder="Email"
-										name="email" id="f-email" type="email" required=""> <select
-										name="ticket" id="ticket">
-										<option value="ticket">Ticket Type</option>
-										<option value="ticket">Ticket 1</option>
-										<option value="ticket">Ticket 2</option>
-										<option value="ticket">Ticket 3</option>
+										placeholder="First Name" name="fname" id="f-name" type="text"
+										data-bvalidator="required"> <input
+										class="form-control form-control-phone"
+										placeholder="Last Name" name="lName" id="f-phone" type="text">
+									<input class="form-control form-control"
+										placeholder="Mobile Number" name="mobile" id="f-email"
+										type="text" data-bvalidator="required"> <select name="agree"
+										id="agree" data-bvalidator="required">
+										<option value="">Please Select</option>
+										<option value="ticket">I agreed to T&C</option>
+
 									</select>
 
 									<button class="btn" type="submit">Register Now</button>
@@ -239,6 +250,8 @@ include_once ('db/db.php');
 								<span class="counterUp"
 									data-counter="<?php echo $totalClients['totalClients']; ?>"><?php echo $totalClients['totalClients']; ?>
 							
+							
+							
 							</h3>
 							<h4 class="funfact-title">Active Clients</h4>
 						</div>
@@ -256,7 +269,7 @@ include_once ('db/db.php');
 								<span class="counterUp"
 									data-counter="<?php echo $totalCoupons['totalCoupons']; ?>"><?php echo $totalCoupons['totalCoupons']; ?></span>
 							</h3>
-							<h4 class="funfact-title">Active Coupons</h4>
+							<h4 class="funfact-title">Total Coupons</h4>
 						</div>
 					</div>
 					<!-- col end-->
@@ -306,8 +319,7 @@ include_once ('db/db.php');
 					<div class="col-lg-8 mx-auto">
 						<h2 class="section-title text-center">
 							<!-- <span>Listen to the</span> -->
-							ಈ ದಿನದ ಅದ್ರುಷ್ಠವಂತರು <br>
-							Today's Lucky Draw Winners
+							ಈ ದಿನದ ಅದ್ರುಷ್ಠವಂತರು <br> Today's Lucky Draw Winners
 						</h2>
 					</div>
 					<!-- col end-->
@@ -324,7 +336,8 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 						data-wow-duration="1.5s" data-wow-delay="400ms">
 						<div class="ts-speaker">
 							<div class="speaker-img">
-								<img class="img-fluid" title="Icon will displayed in case user not provide his image"	
+								<img class="img-fluid"
+									title="Icon will displayed in case user not provide his image"
 									src="<?php echo 'user/'.$winner['image']?>"
 									alt="Lucky draw winner">
 							</div>

@@ -1,10 +1,16 @@
 <?php
 
  date_default_timezone_set("Asia/Calcutta");
- $server="localhost";
+ /* $server="localhost";
  $uname="root";
  $pwd="";
- $db="samruddhi";
+ $db="samruddhi"; */
+ 
+ $server="localhost";
+ $uname="u663901735_samruddhi";
+ $pwd="c7f718@All";
+ $db="u663901735_samruddhi";
+ 
 
 
 
@@ -23,10 +29,16 @@ else
 
 class database{ 
 
-	public $host="localhost";
+	/* public $host="localhost";
 	public $userName="root";
 	public $password="";
 	public $databaseName="samruddhi";
+	public $con; */
+	
+	public $host="localhost";
+	public $userName="u663901735_samruddhi";
+	public $password="c7f718@All";
+	public $databaseName="u663901735_samruddhi";
 	public $con;
 
 	public function __construct()

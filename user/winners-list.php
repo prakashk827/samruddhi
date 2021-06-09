@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-if (!isset($_SESSION["clientUId"])) {
+if (! isset($_SESSION["clientUId"])) {
     header("Location:index.php");
 }
 ?>
@@ -43,12 +43,14 @@ $clientUId = $_SESSION["clientUId"];
 </div>
 
 
-<a href="show-all-coupons.php"><button class="btn btn-success">Try One's</button></a><br><br>
+<a href="show-all-coupons.php"><button class="btn btn-success">Try One's</button></a>
+<br>
+<br>
 <div class="row">
 	
 	<?php
-	$clientUId = $_SESSION["clientUId"];
-$sel = "SELECT client_profile.clientUId,winner_coupons.date,winner_coupons.time,couponId,firstName,lastName,image,city FROM winner_coupons
+$clientUId = $_SESSION["clientUId"];
+$sel = "SELECT client_profile.clientUId,winner_coupons.date,winner_coupons.time,couponId,firstName,lastName,image,city,orderType FROM winner_coupons
  INNER JOIN client_profile ON client_profile.clientUId = winner_coupons.clientUId INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId 
 WHERE published='yes' AND orderShipped = 'no' ORDER BY winner_coupons.id DESC ";
 $exe = mysqli_query($conn, $sel);
@@ -59,38 +61,58 @@ if (mysqli_num_rows($exe) > 0) {
         $couponId = $data['couponId'];
         $query = "SELECT * FROM coupons WHERE id = '$couponId'";
         $execute = mysqli_query($conn, $query);
-        $coupons = mysqli_fetch_assoc($execute)
+        $coupons = mysqli_fetch_assoc($execute)?>
         
-  ?>
         
         <div class="col-md-6">
 		<div class="tile">
-			<img width="80px"  src="<?php  echo $data['image']; ?>"><span></span><br>
-			 <strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
-			 <strong> Published On <br> Date : </strong>   <?php  echo $data['date']; ?> <strong>&</strong> <span><strong>Time : </strong>  <?php  echo $data['time']; ?></span>
-			<br><strong>Coupon Name : </strong>   <?php  echo $coupons['couponName']; ?><br>
-			<strong> Coupon Worth  :</strong>  <?php  echo 'Rs ' .$coupons['couponWorth'] . ' /-'; ?><br>
-			<strong> Sale Back Amt.  :</strong>  <?php  echo 'Rs ' .$coupons['salebackAmt'] . ' /-'; ?><br>
-			<strong>City :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br><br>
-			<?php if($data['clientUId'] == $clientUId ){
-			    ?>
+			<img width="80px" src="<?php  echo $data['image']; ?>"><span></span><br>
+			<strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
+			<strong> Published On <br> Date :
+			</strong>   <?php  echo $data['date']; ?> <strong>&</strong> <span><strong>Time
+					: </strong>  <?php  echo $data['time']; ?></span> <br> <strong>Coupon
+				Name : </strong>   <?php  echo $coupons['couponName']; ?><br> <strong>
+				Coupon Worth :</strong>  <?php  echo 'Rs ' .$coupons['couponWorth'] . ' /-'; ?><br>
+			<strong> Sale Back Amt. :</strong>  <?php  echo 'Rs ' .$coupons['salebackAmt'] . ' /-'; ?><br>
+			<strong>City :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br>
+			<br>
+			<?php
+        
+        if ($data['clientUId'] == $clientUId) {
+            ?>
 			  
 			<button class="btn btn-success">Buy Cloth</button>
 			<a href="sale-back.php"><button class="btn btn-danger">Sale Back</button></a>    
-			<?php } else {
-			    ?>
+			<?php
+        }
+        
+        if ($data['clientUId'] != $clientUId) {
+            ?>
 			    
-			   
-			    <button style="visibility:hidden" class="btn btn-success">Buy Cloth</button>
-			    <button style="visibility:hidden" class="btn btn-danger">Sale Back</button> 
-		<?php	}?>
+			   <button style="visibility: hidden" class="btn btn-success">Buy
+				Cloth</button>
+			<button style="visibility: hidden" class="btn btn-danger">Sale Back</button>
+			    
+		<?php
+        
+}
+if ( ($data['clientUId'] == $clientUId) && ($data['orderType'] != "") ) {
+            ?>
+		    
+		    <button style="visibility: hidden" class="btn btn-success">Buy
+				Cloth</button>
+			<button style="visibility: hidden" class="btn btn-danger">Sale Back</button>
+		<?php
+        }
+        
+        ?>
 			
 		</div>
 	</div>
         
     <?php
     }
-} else{
+} else {
     echo "Winners are not announced.";
 }
 ?>
