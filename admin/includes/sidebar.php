@@ -21,15 +21,15 @@ $_SESSION['clientName']="Prakash";
 
             <li><a class="treeview-item" href="announce-winner.php"><i class="icon fa fa-arrow-up"></i> Announce</a></li>
             <li><a class="treeview-item" href="publish-winner.php"><i class="icon fa fa-bullhorn"></i> Publish</a></li>
-            <li><a class="treeview-item" href="winners-list.php"><i class="icon fa fa-users"></i> Winners List</a></li>
 
           </ul>
         </li>
        
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Client</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Clients</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
 
-            <li><a class="treeview-item" href="client-list.php"><i class="icon fa fa-users"></i> Client list</a></li>
+			  <li><a class="treeview-item" href="registered-client-list.php"><i class="icon fa fa-users"></i> Registered Clients</a></li>
+            <li><a class="treeview-item" href="client-list.php"><i class="icon fa fa-users"></i> Coupon Purchased Clients</a></li>
             <li><a class="treeview-item" href="client-payment-issue.php"><i class="icon fa fa-money"></i> Payment Issue</a></li>
 
           </ul>
@@ -64,7 +64,7 @@ $_SESSION['clientName']="Prakash";
 
         
 
-        <li><a class="app-menu__item" href="reset-pssword.php"><i class="app-menu__icon fa fa-lock"></i><span class="app-menu__label">Reset Password</span></a></li>
+        <li><a class="app-menu__item" href="reset-password.php"><i class="app-menu__icon fa fa-lock"></i><span class="app-menu__label">Reset Client Password</span></a></li>
 
 
         

@@ -43,20 +43,22 @@ if ($_SESSION["clientUId"] == '')
                 <table class="table table-hover table-bordered" id="sampleTable">
                   <thead>
                     <tr>
-                      <th>Date</th>
-                      <th>Time</th>
+                      <th data-toggle="tooltip" title="Coupon announce date">Date</th>
+                      <th data-toggle="tooltip" title="Coupon announce time">Time</th>
                       <th>Coupon Id</th>
                       <th>Coupon Name</th>
                       <th>Price (Rs)</th>
                       <th>Total Coupons</th>
-                      <th>Left Coupons</th>
+                      <th>Sold Coupons</th>
 
                     </tr>
                   </thead>
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT * FROM `coupons` ORDER BY  id DESC;";
+$query = "SELECT coupons.date,coupons.time,coupons.id,coupons.couponName,couponPrice,totalCoupons,couponWorth,salebackAmt,displayType,SUM(boughtQty) as soldCoupons FROM `coupons` 
+INNER JOIN coupons_sold 
+ORDER BY  id DESC;";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0)
 {

@@ -8,7 +8,7 @@
         </div>
       </div>
       <ul class="app-menu">
-        <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+       <!--  <li><a class="app-menu__item" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li> -->
         
         <li><a class="app-menu__item" href=winners-list.php><i class="app-menu__icon fa fa-trophy"></i><span class="app-menu__label">Winners</span></a></li>
         

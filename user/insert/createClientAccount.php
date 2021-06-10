@@ -4,7 +4,7 @@ session_start();
 include_once("../../db/db.php");
 if($_POST['mobile'] !='' &&  $_POST['pwd'] != ''){
     
-     date_default_timezone_set('Asia/Kolkata');
+    
 	 $mobile = $_POST['mobile'];
 	 $pwd = $_POST['pwd'];
 	 $status = 'active';
