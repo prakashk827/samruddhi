@@ -1,3 +1,5 @@
+<title>Showing all coupons
+</title>
 <?php
 session_start();
 include_once ("../db/db.php");
@@ -107,20 +109,9 @@ if (mysqli_num_rows($exe) > 0) {
 $(document).ready(function(){
 		$(".buyBtn").click(function(){
 			var couponId = $(this).attr("data-id");
-			$.post("cart/check-coupon-buy-history.php",
-                    {
-					  couponId : couponId,
-                    },
-                    function(data){
-                		if(data == 400) {
-                    		alert("Your coupon buy limit exceeds, and you are not allowed to buy coupon");
-                		}else {
-                			var id = couponId
-                    		window.location.href = "cart-page.php?id="+id;
-                		}
-                    	
-                    }
-        	);
+			window.location.href = "cart-page.php?id="+couponId;
+			
+			
 			
 			
 		});

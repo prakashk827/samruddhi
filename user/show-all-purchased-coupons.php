@@ -7,7 +7,7 @@ if ($_SESSION["clientUId"] == '')
 }
 ?>
 
-<title>Pending Payment Details</title>
+<title>My Coupons</title>
 <?php include_once ("includes/head.php"); ?>
 
   
@@ -24,8 +24,8 @@ if ($_SESSION["clientUId"] == '')
       <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-clock-o"></i> Pending Payments</h1>
-          <p>All pending payments will be deleted after 24 hours</p>
+          <h1><i class="fa fa-tags"></i> Coupon Purchased History</h1>
+          <!-- <p>Showing all purchased coupons</p> -->
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -36,6 +36,14 @@ if ($_SESSION["clientUId"] == '')
 
        
       <div class="row">
+      	<div class="col-md-2">
+      	<a href="show-all-coupons.php"><button class="btn btn-primary"><i class="fa fa-tag"></i> Buy Coupon</button></a><br><br>
+      	</div>
+      	
+      	<div class="col-md-2">
+      	<a href="my-coupons.php"><button class="btn btn-danger"><i class="fa fa-tags"></i> My Coupons</button></a><br><br>
+      	</div>	
+      	
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
@@ -43,55 +51,60 @@ if ($_SESSION["clientUId"] == '')
                 <table class="table table-hover table-bordered" id="sampleTable">
                   <thead>
                     <tr>
-                      <th>Id</th>
-                      <th>Tried on</th>
+                      
+                      <th>Purchased Date</th>
+                      <th>Purchased Time </th>
+                      <th>Coupon Id</th>
                       <th>Coupon Name</th>
                       <th>Lucky Number</th>
-                      <th>Price</th>
+                      <th>Coupon Worth (Rs)</th>
+                      <th>Sale Back Amt. (Rs)</th>
+                      <th>Price (Rs)</th>
                       <th>Qty</th>
-                      <th>Amount</th>
-                       <th>Action</th>
-                      <th>Make Payment</th>
-
+                      <th>Amount (Rs)</th>
                     </tr>
                   </thead>
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT coupons.id,couponName,luckyNumber,couponPrice,boughtQty,paidAmt,boughtOn,coupons_sold.id,coupons_sold.couponId,
-coupons_sold.date FROM coupons INNER JOIN coupons_sold  ON  coupons.id = coupons_sold.couponId 
-WHERE 
-coupons_sold.clientUId = '$clientUId' AND coupons_sold.paymentStatus='pending' AND coupons.displayType != 'hide'";
+$query = "SELECT couponId,luckyNumber,couponWorth,salebackAmt,coupons_sold.time,boughtOn,couponName,couponPrice,paidAmt,boughtQty,paidAmt FROM coupons INNER JOIN coupons_sold ON coupons.id = couponId 
+WHERE `clientUId`= '$clientUId' AND paymentStatus = 'complete' AND coupons_sold.status !='inactive'";
 $exe = mysqli_query($conn, $query);
-
 if (mysqli_num_rows($exe) > 0)
 {
     while ($data = mysqli_fetch_assoc($exe))
     {
 ?>
                  <tr>
-                      <td><?php echo $data['id']; ?></td>
-                      <td><?php echo $data['date']; ?></td>
+                     
+                      <td><?php echo $data['boughtOn']; ?></td>
+                      <td><?php echo $data['time']; ?></td>
+                       <td><?php echo $data['couponId']; ?></td>
                       <td class="payment"><?php echo $data['couponName']; ?></td>
-                      <td><?php echo $data['luckyNumber']; ?></td>
+                      <td class="payment"><?php echo $data['luckyNumber']; ?></td>
+                      <td><?php echo $data['couponWorth']; ?></td>
+                      <td><?php echo $data['salebackAmt']; ?></td>
                       <td><?php echo $data['couponPrice']; ?></td>
                       <td><?php echo $data['boughtQty']; ?></td>
                       <td><?php echo $data['paidAmt']; ?></td>
-                      <td><button  data-id="<?php echo $data['id']; ?>" class="btn btn-danger btn-sm cancel">Cancel</button></td>
-                      <td><button data-id="<?php echo $data['couponId'];?>" 
-                         class="btn btn-success btn-sm payment">Complete</button></td>
+                      
                     </tr>
 <?php
     }
-    
+?>
+        
+<?php
+
 }
 else
 {
-    echo "No records found";
-    
+    echo "No history found.";
 }
 
 ?>
+
+                   
+                   
                   </tbody>
                 </table>
               </div>

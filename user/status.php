@@ -1,3 +1,4 @@
+<title>Status</title>
 <?php
 session_start();
 if($_SESSION["clientUId"] == '') {

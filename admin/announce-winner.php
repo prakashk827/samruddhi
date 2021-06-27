@@ -1,4 +1,4 @@
--<?php
+<?php
 session_start();
 include_once ("../db/db.php");
 
@@ -87,6 +87,7 @@ include_once ("../db/db.php");
 						<thead>
 							<tr>
 								<th>ClientUId</th>
+								<th>Lucky Number</th>
 								<th>First Name</th>
 								<th>Last Name</th>
 								<th>Announce as</th>
@@ -103,7 +104,7 @@ if (isset($_GET['couponId']) && $_GET['couponId'] != '') {
     $showMsg = "<h5>Selected Coupon Name : " . $cName['couponName'] . "</h5>";
     
     $clientUId = $_SESSION['clientUId'];
-    $q = "SELECT DISTINCT client_profile.clientUId,firstName,lastName,client_profile.winner FROM `client_profile` INNER JOIN coupons_sold
+    $q = "SELECT client_profile.clientUId,firstName,lastName,client_profile.winner,luckyNumber FROM `client_profile` INNER JOIN coupons_sold
 ON  client_profile.clientUId = coupons_sold.clientUId WHERE 
 (coupons_sold.paymentStatus='complete' AND client_profile.winner = 'no' AND coupons_sold.couponId = '$couponId' and coupons_sold.status='active') ";
     
@@ -118,9 +119,10 @@ ON  client_profile.clientUId = coupons_sold.clientUId WHERE
             ?>
                 	 		<tr>
 								<td><?php echo $data['clientUId'] ?></td>
+								<td><?php echo $data['luckyNumber'] ?></td>
 								<td><?php echo $data['firstName'] ?></td>
 								<td><?php echo $data['lastName'] ?></td>
-								<td><button data-couponId="<?php echo $couponId?>"
+								<td><button data-luckyNumber="<?php echo $data['luckyNumber'] ?>" data-couponId="<?php echo $couponId?>"
 										data-clientUId="<?php   echo $data['clientUId']  ?>"
 										class="btn btn-danger btn-sm winnerBtn">Winner</button></td>
 							</tr>
@@ -188,6 +190,7 @@ $(document).ready(function(){
   $('.winnerBtn').click(function(){
       var clientUId = $(this).attr("data-clientUId");
       var couponId =  $(this).attr("data-couponId");
+      var luckyNumber = $(this).attr("data-luckyNumber");
         swal({
           title: "Are you sure you ? ",
           text: "" ,
@@ -202,13 +205,15 @@ $(document).ready(function(){
 
              $.post("insert/announceWinner.php",
           {
+            	 luckyNumber:luckyNumber,
             	 clientUId:clientUId,
-            	 couponId:couponId
+            	 couponId:couponId,
+            	 
           },
           function(data)
           {
              swal("Done!", data , "success");
-              window.location.href="announce-winner.php";         
+             window.location.href="announce-winner.php";         
           });
              
           } else {

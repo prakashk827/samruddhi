@@ -36,9 +36,14 @@ if ($_SESSION["clientUId"] == '')
 
        
       <div class="row">
-      	<div class="col-md-12">
+      	<div class="col-md-2">
       	<a href="show-all-coupons.php"><button class="btn btn-primary"><i class="fa fa-tags"></i> Buy Coupon</button></a><br><br>
       	</div>
+      	
+      	<div class="col-md-3">
+      	<a href="show-all-purchased-coupons.php"><button class="btn btn-danger"><i class="fa fa-money"></i> Coupon Purchased History</button></a><br><br>
+      	</div>	
+      	
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">

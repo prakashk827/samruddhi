@@ -3,17 +3,18 @@ session_start();
 include_once ("../../db/db.php");
 
 if(isset($_POST['clientUId'])){
-    $clientUId =  $_POST['clientUId'];
+     $clientUId =  $_POST['clientUId'];
     $couponId  = $_POST['couponId'];
-    $date = date('d-m-Y');
-    $time = date("h:i:sa");
-    
+     $date = date('d-m-Y');
+     $time = date("h:i:sa");
+    $luckyNumber=  $_POST['luckyNumber'];
+   
     $query = "UPDATE `client_profile` SET `winner`='yes' WHERE clientUId= '$clientUId'";
     $exe = mysqli_query($conn, $query);
     if($exe){
         
-        $query = "INSERT INTO `winner_coupons`(`date`, `time`, `couponId`, `clientUId`) VALUES
-        ('$date','$time','$couponId','$clientUId')";
+        $query = "INSERT INTO winner_coupons(date, time, couponId, clientUId,luckyNumber) VALUES
+        ('$date','$time','$couponId','$clientUId','$luckyNumber')";
         
         $exe = mysqli_query($conn, $query);
         if(!$exe){

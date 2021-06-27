@@ -17,12 +17,11 @@ $exe = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($exe) > 0){
     
-    $count = "SELECT * FROM `coupons_sold` WHERE clientUId = '$clientUId' and couponId='$couponId' and paymentStatus = 'complete'";
+    $count = "SELECT COUNT(id) AS totalPurchasedCoupons FROM `coupons_sold` WHERE clientUId = '$clientUId' and couponId='$couponId' and paymentStatus = 'complete'";
     $execute = mysqli_query($conn, $count);
-
-    while($soldCoupons = mysqli_fetch_assoc($execute)){
-        $totalCoupons = $totalCoupons + $soldCoupons['boughtQty'];
-    }
+    $soldCoupons = mysqli_fetch_assoc($execute); 
+    $totalCoupons = $soldCoupons['totalPurchasedCoupons'];
+    
     if($totalCoupons >= 10){
         $_SESSION["message"] = "You are allowed to buy only 10 coupons";
         $_SESSION["msgClr"] = "red";
