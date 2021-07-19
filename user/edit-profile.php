@@ -5,9 +5,7 @@ session_start();
 if(! isset($_SESSION["clientUId"])) {
   header("Location:index.php");
 }
-
 ?>
-
 
 <?php
   include_once("../db/db.php");

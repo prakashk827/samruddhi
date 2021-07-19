@@ -217,6 +217,42 @@
       
   $(document).ready(function(){
 
+  	/* Dropdown values start*/
+			var type = "fabrics" // getting dropdown id	
+				$.post("insert/display-items.php",
+				          {
+					 		type:type
+				          },
+				          function(data) {
+					         $("#fabrics").html(data);
+				          }
+		         );
+		/* Dropdown values Ends */
+
+		/* Dropdown values start*/
+		var type = "categories" // getting dropdown id	
+				$.post("insert/display-items.php",
+				          {
+					 		type:type
+				          },
+				          function(data) {
+					         $("#categories").html(data);
+				          }
+		         );
+		/* Dropdown values Ends */
+
+		/* Dropdown values start*/
+		var type = "sizes" // getting dropdown id	
+				$.post("insert/display-items.php",
+				          {
+					 		type:type
+				          },
+				          function(data) {
+					         $("#sizes").html(data);
+				          }
+		         );
+		/* Dropdown values Ends */
+
 		$(".fabric").click(function(){
 			var inputVal = $("#fabric").val();
 			var item = $(this).attr("data-item");
@@ -268,31 +304,32 @@
 
 		/* Dropdown values start*/
 		
-		$(".displayItems").click(function(){
+		/*$(".displayItems").change(function(){
+			
 			var type = $(this).attr('id'); // getting dropdown id
-			var id = "#"+type;
-			var length = $(id + '> option').length;
+			
+			
 			
 				$.post("insert/display-items.php",
 				          {
 					 		type:type
 				          },
 				          function(data) {
-					         $("#"+type).append(data);
+					         $("#"+type).html(data);
 				          }
 		         );
-		});
+		});*/
 
 			
 		/* Dropdown values Ends */
 		
 	  	
   		$("#ourPrice").blur(function(){
-			var ourPrice= $("#ourPrice").val();
-			alert(typeof(ourPrice));
-			var mrpPrice= $("#mrpPrice").val();
-			var discount=(ourPrice/mrpPrice)*100;
-			alert(discount);
+			var ourPrice= parseInt($("#ourPrice").val()) ;
+			var mrpPrice=  parseInt($("#mrpPrice").val());
+			var discount= ((mrpPrice-ourPrice)/ourPrice)*100;
+			$("#totaldiscount").val(discount.toFixed(2));
+			
 		});
 });
 

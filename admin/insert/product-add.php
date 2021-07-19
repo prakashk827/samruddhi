@@ -22,7 +22,9 @@ if(isset($_POST['save'])){
     if(!$exe){
         echo "Error while adding new product";
     } else{
-        echo "New product added";
+        
+        header("Location:../products-delete.php");
+       
     }
 
 }
