@@ -21,17 +21,15 @@ if(isset($_POST['mobile']) && isset($_POST['pwd']))
          $_SESSION['clientName'] = $data['firstName'];
          $_SESSION['clientUId'] = $data['clientUId'];
 
-         header("Location:../edit-profile.php");
+         echo 200;
          
 	}else {
+			echo 400;
 		
-		$_SESSION["message"] = "Please provide valid mobile number and password..!";
-		$_SESSION["msgClr"] = "red";
-		header("Location:../status.php");
 	}
 
 } else {
-	
+			header("Location:../index.php");
 }
 
 

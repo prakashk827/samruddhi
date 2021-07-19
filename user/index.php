@@ -22,16 +22,16 @@
         <h1>Vali</h1>
       </div>
       <div class="login-box">
-          <form class="login-form" method="post" action="insert/loginAccount.php" data-bvalidator-validate>
+          <form class="login-form" method="post" data-bvalidator-validate>
           <h3 class="login-head"></i>Login</h3>
           <p class="alert alert-primary" data-dismiss="alert">If you forgot password contact admin</p>
           <div class="form-group">
              <label class="control-label">Registered Mobile Number</label>
-            <input class="form-control" type="text" name="mobile" data-bvalidator="required">
+            <input class="form-control" type="text" name="mobile" id="mobile" data-bvalidator="required">
           </div>
           <div class="form-group">
             <label class="control-label">Password</label>
-            <input class="form-control" type="password" placeholder="Password" name="pwd">
+            <input class="form-control" type="password" placeholder="Password" id="pwd" name="pwd">
           </div>
           <div class="form-group">
             <div class="utility">
@@ -40,9 +40,11 @@
           </div>
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block loginBtn"></i>Login</button>
-          </div><br>
-				<!-- <p id="warning" class="alert alert-danger"></p>
-				<p id="wait" class="alert alert-warning">Please wait..!</p> -->
+            <br>
+            <p id="warning" class="alert alert-danger"></p><br>
+             <p id="wait" class="alert alert-warning">Please wait..!</p>
+            
+          </div>
         </form>
         
         
@@ -56,8 +58,53 @@
     <script src="js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="js/plugins/pace.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+    $("#warning").css("display",'none');
+    $("#wait").css('display','none');
+    $(".loginBtn").click(function(e){
+      e.preventDefault();
+      var mobile = $("#mobile").val();
+      var mobileRg='^[0-9]{10}$';
+      var pwd = $("#pwd").val();
+      if(mobile == ''){
+        $("#warning").css("display",'block');
+        $("#warning").html("Please enter mobile number..!");
+      } else if(mobile.length !=10 || !mobile.match(mobileRg)){
+        $("#warning").css("display",'block');
+        $("#warning").html("Please enter 10 digit mobile number..!");
+      }else if(pwd == '' ) {
+        $("#warning").css("display",'block');
+        $("#warning").html("Please password..!");
+      } else {
+        $("#wait").css('display','block');
+        $.post("insert/loginAccount.php",
+                      {
+                        mobile : mobile,
+                        pwd : pwd
+                      },
+                      function(data)
+                      { $("#wait").css('display','none');
+                        
+                        if(data == 200){
+                          $("#warning").css("display",'none');
+                          window.location.href='edit-profile.php';
+                        }else if(data == 400 ){
+                          $("#warning").css("display",'block');
+                          $("#warning").html("Please Enter Valid User Name and Password..!");
+                        } 
+                        
+                        
+                      }
+            );
+      }
+        
+        
+    });
     
-    
+
+  });
+    </script>
     
     
     
