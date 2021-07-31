@@ -1,4 +1,4 @@
-<title>Edit Profile</title>
+<title>Product List </title>
 
 <?php
 session_start();
@@ -10,7 +10,7 @@ if(! isset($_SESSION["clientUId"])) {
 <?php
   include_once("../db/db.php");
   $clientUId = $_SESSION["clientUId"];
-
+  $coupounIdForModal = $_POST['coupounIdForModal'];
   
 
 ?>
@@ -31,7 +31,7 @@ if(! isset($_SESSION["clientUId"])) {
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-user"></i> Edit Profile</h1>
+          <h1><i class="fa fa-list"></i> Product List</h1>
 
         
 <!--           <p>Start a beautiful journey here</p> -->
@@ -60,7 +60,7 @@ if(! isset($_SESSION["clientUId"])) {
                 t-Shirt <br>
                 Rs 4500 /-
               </div>
-              <div class="tile-footer"><a class="btn btn-primary" href="#">Buy Now</a></div>
+              <div class="tile-footer"><a data-productId="<?php echo $data['id'] ?>" data-toggle="modal" data-target="#myModal" class="buyNowBtn btn btn-primary" >Buy Now</a></div>
             </div>
           </div>  
                    
@@ -86,42 +86,11 @@ if(! isset($_SESSION["clientUId"])) {
     <!-- Footer Ends-->
     <script type="text/javascript">
       
-     /* $(document).ready(function(){
- //Add save class in submit form before use.
-$(".save").click(function(){
-
-  var name  = $("#name").val();
-  var price = $("#price").val();
-  var des = $("#description").val();
-  var sDate = $("#startDate").val();
-  var eDate = $("#endDate").val();
-
-
-        $.post("insert/couponController.php",
-          {
-            name:name,
-            price:price,
-            des:des,
-            sDate:sDate,
-            eDate:eDate
-          },
-          function(data)
-          {
-            $("#warning").html(data);
-           
-            
-          });
-        
-      });
-            
-    });
-
-*/
-
-
-
-
     </script>
+
+
+<?php include_once('productModal.php');?>
+
     
   </body>
 </html>

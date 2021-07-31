@@ -79,47 +79,21 @@ include_once ('db/db.php');
 					<div class="collapse navbar-collapse" id="navbarNavDropdown">
 						<ul class="navbar-nav ml-auto">
 							<li class="dropdown nav-item active"><a href="#" class=""
-								data-toggle="dropdown">Home <i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="index-2.html">Home One</a></li>
-									<li><a href="index-3.html">Home Two</a></li>
-									<li><a href="index-4.html">Home Three</a></li>
-									<li><a href="index-5.html">Home Four</a></li>
-									<li><a href="index-6.html">Home Five</a></li>
-								</ul></li>
-							<li class="dropdown nav-item"><a href="#" class=""
-								data-toggle="dropdown">About <i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="pricing.html">Pricing Table</a></li>
-									<li><a href="sponsors-1.html">Sponsors</a></li>
-									<li><a href="venue.html">Venue</a></li>
-									<li><a href="404.html">Erro Page</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a href="#" class=""
-								data-toggle="dropdown">Speakers <i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="speakers-1.html">Speakers-1</a></li>
-									<li><a href="speakers-2.html">Speakers-2</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a href="#" class=""
-								data-toggle="dropdown">Schedule <i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="schedule-list.html">Schedule List</a></li>
-									<li><a href="schedule-tab-1.html">Schedule Tab 1</a></li>
-									<li><a href="schedule-tab-2.html">Schedule Tab 2</a></li>
-								</ul></li>
-							<li class="nav-item dropdown"><a href="#"> Blog <i
-									class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="news-single.html">Blog Details</a></li>
-								</ul></li>
-							<li class="nav-item"><a href="contact.html">Contact</a></li>
+								data-toggle="dropdown">Home</i></a>
+							</li>
+							<li class="dropdown nav-item active"><a href="#" class=""
+								data-toggle="dropdown">About Us</i></a>
+							</li>
+							<li class="dropdown nav-item active"><a href="#luckyWinnersDiv" class=""
+								data-toggle="dropdown">Winner List</i></a>
+							</li>
+
+							<li class="dropdown nav-item active"><a href="#" class=""
+								data-toggle="dropdown">Contact Us</i></a>
+							</li>
+							
 							<li class="header-ticket nav-item"><a class="ticket-btn btn"
-								href="pricing.html"> Buy Ticket </a></li>
+								href="user/"> Login </a></li>
 						</ul>
 					</div>
 				</nav>
@@ -319,7 +293,7 @@ include_once ('db/db.php');
 		<section id="ts-speakers" class="ts-speakers"
 			style="background-image: url(images/speakers/speaker_bg.png)">
 			<div class="container">
-				<div class="row">
+				<div class="row" id="luckyWinnersDiv">
 					<div class="col-lg-8 mx-auto">
 						<h2 class="section-title text-center">
 							<!-- <span>Listen to the</span> -->
@@ -433,227 +407,8 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 	<!-- ts experience end-->
 
 	<!-- ts experience start-->
-	<section class="ts-schedule">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mx-auto">
-					<h2 class="section-title">
-						<span>Schedule Details</span> Event Schedules
-					</h2>
-					<div class="ts-schedule-nav">
-						<ul class="nav nav-tabs justify-content-center" role="tablist">
-							<li class="nav-item"><a class="active" title="Click Me"
-								href="#date1" role="tab" data-toggle="tab">
-									<h3>5th June</h3> <span>Friday</span>
-							</a></li>
-							<li class="nav-item"><a class="" href="#date2" title="Click Me"
-								role="tab" data-toggle="tab">
-									<h3>6th June</h3> <span>Saturday</span>
-							</a></li>
-							<li class="nav-item"><a class="" href="#date3" title="Click Me"
-								role="tab" data-toggle="tab">
-									<h3>7th June</h3> <span>Sunday</span>
-							</a></li>
-						</ul>
-						<!-- Tab panes -->
-					</div>
-				</div>
-				<!-- col end-->
+	<br> <br> <br> 	<br> <br> <br> <br> <br> <br> 	<br> <br> <br>
 
-			</div>
-			<!-- row end-->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="tab-content schedule-tabs schedule-tabs-item">
-						<div role="tabpanel" class="tab-pane active" id="date1">
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-left">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker1.jpg" alt=""> <span
-											class="schedule-slot-time">10.30 - 11.30 AM</span>
-										<h3 class="schedule-slot-title">Marketing Matters</h3>
-										<h4 class="schedule-slot-name">@ Henrikon Rebecca</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-right">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker2.jpg" alt=""> <span
-											class="schedule-slot-time">11.30 - 12.30 PM</span>
-										<h3 class="schedule-slot-title">Reinventing Experiences</h3>
-										<h4 class="schedule-slot-name">@ Johnsson Agaton</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-left">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker3.jpg" alt=""> <span
-											class="schedule-slot-time">12.30 - 01.30 PM</span>
-										<h3 class="schedule-slot-title">Cultures of Creativity</h3>
-										<h4 class="schedule-slot-name">@ Lundryn Melisa</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-right">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker4.jpg" alt=""> <span
-											class="schedule-slot-time">01.30 - 02.30 PM</span>
-										<h3 class="schedule-slot-title">Human Centered Design</h3>
-										<h4 class="schedule-slot-name">@ Fredric Martinsson</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-							</div>
-							<!-- row end-->
-							<div class="schedule-listing-btn">
-								<a href="#" class="btn">More Details</a>
-							</div>
-						</div>
-						<!-- tab pane end-->
-
-						<div role="tabpanel" class="tab-pane" id="date2">
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-left">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker5.jpg" alt=""> <span
-											class="schedule-slot-time">02.30 - 03.30 PM</span>
-										<h3 class="schedule-slot-title">Marketing Matters</h3>
-										<h4 class="schedule-slot-name">@ Rebecca Henrikon</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-right">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker6.jpg" alt=""> <span
-											class="schedule-slot-time">03.30 - 04.30 PM</span>
-										<h3 class="schedule-slot-title">Reinventing Experiences</h3>
-										<h4 class="schedule-slot-name">@ Fredric Martinsson</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-left">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker7.jpg" alt=""> <span
-											class="schedule-slot-time">04.30 - 05.30 PM</span>
-										<h3 class="schedule-slot-title">Cultures of Creativity</h3>
-										<h4 class="schedule-slot-name">@ Melisa Lundryn</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-right">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker8.jpg" alt=""> <span
-											class="schedule-slot-time">05.30 - 06.30 PM</span>
-										<h3 class="schedule-slot-title">Human Centered Design</h3>
-										<h4 class="schedule-slot-name">@ Agaton Johnsson</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-							</div>
-							<!-- row end-->
-							<div class="schedule-listing-btn">
-								<a href="#" class="btn">More Details</a>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane" id="date3">
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-left">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker1.jpg" alt=""> <span
-											class="schedule-slot-time">10.30 - 11.30 AM</span>
-										<h3 class="schedule-slot-title">Marketing Matters</h3>
-										<h4 class="schedule-slot-name">@ Rebecca Henrikon</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-right">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker2.jpg" alt=""> <span
-											class="schedule-slot-time">11.30 - 12.30 PM</span>
-										<h3 class="schedule-slot-title">Reinventing Experiences</h3>
-										<h4 class="schedule-slot-name">@ Hall Building</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-left">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker3.jpg" alt=""> <span
-											class="schedule-slot-time">01.30 - 02.30 PM</span>
-										<h3 class="schedule-slot-title">Cultures of Creativity</h3>
-										<h4 class="schedule-slot-name">@ Fredric Martinsson</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-								<div class="col-lg-6">
-									<div class="schedule-listing-item schedule-right">
-										<img class="schedule-slot-speakers"
-											src="images/speakers/speaker4.jpg" alt=""> <span
-											class="schedule-slot-time">03.30 - 04.30 PM</span>
-										<h3 class="schedule-slot-title">Human Centered Design</h3>
-										<h4 class="schedule-slot-name">@ Henrikon Rebecca</h4>
-										<p>How you transform your business technolog consumer habits
-											industry dynamics change Find out from those leading the
-											charge How you</p>
-									</div>
-								</div>
-								<!-- col end-->
-							</div>
-							<!-- row end-->
-							<div class="schedule-listing-btn">
-								<a href="#" class="btn">More Details</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!-- container end-->
-	</section>
 	<!-- ts experience end-->
 
 	<!-- ts pricing start-->
@@ -771,179 +526,11 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 	</section>
 	<!-- ts pricing end-->
 	<!-- ts blog start-->
-	<section class="ts-blog section-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<h2 class="section-title">
-						<span>Info Update</span> Latest News
-					</h2>
-				</div>
-				<!-- col end-->
-			</div>
-			<!-- row end-->
-			<div class="row">
-				<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s"
-					data-wow-delay="400ms">
-					<div class="post">
-						<div class="post-media post-image">
-							<a href="#"><img src="images/blog/blog1.jpg" class="img-fluid"
-								alt=""></a>
-						</div>
-
-						<div class="post-body">
-							<div class="post-meta">
-								<span class="post-author"> <a href="#">BY Admin</a>
-								</span>
-
-								<div class="post-meta-date">October 8, 2018</div>
-							</div>
-							<div class="entry-header">
-								<h2 class="entry-title">
-									<a href="#">Check upcoming Events</a>
-								</h2>
-							</div>
-							<!-- header end -->
-
-							<div class="entry-content">
-								<p>How you transform your business asap technology, consumer,</p>
-							</div>
-
-							<div class="post-footer">
-								<a href="news-single.html" class="btn-link">Read More <i
-									class="icon icon-arrow-right"></i></a>
-							</div>
-
-						</div>
-						<!-- post-body end -->
-					</div>
-					<!-- post end-->
-				</div>
-				<!-- col end-->
-				<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s"
-					data-wow-delay="500ms">
-					<div class="post">
-						<div class="post-media post-image">
-							<a href="#"><img src="images/blog/blog2.jpg" class="img-fluid"
-								alt=""></a>
-						</div>
-
-						<div class="post-body">
-							<div class="post-meta">
-								<span class="post-author"> <a href="#">BY Admin</a>
-								</span>
-
-								<div class="post-meta-date">October 8, 2018</div>
-							</div>
-							<div class="entry-header">
-								<h2 class="entry-title">
-									<a href="#">Adding a New Digital</a>
-								</h2>
-							</div>
-							<!-- header end -->
-
-							<div class="entry-content">
-								<p>How you transform your business asap technology, consumer,</p>
-							</div>
-
-							<div class="post-footer">
-								<a href="news-single.html" class="btn-link">Read More <i
-									class="icon icon-arrow-right"></i></a>
-							</div>
-
-						</div>
-						<!-- post-body end -->
-					</div>
-					<!-- post end-->
-				</div>
-				<!-- col end-->
-				<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s"
-					data-wow-delay="600ms">
-					<div class="post">
-						<div class="post-media post-image">
-							<a href="#"><img src="images/blog/blog3.jpg" class="img-fluid"
-								alt=""></a>
-						</div>
-
-						<div class="post-body">
-							<div class="post-meta">
-								<span class="post-author"> <a href="#">BY Admin</a>
-								</span>
-
-								<div class="post-meta-date">October 8, 2018</div>
-							</div>
-							<div class="entry-header">
-								<h2 class="entry-title">
-									<a href="#">West Elm At Evantor</a>
-								</h2>
-							</div>
-							<!-- header end -->
-
-							<div class="entry-content">
-								<p>How you transform your business asap technology, consumer,</p>
-							</div>
-
-							<div class="post-footer">
-								<a href="news-single.html" class="btn-link">Read More <i
-									class="icon icon-arrow-right"></i></a>
-							</div>
-
-						</div>
-						<!-- post-body end -->
-					</div>
-					<!-- post end-->
-				</div>
-				<!-- col end-->
-			</div>
-			<!-- row end-->
-		</div>
-		<!-- container end-->
-		<!-- shap image-->
-		<div class="speaker-shap">
-			<img class="shap2" src="images/shap/news_memphis2.png" alt=""> <img
-				class="shap1" src="images/shap/news_memphis1.png" alt="">
-		</div>
-	</section>
+	
 	<!-- ts blog end-->
 
 	<!-- ts sponsors start-->
-	<section class="ts-intro-sponsors"
-		style="background-image: url(images/sponsors/sponsor_img.jpg)">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<h2 class="section-title white">
-						<span>Who helps us</span> Our Sponsors
-					</h2>
-					<!-- section title end-->
-				</div>
-				<!-- col end-->
-			</div>
-			<!-- row end-->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="sponsors-logo text-center">
-						<a href="#"><img src="images/sponsors/sponsor1.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor2.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor3.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor4.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor5.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor6.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor7.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor8.png" alt=""></a> <a
-							href="#"><img src="images/sponsors/sponsor9.png" alt=""></a>
-						<div class="sponsor-btn text-center">
-							<a href="#" class="btn">Become a Sponsor</a>
-						</div>
-					</div>
-					<!-- sponsors logo end-->
-				</div>
-				<!-- col end-->
-			</div>
-			<!-- row end-->
-		</div>
-		<!-- container end-->
-	</section>
+	
 	<!-- ts sponsors end-->
 
 	<!-- ts map direction start-->

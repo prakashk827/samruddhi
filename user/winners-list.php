@@ -70,23 +70,29 @@ if (mysqli_num_rows($exe) > 0) {
 			<strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
 			<strong> Published On <br> Date :
 			</strong>   <?php  echo $data['date']; ?> <strong>&</strong> <span><strong>Time
-					: </strong>  <?php  echo $data['time']; ?></span> <br> <strong>Coupon
-				Name : </strong>   <?php  echo $coupons['couponName']; ?><br> <strong>
+					: </strong>  <?php  echo $data['time']; ?></span> <br>
+                   
+                    <strong>Coupon
+				Name : </strong>   <?php  echo $coupons['couponName']; ?>
+                <strong> & Coupon Id :</strong><?php echo $couponId; ?>
+                <br> <strong>
 				Coupon Worth :</strong>  <?php  echo 'Rs ' .$coupons['couponWorth'] . ' /-'; ?><br>
 			<strong> Sale Back Amt. :</strong>  <?php  echo 'Rs ' .$coupons['salebackAmt'] . ' /-'; ?><br>
 			<strong>City :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br>
 			<br>
 			<?php
         
-        if ($data['clientUId'] == $clientUId) {
-            ?>
-			  
-			<button class="btn btn-success">Buy Cloth</button>
-			<a href="sale-back.php"><button class="btn btn-danger">Sale Back</button></a>    
+        if ($data['clientUId'] == $clientUId) {?>
+            <form action="product-list.php" method="POST">
+                <input type="hidden" name="coupounIdForModal" value="<?php echo $couponId; ?>">
+                <input type="submit"  class="btn btn-success" value="Buy Cloth">
+            </form>
+            
+            <a href="sale-back.php"><button class="btn btn-danger">Sale Back</button></a>
 			<?php
         }
         
-        if ($data['clientUId'] != $clientUId) {
+     /*   if ($data['clientUId'] != $clientUId) {
             ?>
 			    
 			   <button style="visibility: hidden" class="btn btn-success">Buy
@@ -95,7 +101,7 @@ if (mysqli_num_rows($exe) > 0) {
 			    
 		<?php
         
-}
+}*/
 if ( ($data['clientUId'] == $clientUId) && ($data['orderType'] != "") ) {
             ?>
 		    
