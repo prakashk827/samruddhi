@@ -215,19 +215,12 @@ else{
                 	  e.preventDefault();
                 	
                       $("#warning").html('You\'re  allowed to buy less than or equals to '+(10-totalCoupons)+' coupons.');
-              } else {
-
-            	    if( qty > couponsLeft  ) {
+              } else if( qty > couponsLeft ) {
                         e.preventDefault();
                         $("#warning").html('You\'re  allowed to buy less than or equals to '+(couponsLeft)+' coupons.');
-                    } else{
-                        $("#warning").html("Please wait..");
-                    }
-            	   
-
-              }
-                  
-                
+              } else{
+                    $("#warning").html("Please wait..");
+                }
           }  
           
           
