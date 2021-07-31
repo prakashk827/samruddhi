@@ -13,7 +13,7 @@ $error = "Payment Failed";
 
 if (empty($_POST['razorpay_payment_id']) === false) {
     $api = new Api($keyId, $keySecret);
-    
+
     try {
         // Please note that the razorpay order ID must
         // come from a trusted source (session here, but
@@ -23,7 +23,7 @@ if (empty($_POST['razorpay_payment_id']) === false) {
             'razorpay_payment_id' => $_POST['razorpay_payment_id'],
             'razorpay_signature' => $_POST['razorpay_signature']
         );
-        
+
         $api->utility->verifyPaymentSignature($attributes);
     } catch (SignatureVerificationError $e) {
         $success = false;
@@ -36,11 +36,11 @@ if ($success === true) {
     $date = date('d-m-Y');
     $time = date('h:i:sa');
     $paymentId = $_POST['razorpay_payment_id'];
-    
+
     $couponId = $_SESSION['couponId'];
     $qty = $_SESSION['QTY'];
     $clientUId = $_SESSION['clientUId'];
-    
+
     $query0 = "SELECT MAX(luckyNumber) AS maxLuckyNum FROM coupons_sold WHERE couponId=$couponId";
     $exeQ = mysqli_query($conn, $query0);
     $maxLuckyNum = mysqli_fetch_assoc($exeQ);
@@ -52,24 +52,24 @@ if ($success === true) {
          $soldCouponId = $_SESSION['soldCouponIdArray'][$i];
        echo "lu" .$luckyNo = $luckyNo + 1;
 
-        $query = "UPDATE `coupons_sold` SET `luckyNumber`='$luckyNo', `paymentStatus`='complete', `transactionId`='$paymentId',`time`='$time',`boughtOn`='$date' 
+        $query = "UPDATE `coupons_sold` SET `luckyNumber`='$luckyNo', `paymentStatus`='complete', `transactionId`='$paymentId',`time`='$time',`boughtOn`='$date'
         WHERE id = $soldCouponId";
         $exe = mysqli_query($conn, $query);
     }
-    
+
     if ($exe) {
-        
-        // Reducing coupons
-        /*
-        $sel = "SELECT * FROM `coupons` WHERE id = '$couponId'";
-        $exe = mysqli_query($conn, $query);
+        //Get Total count of the current sold coupon
+
+        $couponCount = "SELECT COUNT(id) AS totalCoupons FROM coupons_sold WHERE paymentStatus = 'complete' AND couponId = $couponId ";
+        $exe = mysqli_query($conn, $couponCount);
         $data = mysqli_fetch_assoc($exe);
-        $soldCoupons = $data['soldCoupons'] + $qty;
-        
-        $query = "UPDATE `coupons` SET `soldCoupons`='$soldCoupons' WHERE id = $couponId";
+        $result = $data['totalCoupons'];
+
+        $query = "UPDATE `coupons` SET `soldCoupons`='$result' WHERE id = $couponId";
         $exe = mysqli_query($conn, $query);
-        */
-        
+
+
+
         $_SESSION["message"] = "Your payment was successful..!";
         $_SESSION["msgClr"] = "green";
         header("Location:../status.php");
@@ -77,14 +77,14 @@ if ($success === true) {
         echo "error";
     }
 } else {
-    
+
     $paymentId = $_POST['razorpay_payment_id'];
     $soldCouponId = $_SESSION['soldCouponId'];
     for ($i = 0; $i < $qty; $i ++) {
         $soldCouponId = $_SESSION[' soldCouponIdArray'][$i];
         $query = "UPDATE `coupons_sold` SET `paymentStatus`='failed' WHERE id = $soldCouponId";
         $exe = mysqli_query($conn, $query);
-        
+
     }
     if ($exe) {
         $_SESSION["message"] = "Your payment failed..!";

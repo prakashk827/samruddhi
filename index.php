@@ -953,36 +953,35 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 			<div class="row">
 				<div class="col-lg-5">
 					<h2 class="column-title">
-						<span>Reach us</span> Get Direction to the Event Hall
+						<span>Reach us</span> Get Direction to the Shop
 					</h2>
 
 					<div class="ts-map-tabs">
 						<ul class="nav" role="tablist">
 							<li class="nav-item"><a class="nav-link active" href="#profile"
-								role="tab" data-toggle="tab">Venue</a></li>
-							<li class="nav-item"><a class="nav-link" href="#buzz" role="tab"
-								data-toggle="tab">Time</a></li>
-							<li class="nav-item"><a class="nav-link" href="#references"
-								role="tab" data-toggle="tab">How to get there</a></li>
+								role="tab" data-toggle="tab">Address</a></li>
+							
 						</ul>
 
 						<!-- Tab panes -->
 						<div class="tab-content direction-tabs">
 							<div role="tabpanel" class="tab-pane active" id="profile">
 								<div class="direction-tabs-content">
-									<h3>Brighton Waterfront Hotel, Brighton, London</h3>
+									<h3>Samruddhi Vasthralaya</h3>
 									<p class="derecttion-vanue">
-										1Hd- 50, 010 Avenue, NY 90001<br /> United States
+										Amarapura Road,
+										Jyothi Nagara <br>
+										 Sira - 572137<br /> India- Karnataka
 									</p>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="contact-info-box">
-												<h3>Tickets info</h3>
+												<h3>Contact Info</h3>
 												<p>
-													<strong>Name:</strong> Ronaldo KÃ¶nig
+													<strong>Name:</strong> Nagabhushana N
 												</p>
 												<p>
-													<strong>Phone:</strong> 009-215-5595
+													<strong>Phone:</strong> +91 8553621521
 												</p>
 												<p>
 													<strong>Email: </strong> info@example.com
@@ -991,18 +990,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 
 										</div>
 										<div class="col-md-6">
-											<div class="contact-info-box">
-												<h3>Programme Details</h3>
-												<p>
-													<strong>Name:</strong> Ronaldo KÃ¶nig
-												</p>
-												<p>
-													<strong>Phone:</strong> 009-215-5595
-												</p>
-												<p>
-													<strong>Email: </strong> info@example.com
-												</p>
-											</div>
+											
 										</div>
 									</div>
 									<!-- row end-->
@@ -1033,18 +1021,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 
 										</div>
 										<div class="col-md-6">
-											<div class="contact-info-box">
-												<h3>Programme Details</h3>
-												<p>
-													<strong>Name:</strong> Ronaldo KÃ¶nig
-												</p>
-												<p>
-													<strong>Phone:</strong> 009-215-5595
-												</p>
-												<p>
-													<strong>Email: </strong> info@example.com
-												</p>
-											</div>
+											
 										</div>
 									</div>
 									<!-- row end-->
