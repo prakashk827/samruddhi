@@ -22,7 +22,7 @@ if (mysqli_num_rows($exe) > 0){
     $soldCoupons = mysqli_fetch_assoc($execute); 
     $totalCoupons = $soldCoupons['totalPurchasedCoupons'];
     
-    if($totalCoupons >= 10){
+    if($totalCoupons == 10){
         $_SESSION["message"] = "You are allowed to buy only 10 coupons";
         $_SESSION["msgClr"] = "red";
         header("Location:status.php");
@@ -128,7 +128,9 @@ else{
                   <p>Coupon Name :  <strong style="color:#007D71"><?php echo $data['couponName']; ?></strong> </p>
                   <p>Coupon Price :  <strong style="color:#007D71">Rs <?php echo $data['couponPrice']; ?>/-</strong>  </p>
                     
-                    
+                    <p style="background: red;color:white;padding:1%;">Coupons left to buy :
+                        <?php  echo $couponsLeft =  $data['totalCoupons'] - $data['soldCoupons'] ;?>
+                    </p>
 					<p style="background: #007D71;color:white;padding:1%;" id="previouCoupons"></p>
 					<hr>
                     <div class="form-group col-md-12">
@@ -188,6 +190,8 @@ else{
 
     <script type="text/javascript">
     var totalCoupons  = "<?php echo $totalCoupons?>";
+    var couponsLeft = "<?php echo $couponsLeft ?>";
+
       $(document).ready(function(){
           $("#previouCoupons").css('display','none');
           if(totalCoupons != 0){
@@ -212,8 +216,15 @@ else{
                 	
                       $("#warning").html('You\'re  allowed to buy less than or equals to '+(10-totalCoupons)+' coupons.');
               } else {
+
+            	    if( qty > couponsLeft  ) {
+                        e.preventDefault();
+                        $("#warning").html('You\'re  allowed to buy less than or equals to '+(couponsLeft)+' coupons.');
+                    } else{
+                        $("#warning").html("Please wait..");
+                    }
             	   
-                	$("#warning").html("Please wait..");
+
               }
                   
                 
