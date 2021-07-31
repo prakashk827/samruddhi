@@ -88,8 +88,8 @@ include_once ("../db/db.php");
 							<tr>
 								<th>ClientUId</th>
 								<th>Lucky Number</th>
-								<th>First Name</th>
-								<th>Last Name</th>
+								<th>Full Name</th>
+                                <th>City</th>
 								<th>Announce as</th>
 							</tr>
 						</thead>
@@ -101,11 +101,11 @@ if (isset($_GET['couponId']) && $_GET['couponId'] != '') {
     $sel = "SELECT couponName FROM coupons WHERE id = '$couponId'";
     $exe = mysqli_query($conn, $sel);
     $cName = mysqli_fetch_assoc($exe);
-    $showMsg = "<h5>Selected Coupon Name : " . $cName['couponName'] . "</h5>";
+    $showMsg = "<h5>Selected coupon name : <sapn style='color: red;'>". $cName['couponName']."</span></h5>";
     
     $clientUId = $_SESSION['clientUId'];
-    $q = "SELECT client_profile.clientUId,firstName,lastName,client_profile.winner,luckyNumber FROM `client_profile` INNER JOIN coupons_sold
-ON  client_profile.clientUId = coupons_sold.clientUId WHERE 
+    $q = "SELECT client_address.city,client_profile.clientUId,firstName,lastName,client_profile.winner,luckyNumber FROM `client_profile` INNER JOIN coupons_sold
+ON  client_profile.clientUId = coupons_sold.clientUId INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId  WHERE 
 (coupons_sold.paymentStatus='complete' AND client_profile.winner = 'no' AND coupons_sold.couponId = '$couponId' and coupons_sold.status='active') ";
     
     $e = mysqli_query($conn, $q);
@@ -120,8 +120,9 @@ ON  client_profile.clientUId = coupons_sold.clientUId WHERE
                 	 		<tr>
 								<td><?php echo $data['clientUId'] ?></td>
 								<td><?php echo $data['luckyNumber'] ?></td>
-								<td><?php echo $data['firstName'] ?></td>
-								<td><?php echo $data['lastName'] ?></td>
+								<td><?php echo $data['firstName']. ' ' . $data['lastName'] ?></td>
+                                <td><?php echo $data['city']?></td>
+
 								<td><button data-luckyNumber="<?php echo $data['luckyNumber'] ?>" data-couponId="<?php echo $couponId?>"
 										data-clientUId="<?php   echo $data['clientUId']  ?>"
 										class="btn btn-danger btn-sm winnerBtn">Winner</button></td>
@@ -186,8 +187,8 @@ ON  client_profile.clientUId = coupons_sold.clientUId WHERE
 <script>
 
 $(document).ready(function(){
- 
-  $('.winnerBtn').click(function(){
+
+  $(document).on('click','.winnerBtn',function(){
       var clientUId = $(this).attr("data-clientUId");
       var couponId =  $(this).attr("data-couponId");
       var luckyNumber = $(this).attr("data-luckyNumber");
