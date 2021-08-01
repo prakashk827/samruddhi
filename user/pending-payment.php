@@ -46,7 +46,6 @@ if ($_SESSION["clientUId"] == '')
                       <th>Id</th>
                       <th>Tried on</th>
                       <th>Coupon Name</th>
-                      <th>Lucky Number</th>
                       <th>Price</th>
                       <th>Qty</th>
                       <th>Amount</th>
@@ -73,7 +72,6 @@ if (mysqli_num_rows($exe) > 0)
                       <td><?php echo $data['id']; ?></td>
                       <td><?php echo $data['date']; ?></td>
                       <td class="payment"><?php echo $data['couponName']; ?></td>
-                      <td><?php echo $data['luckyNumber']; ?></td>
                       <td><?php echo $data['couponPrice']; ?></td>
                       <td><?php echo $data['boughtQty']; ?></td>
                       <td><?php echo $data['paidAmt']; ?></td>
@@ -119,7 +117,7 @@ else
 
 $(document).ready(function(){
  
-  $('.cancel').click(function(){
+  $(document).on('click','.cancel',function(){
       var id = $(this).attr("data-id");
       
         swal({
