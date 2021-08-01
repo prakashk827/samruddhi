@@ -52,7 +52,7 @@ $clientUId = $_SESSION["clientUId"];
 $clientUId = $_SESSION["clientUId"];
 $sel = "SELECT client_profile.clientUId,winner_coupons.date,winner_coupons.time,couponId,firstName,lastName,image,city,orderType FROM winner_coupons
  INNER JOIN client_profile ON client_profile.clientUId = winner_coupons.clientUId INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId 
-WHERE published='yes' AND orderShipped = 'no' ORDER BY winner_coupons.id DESC ";
+WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC ";
 $exe = mysqli_query($conn, $sel);
 
 if (mysqli_num_rows($exe) > 0) {
@@ -61,11 +61,17 @@ if (mysqli_num_rows($exe) > 0) {
         $couponId = $data['couponId'];
         $query = "SELECT * FROM coupons WHERE id = '$couponId'";
         $execute = mysqli_query($conn, $query);
-        $coupons = mysqli_fetch_assoc($execute)?>
+        $coupons = mysqli_fetch_assoc($execute);
+        $orderType =  $data['orderType'];
+        $background = 'white';
+        if($orderType !="" && $data['clientUId'] == $clientUId ){
+            $background = '#E1E1E1';
+       }
+        ?>
         
         
         <div class="col-md-6">
-		<div class="tile">
+		<div class="tile" style="background:<?php echo $background ?>">
 			<img width="80px" src="<?php  echo $data['image']; ?>"><span></span><br>
 			<strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
 			<strong> Published On <br> Date :
@@ -81,35 +87,26 @@ if (mysqli_num_rows($exe) > 0) {
 			<strong>City :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br>
 			<br>
 			<?php
-        
-        if ($data['clientUId'] == $clientUId) {?>
+
+        if ( $data['clientUId'] == $clientUId && $orderType == '') {?>
             <form action="product-list.php" method="POST">
+               
                 <input type="hidden" name="coupounIdForModal" value="<?php echo $couponId; ?>">
-                <input type="submit"  class="btn btn-success" value="Buy Cloth">
+                <input  type="submit"  class="btn btn-success disableInputField" value="Buy Cloth">
+                <a href="sale-back.php"><button type="button" class="btn btn-danger disableInputField">Sale Back</button></a>
             </form>
             
-            <a href="sale-back.php"><button class="btn btn-danger">Sale Back</button></a>
 			<?php
-        }
-        
-     /*   if ($data['clientUId'] != $clientUId) {
-            ?>
-			    
-			   <button style="visibility: hidden" class="btn btn-success">Buy
-				Cloth</button>
-			<button style="visibility: hidden" class="btn btn-danger">Sale Back</button>
-			    
-		<?php
-        
-}*/
-if ( ($data['clientUId'] == $clientUId) && ($data['orderType'] != "") ) {
-            ?>
-		    
-		    <button style="visibility: hidden" class="btn btn-success">Buy
-				Cloth</button>
-			<button style="visibility: hidden" class="btn btn-danger">Sale Back</button>
-		<?php
-        }
+        } else{ ?>
+
+            <form style="visibility:hidden" action="product-list.php" method="POST">
+               <!-- hideing purpose -->
+               <input type="hidden">
+               <input  type="submit">
+               <button class="btn btn-danger disableInputField">Sale Back</button>
+           </form>
+
+        <?php }
         
         ?>
 			
@@ -136,44 +133,7 @@ if ( ($data['clientUId'] == $clientUId) && ($data['orderType'] != "") ) {
 <!-- Footer Starts-->
 <?php include_once("includes/footer.php");?>
 <!-- Footer Ends-->
-<script type="text/javascript">
-      
-     /* $(document).ready(function(){
- //Add save class in submit form before use.
-$(".save").click(function(){
 
-  var name  = $("#name").val();
-  var price = $("#price").val();
-  var des = $("#description").val();
-  var sDate = $("#startDate").val();
-  var eDate = $("#endDate").val();
-
-
-        $.post("insert/couponController.php",
-          {
-            name:name,
-            price:price,
-            des:des,
-            sDate:sDate,
-            eDate:eDate
-          },
-          function(data)
-          {
-            $("#warning").html(data);
-           
-            
-          });
-        
-      });
-            
-    });
-
-*/
-
-
-
-
-    </script>
 
 </body>
 </html>

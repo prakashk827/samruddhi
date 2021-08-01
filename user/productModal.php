@@ -10,12 +10,9 @@
             </div>
             <div class="modal-body">
                 <div class="productFields col-md-12">
-                 
-              
-
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
 
