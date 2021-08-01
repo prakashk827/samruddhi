@@ -418,7 +418,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 			<div class="row">
 				<div class="col-lg-12">
 					<h2 class="section-title white">
-						<span>Pricing Plans</span> Get your Ticket
+						<span>Latest Coupons</span> Buy Today
 					</h2>
 				</div>
 				<!-- section title end-->
@@ -426,6 +426,14 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 			<!-- col end-->
 			<!-- row end-->
 			<div class="row">
+<?php 
+$query="SELECT * FROM coupons ORDER BY id DESC LIMIT 3";
+$exe = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($exe) > 0) {
+	while ($data = mysqli_fetch_assoc($exe)) {
+
+?>
 				<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s"
 					data-wow-delay="400ms">
 					<div class="pricing-item">
@@ -433,89 +441,38 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 						<div class="ts-pricing-box">
 
 							<div class="ts-pricing-header">
-								<h2 class="ts-pricing-name">Early Bird</h2>
+								<h2 class="ts-pricing-name">
+									<?php echo $data['couponName'];?>
+								</h2>
 								<h3 class="ts-pricing-price">
-									<span class="currency">$</span>219
+									<span class="currency">Rs</span>
+									<?php echo $data['couponPrice'];?>/-
 								</h3>
 							</div>
 							<div class="ts-pricing-progress">
-								<p class="amount-progres-text">Available tickets for this price</p>
+								<p class="amount-progres-text">Available coupons for this price</p>
 								<div class="ts-progress">
 									<div class="ts-progress-inner" style="width: 100%"></div>
 								</div>
-								<p class="ts-pricing-value">500/500</p>
+								<p class="ts-pricing-value">
+									<?php echo $data['soldCoupons'] ."/". $data['totalCoupons']?>
+								</p>
 							</div>
 							<div class="promotional-code">
 								<p class="promo-code-text">Enter Promotional Code</p>
-								<a href="#" class="btn pricing-btn">Buy Ticket</a>
-								<p class="vate-text">All prices exclude 25% VAT</p>
+								<a href="user/" title="Register / Login to buy" class="btn pricing-btn">Buy Coupon</a>
+								<p class="vate-text">All prices includes 5% TAX</p>
 							</div>
 						</div>
 						<!-- ts pricing box-->
 						<img class="pricing-dot1 " src="images/pricing/dot.png" alt="">
 					</div>
 				</div>
-				<!-- col end-->
-				<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s"
-					data-wow-delay="500ms">
-					<div class="pricing-item">
-						<img class="pricing-dot " src="images/pricing/dot.png" alt="">
-						<div class="ts-pricing-box">
-							<span class="big-dot"></span>
-							<div class="ts-pricing-header">
-								<h2 class="ts-pricing-name">Regular</h2>
-								<h3 class="ts-pricing-price">
-									<span class="currency">$</span>399
-								</h3>
-							</div>
-							<div class="ts-pricing-progress">
-								<p class="amount-progres-text">Available tickets for this price</p>
-								<div class="ts-progress">
-									<div class="ts-progress-inner" style="width: 75%"></div>
-								</div>
-								<p class="ts-pricing-value">350/500</p>
-							</div>
-							<div class="promotional-code">
-								<p class="promo-code-text">Enter Promotional Code</p>
-								<a href="#" class="btn pricing-btn">Buy Ticket</a>
-								<p class="vate-text">All prices exclude 25% VAT</p>
-							</div>
-						</div>
-						<!-- ts pricing box-->
-						<img class="pricing-dot1 " src="images/pricing/dot.png" alt="">
-					</div>
-				</div>
-				<!-- col end-->
-				<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s"
-					data-wow-delay="600ms">
-					<div class="pricing-item">
-						<img class="pricing-dot " src="images/pricing/dot.png" alt="">
-						<div class="ts-pricing-box">
-							<span class="big-dot"></span>
-							<div class="ts-pricing-header">
-								<h2 class="ts-pricing-name">Platinum</h2>
-								<h3 class="ts-pricing-price">
-									<span class="currency">$</span>699
-								</h3>
-							</div>
-							<div class="ts-pricing-progress">
-								<p class="amount-progres-text">Available tickets for this price</p>
-								<div class="ts-progress">
-									<div class="ts-progress-inner" style="width: 50%"></div>
-								</div>
-								<p class="ts-pricing-value">250/500</p>
-							</div>
-							<div class="promotional-code">
-								<p class="promo-code-text">Enter Promotional Code</p>
-								<a href="#" class="btn pricing-btn">Buy Ticket</a>
-								<p class="vate-text">All prices exclude 25% VAT</p>
-							</div>
-						</div>
-						<!-- ts pricing box-->
-						<img class="pricing-dot1 " src="images/pricing/dot.png" alt="">
-					</div>
-				</div>
-				<!-- col end-->
+	<?php
+		}
+		}
+		?>
+				
 			</div>
 		</div>
 		<!-- container end-->
