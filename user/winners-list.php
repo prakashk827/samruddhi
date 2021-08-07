@@ -77,7 +77,7 @@ if (mysqli_num_rows($exe) > 0) {
 					: </strong>  <?php  echo $data['time']; ?></span> <br>
                    
                     <strong>Coupon
-				Name : </strong>   <?php  echo $coupons['couponName']; ?>
+				Name : </strong>  <span style="color:red"> <?php  echo $coupons['couponName']; ?> </span> 
                 <strong> & Coupon Id :</strong><?php echo $couponId; ?>
                 <br> <strong>
 				Coupon Worth :</strong>  <?php  echo 'Rs ' .$coupons['couponWorth'] . ' /-'; ?><br>
@@ -117,12 +117,6 @@ if (mysqli_num_rows($exe) > 0) {
     echo "Winners are not announced.";
 }
 ?>
-	
-
-
-
-
-
 </div>
 
 </main>

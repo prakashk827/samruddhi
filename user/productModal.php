@@ -34,10 +34,7 @@
                     function(data)
                     {
                        $(".productFields").html(data);
-                      
-                      
-                     
-                      
+                 
                     });
           
       });

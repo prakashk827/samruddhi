@@ -46,15 +46,9 @@ if ($_SESSION["clientUId"] == '') {
 					<table class="table table-hover table-bordered" id="sampleTable">
 						<thead>
 							<tr>
-								
-								
 								<th>ClientUId</th>
 								<th>Full Name</th>
 								<th>Action</th>
-								
-								
-								
-
 							</tr>
 						</thead>
 						<tbody>

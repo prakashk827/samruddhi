@@ -4,7 +4,10 @@ session_start();
 include_once("../../db/db.php");
 if(isset($_POST['mobile']) && isset($_POST['pwd']))
 {
+	
 
+
+	
 	 $mobile = $_POST['mobile'];
 	 $pwd = $_POST['pwd'];
 	$query="SELECT * FROM `client_profile` WHERE clientUId='$mobile' and password = '$pwd'";
@@ -12,10 +15,16 @@ if(isset($_POST['mobile']) && isset($_POST['pwd']))
 
 	if(mysqli_num_rows($exe)>0)
 	{
+
 	    $data=mysqli_fetch_assoc($exe);
         $isFilled =  $data['isFilled'];
         if($isFilled == 'yes'){
-            echo 201;
+
+			$_SESSION['clientProfile'] = $data['image'];
+            $_SESSION['clientName'] = $data['firstName'];
+            $_SESSION['clientUId'] = $data['clientUId'];
+            
+			echo 201;
 
         }else{
             $_SESSION['clientProfile'] = $data['image'];

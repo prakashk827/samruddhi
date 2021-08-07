@@ -1,3 +1,4 @@
+<?php include_once("./includes/head.php");?>
 <?php
 session_start();
 if(! isset($_SESSION["clientUId"])) {
@@ -34,16 +35,27 @@ if (mysqli_num_rows($exe) > 0) {
 //Getting coupin worth
 $query = "SELECT couponWorth FROM `coupons` WHERE id='$coupounIdForModal'";
 $exe = mysqli_query($conn, $query);
+$discount = 0;
 if (mysqli_num_rows($exe) > 0) {
+	
     $data = mysqli_fetch_assoc($exe);
-   echo  $_SESSION['discount'] = $data['couponWorth'];
- 
+    $_SESSION['discount'] = $data['couponWorth'];
+	$discount =  $_SESSION['discount'];
     
  
 }
-?>
-			<div class="col-md-12">
-				<form method="POST" action="insert/buyCloth.php">
+//if discount = 0 then he is not a valid user to acces this page so redirect to user profile
+if( $discount == 0 ){
+		?>
+		<div class="col-md-12">
+			<h4>You are not a valid user to access this page</h4>
+		</div>
+		<?php
+} else {
+	?>
+
+		<div class="col-md-12">
+				<form method="POST" action="insert/buyCloth.php"  data-bvalidator-validate>
 					<div class="form-group">
 						<p style="color:red">
 							<?php echo $name?>
@@ -52,12 +64,12 @@ if (mysqli_num_rows($exe) > 0) {
                     <input type="hidden" name="couponId" value="<?php echo $coupounIdForModal?>">
 					<div class="form-group">
 						<label for="">Qty</label>
-						<input class="form-control" maxlength="2" value="1" type="text" name="qtyModal" id="qtyModal"> 
+						<input disabled class="form-control" maxlength="2" value="1" type="text" name="qtyModal" id="qtyModal" required> 
 					</div>
 					
 					<div class="form-group">
 						<label for="">Choose Size</label>
-						<select class="form-control" name="" id="">
+						<select class="form-control" name="sizeModal" id="" required>
 						<option value="">Please select</option>
 							<?php
 								foreach ($sizeArr as $value) { ?>
@@ -67,10 +79,9 @@ if (mysqli_num_rows($exe) > 0) {
 						</select>
 					</div>
 
-
 					<div class="form-group">
 						<label for="">Choose Fabric</label>
-						<select class="form-control" name="" id="">
+						<select class="form-control" name="fabricModal" id="" required>
 						<option value="">Please select</option>
 							<?php
 								foreach ($fabricArr as $value) { ?>
@@ -83,7 +94,7 @@ if (mysqli_num_rows($exe) > 0) {
 
 					<div class="form-group">
 						<label for="">Choose Category</label>
-						<select class="form-control" name="" id="">
+						<select class="form-control" name="categoryModal" id="" required>
 						<option value="">Please select</option>
 							<?php
 								foreach ($categoryArr as $value) { ?>
@@ -95,20 +106,27 @@ if (mysqli_num_rows($exe) > 0) {
 
 					<div class="form-group">
 						<label for="">Total Price</label>
-						<input disabled class="form-control" type="text" name="totalPriceModal" id="totalPriceModal"> </div>
+						<input disabled class="form-control" type="text" name="totalPriceModal" id="totalPriceModal" required> </div>
+					
 					<div class="form-group">
 						<label for="">Discount</label>
-						<input disabled class="form-control" value="<?php echo $_SESSION['discount']  ?>" type="text" name="discountModal" id="discountModal"> </div>
+						<input required disabled class="form-control" value="<?php echo $discount ?>" type="text" name="discountModal" id="discountModal"> </div>
 					<div class="form-group">
 						<label for="">Price After Discount</label>
-						<input disabled class="form-control" type="text" name="afterDiscountModal" id="afterDiscountModal"> </div>
+						<input required disabled class="form-control" type="text" name="afterDiscountModal" id="afterDiscountModal"> </div>
 					<div class="form-group">
-						<input class="form-control btn btn-primary" name="orderCloth" value="Order Now" type="submit"> </div>
+						<input required class="form-control btn btn-primary" name="orderCloth" value="Order Now" type="submit"> </div>
 			</div>
 			</form>
 			</div>
-			<script>
-			function calculate() {
+
+			<?php
+}
+?>	
+<script>
+			
+function calculate() {
+
 				var discount = $("#discountModal").val();
 				var qty = $("#qtyModal").val();
 				var ourPrice = "<?php echo  $productPrice; ?>";
@@ -125,5 +143,5 @@ if (mysqli_num_rows($exe) > 0) {
 				$("#qtyModal").keyup(function() {
 					calculate();
 				});
-			});
-			</script>
+});
+</script>
