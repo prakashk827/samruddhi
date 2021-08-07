@@ -37,7 +37,7 @@ if ($_SESSION["clientUId"] == '') {
 </div>
 
 
-<p><strong>Note : </strong><span> After resetting the password, the client new password will be 123</span></p>
+<p><strong>Note : </strong><span style="color:red"> After resetting the password, the client new password will be 123</span></p>
 <div class="row">
 	<div class="col-md-12">
 		<div class="tile">
