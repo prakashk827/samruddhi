@@ -18,6 +18,17 @@ if (mysqli_num_rows($exe) > 0) {
     $data = mysqli_fetch_assoc($exe);
     $name = $data['name'];
     $productPrice = $data['ourPrice'];
+	
+	$fabric = rtrim( $data['fabricId'], ',');
+	$fabricArr =  (explode(",",$fabric));
+	
+	$category =  rtrim($data['categoryId'], ',');
+	$categoryArr =  (explode(",",$category));
+	
+	$size =  rtrim($data['sizeId'], ',');
+	$sizeArr = (explode(",",$size));
+
+	
  
 }
 //Getting coupin worth
@@ -25,7 +36,7 @@ $query = "SELECT couponWorth FROM `coupons` WHERE id='$coupounIdForModal'";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0) {
     $data = mysqli_fetch_assoc($exe);
-    $_SESSION['discount'] = $data['couponWorth'];
+   echo  $_SESSION['discount'] = $data['couponWorth'];
  
     
  
@@ -34,14 +45,54 @@ if (mysqli_num_rows($exe) > 0) {
 			<div class="col-md-12">
 				<form method="POST" action="insert/buyCloth.php">
 					<div class="form-group">
-						<p>Product Name:
+						<p style="color:red">
 							<?php echo $name?>
 						</p>
 					</div>
-                              <input type="hidden" name="couponId" value="<?php echo $coupounIdForModal?>">
+                    <input type="hidden" name="couponId" value="<?php echo $coupounIdForModal?>">
 					<div class="form-group">
 						<label for="">Qty</label>
-						<input class="form-control" maxlength="2" value="1" type="text" name="qtyModal" id="qtyModal"> </div>
+						<input class="form-control" maxlength="2" value="1" type="text" name="qtyModal" id="qtyModal"> 
+					</div>
+					
+					<div class="form-group">
+						<label for="">Choose Size</label>
+						<select class="form-control" name="" id="">
+						<option value="">Please select</option>
+							<?php
+								foreach ($sizeArr as $value) { ?>
+									<option value=""><?php echo $value ?></option>
+								<?php  }
+							?>
+						</select>
+					</div>
+
+
+					<div class="form-group">
+						<label for="">Choose Fabric</label>
+						<select class="form-control" name="" id="">
+						<option value="">Please select</option>
+							<?php
+								foreach ($fabricArr as $value) { ?>
+								
+									<option value=""><?php echo $value ?></option>
+								<?php  }
+							?>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="">Choose Category</label>
+						<select class="form-control" name="" id="">
+						<option value="">Please select</option>
+							<?php
+								foreach ($categoryArr as $value) { ?>
+									<option value=""><?php echo $value ?></option>
+								<?php  }
+							?>
+						</select>
+					</div>
+
 					<div class="form-group">
 						<label for="">Total Price</label>
 						<input disabled class="form-control" type="text" name="totalPriceModal" id="totalPriceModal"> </div>

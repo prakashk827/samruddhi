@@ -23,8 +23,9 @@
     $(document).ready(function(){
        
        
-              $(document).on('click','.buyNowBtn',function(){
-            productId = $(this).attr('data-productid');
+            $(document).on('click','.buyNowBtn',function(){
+                productId = $(this).attr('data-productid');
+              
             coupounIdForModal = "<?php echo $coupounIdForModal; ?>"
           $.post("getProductById.php",{
                       productId:productId,

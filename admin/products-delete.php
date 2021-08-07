@@ -46,6 +46,8 @@ if ($_SESSION["clientUId"] == '') {
 						<thead>
 							<tr>
 								<th>Product Id</th>
+								<th>Date</th>
+								<th>Time</th>
 								<th>Product Name</th>
 								<th>MRP Price</th>
 								<th>Our Price</th>
@@ -64,7 +66,10 @@ if (mysqli_num_rows($exe) > 0) {
         ?>
                  			<tr>
 								<td><?php echo $data['id'] ?></td>
+								<td><?php echo $data['date']; ?></td>
+								<td><?php echo $data['time']; ?></td>
 								<td><?php echo $data['name']; ?></td>
+
 								<td><?php echo $data['mrpPrice']; ?></td>
 								<td><?php echo $data['ourPrice']; ?></td>
 								<th>
@@ -81,8 +86,7 @@ if (mysqli_num_rows($exe) > 0) {
 } else {
     echo "No Products Found";
 }
-?>
-                   
+?>    
                   </tbody>
 					</table>
 				</div>

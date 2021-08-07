@@ -1,12 +1,10 @@
-<?php
-include_once ("../db/db.php");
+-<?php
 session_start();
-if ($_SESSION["clientUId"] == '') {
-    header("Location:../index.php");
-}
+include_once ("../db/db.php");
+
 ?>
 
-<title>Reset Client Password </title>
+<title>Sale Back Requests</title>
 <?php include_once ("includes/head.php"); ?>
 
 
@@ -24,10 +22,11 @@ if ($_SESSION["clientUId"] == '') {
 <div class="app-title">
 	<div>
 		<h1>
-			<i class="fa fa-users"></i> Reset Client Password 
-
+			<i class="fa fa-refresh"></i> Sale Back Requests
 		</h1>
-		<!-- <p>Payment completed clients</p> -->
+		<p>
+			Showing all clients details who requested for sale back
+		</p>
 	</div>
 	<ul class="app-breadcrumb breadcrumb side">
 		<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -35,66 +34,76 @@ if ($_SESSION["clientUId"] == '') {
 		<li class="breadcrumb-item active"><a href="dashboard.php">dashboard</a></li>
 	</ul>
 </div>
+<button style="display: none" type="button" id="modalBtn"
+	data-toggle="modal" data-target="#myModal">Open Modal</button>
 
-
-<p><strong>Note : </strong><span> After resetting the password, the client new password will be 123</span></p>
 <div class="row">
+
 	<div class="col-md-12">
+
 		<div class="tile">
 			<div class="tile-body">
+
+
 				<div class="table-responsive">
 					<table class="table table-hover table-bordered" id="sampleTable">
 						<thead>
 							<tr>
-								
-								
+								<th>Requested Date</th>
+								<th>Requested Time</th>
 								<th>ClientUId</th>
 								<th>Full Name</th>
+								<th>Coupon Name</th>
+								<th>Coupon Worth (Rs)</th>
+								<th>Sale Back Amt (Rs)</th>
+								<th>Reason</th>
 								<th>Action</th>
-								
-								
-								
-
 							</tr>
 						</thead>
 						<tbody>
 <?php
-
-$query = "SELECT * FROM client_profile  ORDER BY id DESC";
-
-
-$clientUId = $_SESSION['clientUId'];
-$exe = mysqli_query($conn, $query);
-if (mysqli_num_rows($exe) > 0) {
     
-   
-    while ($data = mysqli_fetch_assoc($exe)) {
-        
-        ?>
-                 			<tr style="color:<?php echo $color;?>">       				
+ $query = "SELECT firstName,lastName,client_profile.clientUId,couponId,orderType,reason,requestedDate,requestedTime
+FROM client_profile INNER JOIN winner_coupons ON client_profile.clientUId = winner_coupons.clientUId 
+WHERE orderType = 'sale back' and reason != '' AND orderShipped = 'no'" ;
+    
+    $exe = mysqli_query($conn, $query);
+    
+    if (mysqli_num_rows($exe) > 0) {
+        while ($data = mysqli_fetch_assoc($exe)) {
+            $couponId = $data['couponId'];
+            $sel = "SELECT * FROM coupons WHERE id = $couponId ";
+            $execute = mysqli_query($conn, $sel);
+            $result = mysqli_fetch_assoc($execute);
+            
+            ?>
+                	 		<tr>
+                	 			<td><?php echo $data['requestedDate'] ?></td>
+                	 			<td><?php echo $data['requestedTime'] ?></td>
 								<td><?php echo $data['clientUId'] ?></td>
-								<td><?php echo $data['firstName'] .' '. $data['lastName']  ?></td>
-								<th>
-									<button class="btn btn-success btn-sm resetBtn"
-										data-clientUId="<?php echo $data['clientUId']; ?>">Reset</button>
-								</th>
+								<td><?php echo $data['firstName'].' '.$data['lastName'];?></td>
+								<td data-toggle="tooltip" title="Client was winner of this coupon"><?php echo $result['couponName']  ?></td>
+								<td><?php echo $result['couponWorth']  ?></td>
+								<td><?php echo $result['salebackAmt']  ?></td>
+								<td><?php echo $data['reason']  ?></td>
+								<td><button data-toggle="tooltip" title="Click here to complete process" class="paidBtn btn-sm btn btn-danger" data-clientUId="<?php echo $data['clientUId'];?>" data-couponId="<?php echo $data['couponId'] ?>" >Finish</button></td>
 							</tr>
 <?php
+        }
+    } else {
+        echo "No rocords found";
     }
-    ?>
-<?php
-} else {
-    echo "Error while fetching coupon";
-}
+
+
 ?>
-                   </tbody>
+                   
+                  </tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 </main>
 <style type="text/css">
 </style>
@@ -139,12 +148,11 @@ if (mysqli_num_rows($exe) > 0) {
 
 $(document).ready(function(){
  
-  $(document).on('click','.resetBtn',function(){
-    
-      var id = $(this).attr("data-clientUId");
-      
+  $('.paidBtn').click(function(){
+      var clientUId = $(this).attr("data-clientUId");
+      var couponId =  $(this).attr("data-couponId");
         swal({
-          title: "Are you sure you want to reset ? ",
+          title: "Did you pay sale bcack ammount to this person ? ",
           text: "" ,
           type: "warning",
           showCancelButton: true,
@@ -155,14 +163,15 @@ $(document).ready(function(){
         }, function(isConfirm) {
           if (isConfirm) {
 
-             $.post("insert/update-client-password.php",
+             $.post("insert/saleBack.php",
           {
-            id:id
+            	 clientUId:clientUId,
+            	 couponId:couponId
           },
           function(data)
           {
-             swal("Deleted!", data , "success");
-               window.location.href="reset-password.php";         
+             swal("Done!", data , "success");
+              window.location.href="sale-back-request.php";         
           });
              
           } else {
@@ -171,12 +180,6 @@ $(document).ready(function(){
         });
       });
 });
-
-
-
-
-
 </script>
-
 </body>
 </html>

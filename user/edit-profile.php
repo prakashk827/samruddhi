@@ -9,47 +9,56 @@ if(! isset($_SESSION["clientUId"])) {
 
 <?php
   include_once("../db/db.php");
-  $clientUId = $_SESSION["clientUId"];
+  $action = $_GET['action'];
 
+  $clientUId = $_SESSION["clientUId"];
+  $fName = '';
+  $lName = '';
    $query="SELECT * FROM `client_profile` WHERE clientUId='$clientUId' LIMIT 1";
    $exe=mysqli_query($conn,$query);
 
    if(mysqli_num_rows($exe)>0)
       {
-        
+
          $data=mysqli_fetch_assoc($exe);
+
+
          $image = $data['image'];
          $_SESSION['clientProfile'] = $data['image'];
 
          $fName = $data['firstName'];
          $_SESSION['clientName'] = $data['firstName'];
          $lName = $data['lastName'];
-          
-      }else{
-        echo "No Records found";
+
+        //  if($fName != '' && $lName != '' && $action != 'edit'){
+        //   header("Location:user-profile.php");
+        // } else if($fName != '' && $lName != '' && $action == 'edit'){
+        //   header("Location:edit-profile.php");
+        // }
       }
+
 
 ?>
 
 <?php include_once("includes/head.php");?>
 
-  
+
 
     <!-- Navbar starts-->
     <?php include_once("includes/navbar.php");?>
     <!-- Navbar Ends-->
-    
-    
+
+
     <!-- Sidebar menu starts-->
     <?php include_once("includes/sidebar.php");?>
      <!-- Sidebar menu ends-->
-    
+
     <main class="app-content">
       <div class="app-title">
         <div>
           <h1><i class="fa fa-user"></i> Edit Profile</h1>
 
-        
+
 <!--           <p>Start a beautiful journey here</p> -->
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -59,23 +68,23 @@ if(! isset($_SESSION["clientUId"])) {
       </div>
       <div class="row">
         <div class="col-md-12">
-        
+
           <div class="tile">
             <div class="tile-body">
-              
+
 
                 <div class="row">
-     
-        
+
+
         <div class="clearix"></div>
         <div class="col-md-12">
-         
+
              <!-- <h3 class="tile-title">Address</h3>  -->
-            
+
             <div class="tile-body">
               <form  class="row" method="post" data-bvalidator-validate action="profile/save-profile.php">
-               
-                
+
+
                 <input type="hidden" name="clientUId" value=" <?php echo $_SESSION["clientUId"] ;?>">
 
                 <div class="form-group col-md-4">
@@ -83,11 +92,15 @@ if(! isset($_SESSION["clientUId"])) {
                 <input class="form-control" type="text" value="<?php echo $fName ?>"  id="fName" name="fName" data-bvalidator="required">
                 </div>
 
-                
+
 
                 <div class="form-group col-md-4">
                   <label class="control-label">Last Name <span>(optional)</span></label> </label>
                   <input class="form-control" type="text" value="<?php echo $lName ?>"   id="lName" name="lName">
+                </div>
+                <div class="form-group col-md-4">
+                  <label class="control-label">Upload Profile Image <span>(optional)</span></label> </label>
+                  <input class="form-control" type="file" value="<?php echo $lName ?>"   id="lName" name="lName">
                 </div>
 
                 <div class="form-group col-md-4 align-self-end">
@@ -96,12 +109,12 @@ if(! isset($_SESSION["clientUId"])) {
 
                 <div class="col-md-12"> <center id="warning"></center></div>
 
-               
+
               </form>
 
 
             </div>
-         
+
         </div>
       </div>
 
@@ -117,44 +130,7 @@ if(! isset($_SESSION["clientUId"])) {
     <!-- Footer Starts-->
      <?php include_once("includes/footer.php");?>
     <!-- Footer Ends-->
-    <script type="text/javascript">
-      
-     /* $(document).ready(function(){
- //Add save class in submit form before use.
-$(".save").click(function(){
-
-  var name  = $("#name").val();
-  var price = $("#price").val();
-  var des = $("#description").val();
-  var sDate = $("#startDate").val();
-  var eDate = $("#endDate").val();
 
 
-        $.post("insert/couponController.php",
-          {
-            name:name,
-            price:price,
-            des:des,
-            sDate:sDate,
-            eDate:eDate
-          },
-          function(data)
-          {
-            $("#warning").html(data);
-           
-            
-          });
-        
-      });
-            
-    });
-
-*/
-
-
-
-
-    </script>
-    
   </body>
 </html>

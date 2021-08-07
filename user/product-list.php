@@ -49,23 +49,51 @@ if(! isset($_SESSION["clientUId"])) {
       $exe = mysqli_query($conn, $query);
       if (mysqli_num_rows($exe) > 0) {
        ?>
-      <div class="row">
+    
      <?php 
       while ($data = mysqli_fetch_assoc($exe)) {
       ?>
-          <div class="col-md-4">
-            <div class="tile">
-              <img class="img-fluid" src="https://rukminim1.flixcart.com/image/495/594/kklhbbk0/t-shirt/n/b/o/l-raw-327-mustard-rawhit-original-imafzwzzwx6yybaq.jpeg?q=50">
-              <div class="tile-body">
-                t-Shirt <br>
-                Rs 4500 /-
-              </div>
-              <div class="tile-footer"><a data-productId="<?php echo $data['id'] ?>" data-toggle="modal" data-target="#myModal" class="buyNowBtn btn btn-primary" >Buy Now</a></div>
+          <div class="row tile">
+            <div class="col-md-5 img-fluid">
+            <img style='height: 100%; width: 100%; object-fit: contain'  src="https://rukminim1.flixcart.com/image/495/594/kklhbbk0/t-shirt/n/b/o/l-raw-327-mustard-rawhit-original-imafzwzzwx6yybaq.jpeg?q=50">
             </div>
-          </div>  
+            <div class="col-md-7">
+              <h2><?php echo $data['name']?></h2><br>
+              <h2>
+                 <span style="color:red">
+                  <?php echo "Rs ".$data['ourPrice']?>
+                </span>
+                      <span style="color:#D9D9D9">
+                      <del>  <?php echo "Rs".$data['mrpPrice']?> </del>
+                     
+                    </span>
+              </h2>
+              <p style="color:#D9D9D9">Samrudhi Vastralaya Exclusive</p>
+              <hr>
+              <h5 style="color:#C70039">Size</h5>
+              <?php $size = rtrim($data['sizeId'], ',')?>
+              <h2>  <?php echo $size ; ?>  </h2>
+              <h5 style="color:#FF5733">Fabrics</h5>
+              <?php $fabric = rtrim($data['fabricId'], ',')?>
+              <h2>  <?php echo $fabric ; ?>  </h2>
+              <h5 style="color:#FFC300">Category</h5>
+              <?php $category = rtrim($data['categoryId'], ',')?>
+              <h2>  <?php echo $category ; ?>  </h2>
+              <div class="tile-footer">
+                  <a data-productId="<?php echo $data['id'] ?>" data-toggle="modal" data-target="#myModal" class="buyNowBtn btn btn-primary" >Buy Now</a>
+              </div>
+            </div>
+
+           
+            
+              
+
+   
+          
+         
                    
           <!-- <td><?php echo $data['id'] ?></td> -->
-               
+          </div>  
       <?php
           }
           ?>
@@ -74,7 +102,7 @@ if(! isset($_SESSION["clientUId"])) {
           echo "No Products Found";
       }
       ?>
-        </div>
+      
 
 
       

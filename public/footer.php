@@ -14,7 +14,7 @@
 							</ul>
 						</div>
 						<!-- footer social end-->
-						<div class="footer-menu text-center mb-25">
+						<!-- <div class="footer-menu text-center mb-25">
 							<ul>
 								<li><a href="#">About Eventime</a></li>
 								<li><a href="#">Blog</a></li>
@@ -22,12 +22,12 @@
 								<li><a href="#">Tickets</a></li>
 								<li><a href="#">Venue</a></li>
 							</ul>
-						</div>
+						</div> -->
 						<!-- footer menu end-->
 						<div class="copyright-text text-center">
 							<p>
-								<a target="_blank" href="https://www.templateshub.net">Templates
-									Hub</a>
+								<a target="_blank" href="https://wedigitizeu.com/">
+									Powered By We Digitize U</a>
 							</p>
 						</div>
 					</div>
