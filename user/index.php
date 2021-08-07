@@ -9,9 +9,6 @@
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login </title>
-
-   
-
   </head>
   <body>
     <section class="material-half-bg">
@@ -36,6 +33,7 @@
           <div class="form-group">
             <div class="utility">
                  <p class="semibold-text mb-2"><a href="register.php">Register Here</a></p>
+                <p class="semibold-text mb-2"><a href="forgot-password.php">Fotgot Password?</a></p>
             </div>
           </div>
           <div class="form-group btn-container">
@@ -46,10 +44,7 @@
             
           </div>
         </form>
-        
-        
-       
-      </div>
+       </div>
     </section>
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -77,31 +72,36 @@
         $("#warning").css("display",'block');
         $("#warning").html("Please password..!");
       } else {
-        $("#wait").css('display','block');
-        $.post("insert/loginAccount.php",
-                      {
-                        mobile : mobile,
-                        pwd : pwd
-                      },
-                      function(data)
-                      { $("#wait").css('display','none');
-                        
-                        if(data == 200){
-                          $("#warning").css("display",'none');
-                          window.location.href='edit-profile.php';
-                        }else if(data == 400 ){
-                          $("#warning").css("display",'block');
-                          $("#warning").html("Please Enter Valid User Name and Password..!");
-                        } 
-                        
-                        
-                      }
-            );
+          $("#wait").css('display', 'block');
+
+          $.ajax({
+              type: "POST",
+              url: "insert/loginAccount.php",
+              data: {mobile: mobile, pwd: pwd},
+              success: function (data) {
+
+                  $("#wait").css('display', 'none');
+
+                  if (data == 200) {
+                      
+                      $("#warning").css("display", 'none');
+                      window.location.href = 'edit-profile.php';
+                  } else if (data == 201) {
+                    
+                      window.location.href='user-profile.php';
+                     
+                  } else if (data == 400) {
+                    
+                      $("#warning").css("display", 'block');
+                      $("#warning").html("Please Enter Valid User Name and Password..!");
+                  }
+              },
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  alert("some error");
+              }
+          });
       }
-        
-        
     });
-    
 
   });
     </script>

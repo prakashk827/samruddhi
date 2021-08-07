@@ -1,4 +1,4 @@
-<?php include_once("./includes/head.php");?>
+<?php include_once("includes/head.php");?>
 <?php
 session_start();
 if(! isset($_SESSION["clientUId"])) {
@@ -64,12 +64,12 @@ if( $discount == 0 ){
                     <input type="hidden" name="couponId" value="<?php echo $coupounIdForModal?>">
 					<div class="form-group">
 						<label for="">Qty</label>
-						<input disabled class="form-control" maxlength="2" value="1" type="text" name="qtyModal" id="qtyModal" required> 
+						<input  data-bvalidator="required" disabled class="form-control" maxlength="2" value="1" type="text" name="qtyModal" id="qtyModal"> 
 					</div>
 					
 					<div class="form-group">
 						<label for="">Choose Size</label>
-						<select class="form-control" name="sizeModal" id="" required>
+						<select class="form-control" name="sizeModal" id=""  data-bvalidator="required">
 						<option value="">Please select</option>
 							<?php
 								foreach ($sizeArr as $value) { ?>
@@ -81,7 +81,7 @@ if( $discount == 0 ){
 
 					<div class="form-group">
 						<label for="">Choose Fabric</label>
-						<select class="form-control" name="fabricModal" id="" required>
+						<select class="form-control" name="fabricModal" id=""  data-bvalidator="required">
 						<option value="">Please select</option>
 							<?php
 								foreach ($fabricArr as $value) { ?>
@@ -94,7 +94,7 @@ if( $discount == 0 ){
 
 					<div class="form-group">
 						<label for="">Choose Category</label>
-						<select class="form-control" name="categoryModal" id="" required>
+						<select class="form-control" name="categoryModal" id=""  data-bvalidator="required">
 						<option value="">Please select</option>
 							<?php
 								foreach ($categoryArr as $value) { ?>
@@ -106,16 +106,16 @@ if( $discount == 0 ){
 
 					<div class="form-group">
 						<label for="">Total Price</label>
-						<input disabled class="form-control" type="text" name="totalPriceModal" id="totalPriceModal" required> </div>
+						<input disabled class="form-control" type="text" name="totalPriceModal" id="totalPriceModal"  data-bvalidator="required" > </div>
 					
 					<div class="form-group">
 						<label for="">Discount</label>
 						<input required disabled class="form-control" value="<?php echo $discount ?>" type="text" name="discountModal" id="discountModal"> </div>
 					<div class="form-group">
 						<label for="">Price After Discount</label>
-						<input required disabled class="form-control" type="text" name="afterDiscountModal" id="afterDiscountModal"> </div>
+						<input  data-bvalidator="required" disabled class="form-control" type="text" name="afterDiscountModal" id="afterDiscountModal"> </div>
 					<div class="form-group">
-						<input required class="form-control btn btn-primary" name="orderCloth" value="Order Now" type="submit"> </div>
+						<input  data-bvalidator="required" class="form-control btn btn-primary" name="orderCloth" value="Order Now" type="submit"> </div>
 			</div>
 			</form>
 			</div>

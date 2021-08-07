@@ -305,8 +305,8 @@ include_once ('db/db.php');
 				<!-- row end-->
 				<div class="row">
 					<?php
-    $sel = "SELECT firstName,lastName,image,city FROM client_profile INNER JOIN winner_coupons ON client_profile.clientUId = winner_coupons.clientUId 
-INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId  ";
+    $sel = "SELECT winner_coupons.date,firstName,lastName,image,city FROM client_profile INNER JOIN winner_coupons ON client_profile.clientUId = winner_coupons.clientUId 
+INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId ORDER BY winner_coupons.id DESC  ";
     $exe = mysqli_query($conn, $sel);
     while ($winner = mysqli_fetch_assoc($exe)) {
         ?>
@@ -324,8 +324,11 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 									<a><?php echo $winner['firstName'].' '.$winner['lastName']?></a>
 								</h3>
 								<p>
-									<span style="color: red;">City : </span><?php echo  $winner['city']  == '' ? 'Not Provided' : $winner['city'] ;?></p>
-							</div>
+									<span style="color: red;">City : </span><?php echo  $winner['city']  == '' ? 'Not Provided' : $winner['city'] ;?>
+                                    <br> Announced on : <?php echo $winner['date'] ?>
+                                </p>
+
+                            </div>
 						</div>
 					</div>    
 	<?php
