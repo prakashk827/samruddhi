@@ -52,7 +52,7 @@ if ($_SESSION["clientUId"] == '') {
 <?php
 $date = date('Y-m-d');
 
-$query = "SELECT * FROM `coupons` WHERE totalCoupons != soldCoupons  ORDER BY id DESC";
+$query = "SELECT * FROM `coupons` WHERE totalCoupons != soldCoupons AND displayType != 'hide'   ORDER BY id DESC";
 $exe = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($exe) > 0) {

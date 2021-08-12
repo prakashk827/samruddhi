@@ -98,7 +98,7 @@ WHERE winner_cloth_orders.status='pending'";
 											<td><?php echo $data['totalPrice']  ?></td>
 											<td><?php echo $data['discount']  ?></td>
 											<td><?php echo $data['afterDiscount']  ?></td>
-											<td><button data-toggle="tooltip" title="Click here to complete process" class="paidBtn btn-sm btn btn-danger" data-clientUId="<?php echo $data['clientUId']; ?>" data-couponId="<?php echo $data['couponId'] ?>">Finish</button></td>
+											<td><button data-toggle="tooltip" title="Click here to complete process" class="finishBtn btn-sm btn btn-danger" data-clientUId="<?php echo $data['clientUId']; ?>" data-couponId="<?php echo $data['couponId'] ?>">Finish</button></td>
 										</tr>
 								<?php
 									}
@@ -158,11 +158,11 @@ WHERE winner_cloth_orders.status='pending'";
 <script>
 	$(document).ready(function() {
 
-		$('.paidBtn').click(function() {
+		$('.finishBtn').click(function() {
 			var clientUId = $(this).attr("data-clientUId");
 			var couponId = $(this).attr("data-couponId");
 			swal({
-				title: "Did you pay sale bcack ammount to this person ? ",
+				title: "Did you ship order to this person ? ",
 				text: "",
 				type: "warning",
 				showCancelButton: true,
@@ -173,7 +173,7 @@ WHERE winner_cloth_orders.status='pending'";
 			}, function(isConfirm) {
 				if (isConfirm) {
 
-					$.post("insert/saleBack.php", {
+					$.post("insert/buyCloth.php", {
 							clientUId: clientUId,
 							couponId: couponId
 						},

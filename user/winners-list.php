@@ -48,7 +48,7 @@ $clientUId = $_SESSION["clientUId"];
 	
 	<?php
 $clientUId = $_SESSION["clientUId"];
-$sel = "SELECT client_profile.clientUId,winner_coupons.date,winner_coupons.time,couponId,firstName,lastName,image,city,orderType FROM winner_coupons
+$sel = "SELECT client_profile.clientUId,luckyNumber,winner_coupons.date,winner_coupons.time,couponId,firstName,lastName,image,city,orderType FROM winner_coupons
  INNER JOIN client_profile ON client_profile.clientUId = winner_coupons.clientUId INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId 
 WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC ";
 $exe = mysqli_query($conn, $sel);
@@ -70,9 +70,11 @@ if (mysqli_num_rows($exe) > 0) {
         
         <div class="col-md-6">
 		<div class="tile" style="background:<?php echo $background ?>">
+            <h5><strong>Lucky Number : </strong><?php echo $data['luckyNumber'];?> <br></h5>
 			<img width="80px" src="<?php  echo $data['image']; ?>"><span></span><br>
 			<strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
-			<strong> Published On <br> Date :
+			
+            <strong> Published On <br> Date :
 			</strong>   <?php  echo $data['date']; ?> <strong>&</strong> <span><strong>Time
 					: </strong>  <?php  echo $data['time']; ?></span> <br>
                    
