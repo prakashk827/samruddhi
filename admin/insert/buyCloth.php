@@ -17,7 +17,6 @@ if(isset($_POST['clientUId'])){
         $exe = mysqli_query($conn, $query);
         if($exe){
             echo "Done..!";
-        
         } else{
             echo "Error while updating winner_cloth_orders";
         }        

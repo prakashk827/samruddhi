@@ -58,8 +58,9 @@ include_once ("../db/db.php");
                                                 <!-- <h3 class="tile-title">Subscribe</h3> data-bvalidator-validate -->
                                                 <div class="tile-body">
                                                     <form class="row" method="post"
-                                                          action="insert/product-add.php">
-                                                        <div class="form-group col-md-4">
+                                                          action="insert/product-add.php" enctype="multipart/form-data">
+                                                          
+                                                          <div class="form-group col-md-4">
                                                             <label class="control-label">Product Name <span
                                                                         style="color: red">*</span></label> <input
                                                                     class="form-control" type="text" id="name"
@@ -155,7 +156,16 @@ include_once ("../db/db.php");
 
                                                        
 
-
+<div class="col-md12">
+<div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01" name="photo" required>
+                  <label class="custom-file-label" for="inputGroupFile01">
+                    Click Here
+                  </label>
+                </div>
+              </div>
+</div>
                                                        
 
                                                         <div class="form-group col-md-8"></div>

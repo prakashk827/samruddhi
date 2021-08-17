@@ -33,9 +33,23 @@ if(isset($_POST['save'])){
     $ourPrice =$_POST['ourPrice'];
     $discount = $_POST['discount'];
     $description = $_POST['description'];
+
+
+    $size=$_FILES["photo"]["size"];
+    $error=$_FILES["photo"]["error"];
+    $file_name=$_FILES["photo"]["name"];
+    $file_name=time()."_"."_".'samruddhi-vasthralaya sira_'.$file_name;
+
+     $file_name;
     
-    $query = "INSERT INTO `product_list`(`date`, `time`, `name`, `fabricId`, `categoryId`, `sizeId`, `mrpPrice`, `ourPrice`, `discount`, `discription`) VALUES
-    ('$date','$time','$name','$fabricChk','$categoryChk','$sizeChk','$mrpPrice','$ourPrice','$discount','$description')";
+    $temp_name=$_FILES["photo"]["tmp_name"];
+     $folder="../../images/product-images/".$file_name;
+    
+    move_uploaded_file($temp_name, $folder);
+
+    
+    $query = "INSERT INTO `product_list`(`photo`,`date`, `time`, `name`, `fabricId`, `categoryId`, `sizeId`, `mrpPrice`, `ourPrice`, `discount`, `discription`) VALUES
+    ('$file_name','$date','$time','$name','$fabricChk','$categoryChk','$sizeChk','$mrpPrice','$ourPrice','$discount','$description')";
     $exe = mysqli_query($conn, $query);
     if(!$exe){
         echo "Error while adding new product";

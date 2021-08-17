@@ -55,7 +55,7 @@ if(! isset($_SESSION["clientUId"])) {
       ?>
           <div class="row tile">
             <div class="col-md-5 img-fluid">
-            <img style='height: 100%; width: 100%; object-fit: contain'  src="https://rukminim1.flixcart.com/image/495/594/kklhbbk0/t-shirt/n/b/o/l-raw-327-mustard-rawhit-original-imafzwzzwx6yybaq.jpeg?q=50">
+            <img style='height: 100%; width: 100%; object-fit: contain' src="../images/product-images/<?php echo $data['photo'];?>">
             </div>
             <div class="col-md-7">
               <h2><?php echo $data['name']?></h2><br>
