@@ -15,9 +15,11 @@
       <div class="cover"></div>
     </section>
     <section class="login-content">
-      <div class="logo">
-        <h1>Vali</h1>
-      </div>
+    
+        <h2 style="color:white;">
+          <center>SAMRUDDHI <br> VASTHRALAYA</center>
+        </h2>
+     
       <div class="login-box">
           <form class="login-form" method="post" data-bvalidator-validate>
           <h3 class="login-head"></i>Login</h3>

@@ -18,8 +18,10 @@
 		<div class="cover"></div>
 	</section>
 	<section class="login-content">
-		<div class="logo">
-			<h1>Vali</h1>
+		<div class="">
+		<h2 style="color:white;">
+          <center>SAMRUDDHI <br> VASTHRALAYA</center>
+        </h2>
 		</div>
 		<div class="login-box">
 
