@@ -319,7 +319,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 							<div class="speaker-img">
 								<img class="img-fluid"
 									title="Icon will displayed in case user not provide his image"
-									src="<?php echo 'user/'.$winner['image']?>"
+									src="<?php echo 'user/images/clientProfile/'.$winner['image']?>"
 									alt="Lucky draw winner">
 							</div>
 							<div class="ts-speaker-info">

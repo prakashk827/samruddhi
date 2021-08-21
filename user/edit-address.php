@@ -8,6 +8,20 @@ if($_SESSION["clientUId"] == '') {
   include_once("../db/db.php");
   $clientUId = $_SESSION["clientUId"];
 
+  $query="SELECT * FROM `client_profile` WHERE clientUId='$clientUId' LIMIT 1";
+  $exe=mysqli_query($conn,$query);
+
+   if(mysqli_num_rows($exe)>0)
+      {
+
+         $data=mysqli_fetch_assoc($exe);
+
+
+         $image = $data['image'];
+         $_SESSION['clientProfile'] = $data['image'];
+      }
+
+
    $query="SELECT * FROM `client_address` WHERE clientUId='$clientUId' LIMIT 1";
    $exe=mysqli_query($conn,$query);
 

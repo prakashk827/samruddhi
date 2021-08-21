@@ -14,7 +14,7 @@ if(! isset($_SESSION["clientUId"])) {
   $clientUId = $_SESSION["clientUId"];
   $fName = '';
   $lName = '';
-   $query="SELECT * FROM `client_profile` WHERE clientUId='$clientUId' LIMIT 1";
+  $query="SELECT * FROM `client_profile` WHERE clientUId='$clientUId' LIMIT 1";
    $exe=mysqli_query($conn,$query);
 
    if(mysqli_num_rows($exe)>0)
@@ -30,11 +30,7 @@ if(! isset($_SESSION["clientUId"])) {
          $_SESSION['clientName'] = $data['firstName'];
          $lName = $data['lastName'];
 
-        //  if($fName != '' && $lName != '' && $action != 'edit'){
-        //   header("Location:user-profile.php");
-        // } else if($fName != '' && $lName != '' && $action == 'edit'){
-        //   header("Location:edit-profile.php");
-        // }
+        
       }
 
 
@@ -82,7 +78,7 @@ if(! isset($_SESSION["clientUId"])) {
              <!-- <h3 class="tile-title">Address</h3>  -->
 
             <div class="tile-body">
-              <form  class="row" method="post" data-bvalidator-validate action="profile/save-profile.php">
+              <form  class="row" method="post" data-bvalidator-validate action="profile/save-profile.php" enctype="multipart/form-data">
 
 
                 <input type="hidden" name="clientUId" value=" <?php echo $_SESSION["clientUId"] ;?>">
@@ -100,7 +96,7 @@ if(! isset($_SESSION["clientUId"])) {
                 </div>
                 <div class="form-group col-md-4">
                   <label class="control-label">Upload Profile Image <span>(optional)</span></label> </label>
-                  <input class="form-control" type="file" value="<?php echo $lName ?>"   id="lName" name="lName">
+                  <input class="form-control" type="file" id="photo" name="photo">
                 </div>
 
                 <div class="form-group col-md-4 align-self-end">

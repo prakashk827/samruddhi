@@ -85,7 +85,7 @@ if(! isset($_SESSION["clientUId"])) {
                     <th><h2>Profile</h2></th>
                 </tr>
                 <tr>
-                  <th><img class="img-fluid" width="150px" src="<?php echo $image ?>" alt=""></th>
+                  <th><img class="img-fluid" width="150px" src="<?php echo 'images/clientProfile/'.$image ?>" alt=""></th>
                 </tr>
                   <tr>
                     <th>Full Name</th>

@@ -71,7 +71,7 @@ if (mysqli_num_rows($exe) > 0) {
         <div class="col-md-6">
 		<div class="tile" style="background:<?php echo $background ?>">
             <h5><strong>Lucky Number : </strong><?php echo $data['luckyNumber'];?> <br></h5>
-			<img width="80px" src="<?php  echo $data['image']; ?>"><span></span><br>
+			<img width="80px" src="<?php  echo 'images/clientProfile/'.$data['image']; ?>"><span></span><br>
 			<strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
 			
             <strong> Published On <br> Date :
