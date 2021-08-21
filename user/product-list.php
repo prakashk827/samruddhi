@@ -83,15 +83,7 @@ if(! isset($_SESSION["clientUId"])) {
                   <a data-productId="<?php echo $data['id'] ?>" data-toggle="modal" data-target="#myModal" class="buyNowBtn btn btn-primary" >Buy Now</a>
               </div>
             </div>
-
-           
-            
-              
-
-   
           
-         
-                   
           <!-- <td><?php echo $data['id'] ?></td> -->
           </div>  
       <?php
