@@ -7,9 +7,9 @@
  $db="samruddhi"; */
  
  $server="localhost";
- $uname="u663901735_samruddhi";
+ $uname="u214739240_samruddhi";
  $pwd="c7f718@All";
- $db="u663901735_samruddhi";
+ $db="u214739240_samruddhi";
  
 
 
@@ -36,9 +36,9 @@ class database{
 	public $con; */
 	
 	public $host="localhost";
-	public $userName="u663901735_samruddhi";
+	public $userName="u214739240_samruddhi";
 	public $password="c7f718@All";
-	public $databaseName="u663901735_samruddhi";
+	public $databaseName="u214739240_samruddhi";
 	public $con;
 
 	public function __construct()
