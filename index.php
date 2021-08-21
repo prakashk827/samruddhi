@@ -178,10 +178,13 @@ include_once ('db/db.php');
 						<div class="">
 							<div class="outcome-content ts-exp-content">
 								<h2 class="column-title">
-									<span>Event Outcomes</span> Learn new things and connect people
+									<span>ಸಮ್ರುದ್ಧಿ ವಸ್ತ್ರಾಲಯ</span>
+									<b>ಆಯ್ಕೆ ವಿಧಾನ</b>
 								</h2>
-								<p>How you transform your business technology consumer, habits
-									industry dynamic change the Find out from those leading</p>
+								<p>
+								ಪ್ರತೀ ನೂರು ಕೂಪನ್ ಗಳಿಗೆ ಲಕ್ಕಿ ಡ್ರಾ ಮಾಡಲಾಗುತ್ತದೆ, ಆಯ್ಕೆಯಾದ ಒಬ್ಬ ವಿಜೇತನಿಗೆ ಅಮೂಲ್ಯವಾದ ಉಡುಗೊರೆ
+								 ಅಥವಾ ಕ್ಯಾಶ್ ಬ್ಯಾಕ್ ಅನ್ನು ನೀಡಲಾಗುತ್ತದೆ.
+								</p>
 								<a href="#" class="btn">Leanr More</a>
 							</div>
 						</div>
@@ -192,7 +195,7 @@ include_once ('db/db.php');
 								<img class="" src="images/about/learn_img.jpg" alt="">
 							</div>
 							<h3 class="img-title text-white">
-								<a href="#" class="text-white">Learn Things</a>
+								<!-- <a href="#" class="text-white">Learn Things</a> -->
 							</h3>
 						</div>
 					</div>
@@ -202,7 +205,7 @@ include_once ('db/db.php');
 								<img class="" src="images/about/connect_img.jpg" alt="">
 							</div>
 							<h3 class="img-title">
-								<a href="#" class="text-white">connect People</a>
+								<!-- <a href="#" class="text-white">connect People</a> -->
 							</h3>
 						</div>
 					</div>
@@ -376,16 +379,16 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 	<!-- ts speaker end-->
 
 	<!-- ts experience start-->
-	<section id="ts-experiences" class="ts-experiences">
+	<!-- <section id="ts-experiences" class="ts-experiences">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-6 no-padding">
 					<div class="exp-img"
 						style="background-image: url(images/cta_img.jpg)">
-						<!-- <img class="img-fluid" src="images/cta_img.jpg" alt=""> -->
+						<img class="img-fluid" src="images/cta_img.jpg" alt="">
 					</div>
 				</div>
-				<!-- col end-->
+				
 				<div class="col-lg-6 no-padding align-self-center wow fadeInUp"
 					data-wow-duration="1.5s" data-wow-delay="500ms">
 					<div class="ts-exp-wrap">
@@ -401,12 +404,12 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 					</div>
 
 				</div>
-				<!-- col end-->
+			
 			</div>
-			<!-- row end-->
+			
 		</div>
-		<!-- container fluid end-->
-	</section>
+	
+	</section> -->
 	<!-- ts experience end-->
 
 	<!-- ts experience start-->
