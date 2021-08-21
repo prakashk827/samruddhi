@@ -24,9 +24,11 @@
       <div class="cover"></div>
     </section>
     <section class="login-content">
-      <div class="logo">
-        <h1>Vali</h1>
-      </div>
+    <div class="">
+		<h2 style="color:white;">
+          <center>SAMRUDDHI <br> VASTHRALAYA</center>
+        </h2>
+		</div>
       <div class="login-box">
 
         <form class="login-form" method="post" action="insert/createClientAccount.php" data-bvalidator-validate>
