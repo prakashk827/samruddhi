@@ -518,6 +518,7 @@ if (mysqli_num_rows($exe) > 0) {
 							<div role="tabpanel" class="tab-pane active" id="profile">
 								<div class="direction-tabs-content">
 									<h3>Samruddhi Vasthralaya</h3>
+									<h5>GST Number : 29BTGPN3589K1ZV</h5>
 									<p class="derecttion-vanue">
 										Amarapura Road,
 										Jyothi Nagara <br>
