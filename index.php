@@ -529,13 +529,13 @@ if (mysqli_num_rows($exe) > 0) {
 											<div class="contact-info-box">
 												<h3>Contact Info</h3>
 												<p>
-													<strong>Name:</strong> Nagabhushana N
+													<strong>Name:</strong> <a href="">Nagabhushana N</a>
 												</p>
 												<p>
-													<strong>Phone:</strong> +91 8553621521
+													<strong>Phone:</strong> <a href="tel:8553621521">+91 8553621521</a> 
 												</p>
 												<p>
-													<strong>Email: </strong> info@example.com
+													<strong>Email: </strong> <a href="mailto:samruddhivasthralaya19@gmail.com">samruddhivasthralaya19@gmail.com</a> 
 												</p>
 											</div>
 
