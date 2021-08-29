@@ -21,6 +21,16 @@ if (isset($_POST['couponId']) && isset($_POST['qty'])) {
     if (mysqli_num_rows($exe) > 0) {
         
         $data = mysqli_fetch_assoc($exe);
+        $totalCoupons = $data['totalCoupons'];
+        $soldCoupons = $data['soldCoupons'];
+
+        $couponsLeft = $totalCoupons - $soldCoupons;
+
+        if($qty > $couponsLeft) {
+            $_SESSION["message"] = "You are allowed to buy only less than or equals to ".$couponsLeft." coupons.";
+            $_SESSION["msgClr"] = "red";
+            header("Location:../status.php");
+        }
         
         $couponId = $data['id'];
         $couponPrice = $data['couponPrice'];

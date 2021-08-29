@@ -147,19 +147,11 @@ else{
 							$(".warn").css("display", 'none');
 							$(".payNow").click(function(e) {
 								var qty = $("#qty").val();
-								if(qty > couponsLeft) {
-									$(".warn").css("display", 'block');
-									$("#warning").html('You are  allowed to buy less than or equals to ' + (couponsLeft) + ' coupons.');
-									e.preventDefault();
-								} else if(qty != '') {
-									if(qty > (10 - totalCoupons)) {
-										$(".warn").css("display", 'block');
-										$("#warning").html('You are  allowed to buy less than or equals to ' + (10 - totalCoupons) + ' coupons.');
-										e.preventDefault();
-									} else {
+								 if(qty != '') {
+									
 										$(".warn").css("display", 'block');
 										$("#warning").html("Please wait..");
-									}
+									
 								}
 							});
 							$("#qty").keyup(function() {
