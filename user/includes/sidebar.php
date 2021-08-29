@@ -27,7 +27,7 @@
 
             <li><a class="treeview-item" href="show-all-coupons.php"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp; Buy</a></li>
               <li><a class="treeview-item" href="show-all-purchased-coupons.php"><i class="fa fa-tags" aria-hidden="true"></i></i> &nbsp;My Coupons </a></li>
-            <li><a class="treeview-item" href="pending-payment.php"><i class="icon fa fa-clock-o"></i>  Pending Payment</a></li>
+            <!-- <li><a class="treeview-item" href="pending-payment.php"><i class="icon fa fa-clock-o"></i>  Pending Payment</a></li> -->
 
           </ul>
         </li>
