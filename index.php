@@ -433,9 +433,9 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 			<!-- row end-->
 			<div class="row">
 <?php 
-$query="SELECT * FROM coupons ORDER BY id DESC LIMIT 3";
+$todayDate = date('Y-m-d');
+$query="SELECT * FROM coupons WHERE endDate > '$todayDate' ORDER BY id DESC LIMIT 3";
 $exe = mysqli_query($conn, $query);
-
 if (mysqli_num_rows($exe) > 0) {
 	while ($data = mysqli_fetch_assoc($exe)) {
 
