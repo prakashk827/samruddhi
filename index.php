@@ -465,7 +465,7 @@ if (mysqli_num_rows($exe) > 0) {
 								</p>
 							</div>
 							<div class="promotional-code">
-								<p class="promo-code-text">Enter Promotional Code</p>
+								<p class="promo-code-text">Expired on <?php echo date("d/m/Y", strtotime($data['endDate'])); ?></p>
 								<a href="user/" title="Register / Login to buy" class="btn pricing-btn">Buy Coupon</a>
 								<p class="vate-text">All prices includes 5% TAX</p>
 							</div>
