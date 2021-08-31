@@ -25,7 +25,7 @@ if ($_SESSION["clientUId"] == '')
       <div class="app-title">
         <div>
           <h1><i class="fa fa-tags"></i> Showing All Client Purchased Coupons</h1>
-           <p>If coupon color is red means , result is published</p>  
+           <p>If coupon color is red means , result is published or coupon got expired.</p>  
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
