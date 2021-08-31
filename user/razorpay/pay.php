@@ -81,7 +81,7 @@ if (isset($_POST['couponId']) && isset($_POST['qty'])) {
     // Docs: https://docs.razorpay.com/docs/orders
     //
     $orderData = [
-        'receipt' => $couponId,
+        'receipt' => $couponId.' | '.$clientUId,
         'amount' => $razorPayAmt * 100, // 2000 rupees in paise
         'currency' => 'INR',
         'payment_capture' => 1 // auto capture
