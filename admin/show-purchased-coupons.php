@@ -59,7 +59,7 @@ if ($_SESSION["clientUId"] == '')
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT startDate,endDate,couponName,totalCoupons,SUM(`boughtQty`) AS boughtCoupons ,coupons_sold.status,couponPrice,`couponId`FROM coupons INNER JOIN coupons_sold ON 
+$query = "SELECT coupons.id,startDate,endDate,couponName,totalCoupons,SUM(`boughtQty`) AS boughtCoupons ,coupons_sold.status,couponPrice,`couponId`FROM coupons INNER JOIN coupons_sold ON 
 coupons.id = couponId WHERE paymentStatus='complete' GROUP BY `couponId` ORDER BY coupons.id DESC;";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0)
