@@ -77,9 +77,10 @@ if (mysqli_num_rows($exe) > 0)
                       <td><?php echo $data['couponPrice']; ?></td>
                       <td><?php echo $data['totalCoupons']; ?></td>
                       <td><?php echo $data['boughtCoupons']; ?></td>
-                      <td><?php echo $data['startDate']; ?></td>
-                      <td><?php echo $data['endDate']; ?></td>
+                      <td><?php echo date("d/m/Y", strtotime($data['startDate'])); ?></td>
+                      <td><?php echo  date("d/m/Y", strtotime($data['endDate'])); ?></td>
                 </tr>
+               
 <?php
     }
 ?>
