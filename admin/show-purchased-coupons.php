@@ -48,6 +48,9 @@ if ($_SESSION["clientUId"] == '')
                       <th>Price (Rs)</th>
                       <th>Total Coupons</th>
                       <th>Coupons Sold</th>
+                      <th>Created on</th>
+                      <th>Expired on</th>
+                      
                      
                        
 
@@ -56,7 +59,7 @@ if ($_SESSION["clientUId"] == '')
                   <tbody>
 <?php
 $clientUId = $_SESSION['clientUId'];
-$query = "SELECT couponName,totalCoupons,SUM(`boughtQty`) AS boughtCoupons ,coupons_sold.status,couponPrice,`couponId`FROM coupons INNER JOIN coupons_sold ON 
+$query = "SELECT startDate,endDate,couponName,totalCoupons,SUM(`boughtQty`) AS boughtCoupons ,coupons_sold.status,couponPrice,`couponId`FROM coupons INNER JOIN coupons_sold ON 
 coupons.id = couponId WHERE paymentStatus='complete' GROUP BY `couponId` ORDER BY coupons.id DESC;";
 $exe = mysqli_query($conn, $query);
 if (mysqli_num_rows($exe) > 0)
@@ -74,6 +77,8 @@ if (mysqli_num_rows($exe) > 0)
                       <td><?php echo $data['couponPrice']; ?></td>
                       <td><?php echo $data['totalCoupons']; ?></td>
                       <td><?php echo $data['boughtCoupons']; ?></td>
+                      <td><?php echo $data['startDate']; ?></td>
+                      <td><?php echo $data['endDate']; ?></td>
                 </tr>
 <?php
     }
