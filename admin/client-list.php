@@ -225,7 +225,7 @@ $(document).ready(function(){
       });
 
 //Payment
-  $('.moreDetails').click(function(){
+  $(document).on('click','.moreDetails',function(){
 
       var clientUId = $(this).attr("data-clientUId");
 

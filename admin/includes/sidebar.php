@@ -50,7 +50,7 @@ $_SESSION['clientName']="Prakash";
             <li><a class="treeview-item" href="add-new-coupon.php"><i class="icon fa fa-plus"></i> Add</a></li>
             <li><a class="treeview-item" href="show-all-coupons.php"><i class="icon fa fa-eye"></i> Show All</a></li>
             <li><a class="treeview-item" href="show-purchased-coupons.php"><i class="icon fa fa-eye"></i> Show Client Purchsed</a></li>
-            <li><a class="treeview-item" href="pending-payment.php"><i class="icon fa fa-clock-o"></i>  Pending Payment</a></li>
+            <!-- <li><a class="treeview-item" href="pending-payment.php"><i class="icon fa fa-clock-o"></i>  Pending Payment</a></li> -->
 
           </ul>
         </li>
