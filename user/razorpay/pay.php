@@ -44,8 +44,11 @@ if (isset($_POST['couponId']) && isset($_POST['qty'])) {
          VALUES ('$clientUId','$couponId','$paymentStatus','1','$paidAmt','$time','$date')";
             $exe = mysqli_query($conn, $query);
             if (! $exe) {
-                echo "Error while inserting coupon";
-                exit();
+                $_SESSION["message"] = "Error while inserting coupon";
+                $_SESSION["msgClr"] = "red";
+                header("Location:../status.php");
+                
+                
             }
             $soldCouponIdArray[$i] =  mysqli_insert_id($conn);
            
@@ -59,16 +62,20 @@ if (isset($_POST['couponId']) && isset($_POST['qty'])) {
             $query = "UPDATE `payment_trials` SET `triedTimes`='$updateTriedTimes' WHERE clientUId=$clientUId";
             $exe = mysqli_query($conn, $query);
             if (! $exe) {
-                echo "Error while updating payment trials";
-                exit();
+                $_SESSION["message"] = "Error while updating payment trials";
+                $_SESSION["msgClr"] = "red";
+                header("Location:../status.php");
+               
             }
             
-            // Payment Process
-        }
+        //Payment Process
+        }  
         $_SESSION['soldCouponIdArray'] = $soldCouponIdArray ;
     } else {
-        echo "Error while fetching coupon";
-        exit();
+       
+                $_SESSION["message"] = "Error while fetching coupon";
+                $_SESSION["msgClr"] = "red";
+                header("Location:../status.php");
     }
     
     
