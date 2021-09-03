@@ -146,7 +146,12 @@ include_once ('db/db.php');
 										type="text" data-bvalidator="required" maxlength="10"> 
 										<input class="form-control form-control"
 										placeholder="Password" name="pwd" id="pwd"
-										type="password" data-bvalidator="required"> 
+										type="password" data-bvalidator="required">
+										
+										<input class="form-control form-control"
+										placeholder="City" name="city" id="city"
+										type="text" data-bvalidator="required"> 
+										
 										<select name="agree"
 										id="agree" data-bvalidator="required">
 										<option value="">Please Select</option>

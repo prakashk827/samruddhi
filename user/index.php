@@ -40,7 +40,7 @@ session_destroy(); //destroy the session
           </div>
           <div class="form-group">
             <div class="utility">
-                 <p class="semibold-text mb-2"><a href="register.php">Register Here</a></p>
+                 <p class="semibold-text mb-2"><a href="../index.php">Register Here</a></p>
                 <p class="semibold-text mb-2"><a href="forgot-password.php">Fotgot Password?</a></p>
             </div>
           </div>

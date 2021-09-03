@@ -16,6 +16,7 @@ if($_POST['mobile'] !='' &&  $_POST['pwd'] != ''){
     $fName = $_POST['fName'];
     $lName = $_POST['lName'];
     $time = date('h:i:sa');
+    $city = $_POST['city'];
    
     
     $query="SELECT * FROM `client_profile` WHERE clientUId='$mobile'";
@@ -23,7 +24,7 @@ if($_POST['mobile'] !='' &&  $_POST['pwd'] != ''){
     
     if(mysqli_num_rows($exe)>0)
     {
-        $_SESSION["message"] = "This mobile number already exits. <br> Please register with another one..!";
+        $_SESSION["message"] = "This mobile number already exist. <br> Please register with another one..!";
         $_SESSION["msgClr"] = "red";
         header("Location:../404.php");
         
@@ -38,7 +39,7 @@ if($_POST['mobile'] !='' &&  $_POST['pwd'] != ''){
             echo "Error while inserting client general info.";
         }
         
-        $query= "INSERT INTO `client_address`(`clientUId`) VALUES ('$mobile')";
+        $query= "INSERT INTO `client_address`(`clientUId`,`city`) VALUES ('$mobile','$city')";
         $exe=mysqli_query($conn,$query);
         if(!$exe)
         {
@@ -54,7 +55,7 @@ if($_POST['mobile'] !='' &&  $_POST['pwd'] != ''){
         }
         
         $_SESSION["clientUId"] = $mobile;
-        header("Location:../user/edit-profile.php");
+        header("Location:../user/show-all-coupons.php");
         
     }
     
