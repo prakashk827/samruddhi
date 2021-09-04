@@ -43,7 +43,7 @@ $clientUId = $_SESSION["clientUId"];
 
     <a href="show-all-coupons.php"><button class="btn btn-success">Try One's</button></a>
     <br>
-    
+
     <h1 style="text-align:center;color:#81CA00">Congratulations </h1>
     <h2 style="text-align:center;color:#F84F2B">To Our Lucky Draw Winners</h2>
     <br>
@@ -114,10 +114,13 @@ WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC "
                     <?php }
 
                     ?>
-                   <a href="https://api.whatsapp.com/send?phone=<?php echo $data['clientUId']?>&text=http%3A%2F%2Fwww.svluckydraw.in%2F">
-                   <button class="btn btn-sm btn-success">Share via WhatsApp  <i class="fa fa-whatsapp" aria-hidden="true"></i></button>
+                    <a href="whatsapp://send?text=https://www.svluckydraw.in/">
+                        <button class="btn btn-sm btn-success">Share via WhatsApp <i class="fa fa-whatsapp" aria-hidden="true"></i></button>
                     </a>
-                   
+                    <!-- <a href="https://api.whatsapp.com/send?phone=<?php echo $data['clientUId'] ?>&text=http%3A%2F%2Fwww.svluckydraw.in%2F">
+                  
+                    </a> -->
+
                 </div>
 
             </div>
