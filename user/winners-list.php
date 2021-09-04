@@ -75,7 +75,7 @@ if (mysqli_num_rows($exe) > 0) {
         
             <h5><strong>Lucky Number : </strong><?php echo $data['luckyNumber'];?> <br></h5>
 			
-            <img width="200px" src="<?php  echo 'images/clientProfile/'.$data['image']; ?>"><span></span><br>
+            <img width="250px" height="250px" src="<?php  echo 'images/clientProfile/'.$data['image']; ?>"><span></span><br>
 			
 			
 		</div>
