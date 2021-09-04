@@ -44,7 +44,7 @@ $clientUId = $_SESSION["clientUId"];
 <a href="show-all-coupons.php"><button class="btn btn-success">Try One's</button></a>
 <br>
 <br>
-<div class="row">
+
 	
 	<?php
 $clientUId = $_SESSION["clientUId"];
@@ -67,12 +67,22 @@ if (mysqli_num_rows($exe) > 0) {
        }
         ?>
         
-        
+        <div class="row tile" style="background:<?php echo $background ?>">
         <div class="col-md-6">
-		<div class="tile" style="background:<?php echo $background ?>">
+                
+		
+        
+        
             <h5><strong>Lucky Number : </strong><?php echo $data['luckyNumber'];?> <br></h5>
-			<img width="80px" src="<?php  echo 'images/clientProfile/'.$data['image']; ?>"><span></span><br>
-			<strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
+			
+            <img width="200px" src="<?php  echo 'images/clientProfile/'.$data['image']; ?>"><span></span><br>
+			
+			
+		
+	</div>
+    <div class="col-md-6">
+    <h5><strong>Winner Details</strong></h5><br>
+    <strong>Full Name : </strong> <?php  echo $data['firstName'].' '.$data['lastName'];  ?><br>
 			
             <strong> Published On <br> Date :
 			</strong>   <?php  echo $data['date']; ?> <strong>&</strong> <span><strong>Time
@@ -84,7 +94,7 @@ if (mysqli_num_rows($exe) > 0) {
                 <br> <strong>
 				Coupon Worth :</strong>  <?php  echo 'Rs ' .$coupons['couponWorth'] . ' /-'; ?><br>
 			<strong> Sale Back Amt. :</strong>  <?php  echo 'Rs ' .$coupons['salebackAmt'] . ' /-'; ?><br>
-			<strong>City :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br>
+			<strong>Place :</strong>   <?php  echo $data['city'] == '' ? 'Not Provided' : $data['city'] ; ?><br>
 			<br>
 			<?php
 
@@ -109,9 +119,7 @@ if (mysqli_num_rows($exe) > 0) {
         <?php }
         
         ?>
-			
-		</div>
-	</div>
+    </div>
         
     <?php
     }
