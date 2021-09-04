@@ -113,7 +113,7 @@ WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC "
 
                     <?php }
 
-                        $whatsapp = 'SAMRUDDHI LUCKY WINNER/r/n'.$data['city']; 
+                        $whatsapp = 'SAMRUDDHI LUCKY WINNER %0a'.$data['city']; 
                     ?>
                     <a href="whatsapp://send?text=<?php echo $whatsapp ; ?>">
                         <button class="btn btn-sm btn-success">Share via WhatsApp <i class="fa fa-whatsapp" aria-hidden="true"></i></button>
