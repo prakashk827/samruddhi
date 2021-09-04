@@ -44,7 +44,7 @@ $clientUId = $_SESSION["clientUId"];
 <a href="show-all-coupons.php"><button class="btn btn-success">Try One's</button></a>
 <br>
 <br>
-
+<div class="row tile">
 	
 	<?php
 $clientUId = $_SESSION["clientUId"];
@@ -67,10 +67,10 @@ if (mysqli_num_rows($exe) > 0) {
        }
         ?>
         
-        <div class="row tile" style="background:<?php echo $background ?>">
+        
         <div class="col-md-6">
-                
-		
+        <!-- style="background:<?php echo $background ?>"   -->
+		<div  >
         
         
             <h5><strong>Lucky Number : </strong><?php echo $data['luckyNumber'];?> <br></h5>
@@ -78,7 +78,7 @@ if (mysqli_num_rows($exe) > 0) {
             <img width="200px" src="<?php  echo 'images/clientProfile/'.$data['image']; ?>"><span></span><br>
 			
 			
-		
+		</div>
 	</div>
     <div class="col-md-6">
     <h5><strong>Winner Details</strong></h5><br>
