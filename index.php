@@ -149,7 +149,7 @@ include_once ('db/db.php');
 										type="password" data-bvalidator="required">
 										
 										<input class="form-control form-control"
-										placeholder="City" name="city" id="city"
+										placeholder="Place" name="city" id="city"
 										type="text" data-bvalidator="required"> 
 										
 										<select name="agree"
