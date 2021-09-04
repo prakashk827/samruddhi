@@ -71,7 +71,7 @@ WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC "
                 <div class="col-md-6">
                     <h5><strong>Lucky Number : </strong><?php echo $data['luckyNumber']; ?> <br></h5>
 
-                    <img width="250px" height="250px" src="<?php echo 'images/clientProfile/' . $data['image']; ?>"><span></span><br>
+                    <img style="width:250px;height:250px;object-fit:cover;" src="<?php echo 'images/clientProfile/' . $data['image']; ?>"><span></span><br>
                 </div>
                 <div class="col-md-6">
                     <h5><strong></strong></h5><br>
