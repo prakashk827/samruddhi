@@ -321,8 +321,8 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 					<div class="col-lg-3 col-md-6 wow fadeInUp"
 						data-wow-duration="1.5s" data-wow-delay="400ms">
 						<div class="ts-speaker">
-							<div class="speaker-img">
-								<img class="img-fluid"
+							<div class="speaker-img img-responsive" >
+								<img   style="width:250px;height:250px; object-fit: cover;" 
 									title="Icon will displayed in case user not provide his image"
 									src="<?php echo 'user/images/clientProfile/'.$winner['image']?>"
 									alt="Lucky draw winner">
