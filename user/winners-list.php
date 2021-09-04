@@ -113,8 +113,9 @@ WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC "
 
                     <?php }
 
+                        $whatsapp = 'SAMRUDDHI LUCKY WINNER <br> '.$data['city']; 
                     ?>
-                    <a href="whatsapp://send?text=https://www.svluckydraw.in/">
+                    <a href="whatsapp://send?text=<?php echo $whatsapp ; ?>">
                         <button class="btn btn-sm btn-success">Share via WhatsApp <i class="fa fa-whatsapp" aria-hidden="true"></i></button>
                     </a>
                     <!-- <a href="https://api.whatsapp.com/send?phone=<?php echo $data['clientUId'] ?>&text=http%3A%2F%2Fwww.svluckydraw.in%2F">
