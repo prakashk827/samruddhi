@@ -84,18 +84,15 @@ if(! isset($_SESSION["clientUId"])) {
                 <input type="hidden" name="clientUId" value=" <?php echo $_SESSION["clientUId"] ;?>">
 
                 <div class="form-group col-md-4">
-                  <label class="control-label">First Name <span style="color:red">*</span></label></label>
+                  <label class="control-label">Full Name <span style="color:red">*</span></label></label>
                 <input class="form-control" type="text" value="<?php echo $fName ?>"  id="fName" name="fName" data-bvalidator="required">
                 </div>
+                <input class="form-control" type="hidden" value=""   id="lName" name="lName">
 
 
-
+               
                 <div class="form-group col-md-4">
-                  <label class="control-label">Last Name <span>(optional)</span></label> </label>
-                  <input class="form-control" type="text" value="<?php echo $lName ?>"   id="lName" name="lName">
-                </div>
-                <div class="form-group col-md-4">
-                  <label class="control-label">Upload Profile Image <span>(optional)</span></label> </label>
+                  <label class="control-label">Upload Selfie  <span>(optional)</span></label> </label>
                   <input class="form-control" type="file" id="photo" name="photo">
                 </div>
 

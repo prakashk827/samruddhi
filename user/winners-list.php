@@ -43,8 +43,10 @@ $clientUId = $_SESSION["clientUId"];
 
     <a href="show-all-coupons.php"><button class="btn btn-success">Try One's</button></a>
     <br>
+    
+    <h1 style="text-align:center;color:#81CA00">Congratulations </h1>
+    <h2 style="text-align:center;color:#F84F2B">To Our Lucky Draw Winners</h2>
     <br>
-
 
     <?php
     $clientUId = $_SESSION["clientUId"];
