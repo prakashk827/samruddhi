@@ -695,9 +695,6 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 										
 									</div>
 									</div> <br>`;
-
-
-
 					$(".noticeBoard").html(html);
 
 

@@ -24,8 +24,8 @@ if ($_SESSION["clientUId"] == '')
       <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-tags"></i> Showing All Coupons</h1>
-           <p>If coupon color is red means,it is expired or removed after announcing results.</p> 
+          <h1><i class="fa fa-tags"></i> Coupon summary</h1>
+           <!-- <p>If coupon color is red means,it is expired or removed after announcing results.</p>  -->
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -34,75 +34,70 @@ if ($_SESSION["clientUId"] == '')
         </ul>
       </div>
 
-       
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-            <div class="tile-body">
-              <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
-                  <thead>
-                    <tr>
-                      <th data-toggle="tooltip" title="Coupon announce date">Date</th>
-                      <th data-toggle="tooltip" title="Coupon announce time">Time</th>
-                      <th>Coupon Id</th>
-                      <th>Coupon Name</th>
-                      <th>Price (Rs)</th>
-                      <th>Total Coupons</th>
-                      <th>Sold Coupons</th>
+       <!-- Payment Summury start -->
 
-                    </tr>
-                  </thead>
-                  <tbody>
-<?php
-$clientUId = $_SESSION['clientUId'];
-$query = "SELECT coupons.date,coupons.time,coupons.id,coupons.couponName,couponPrice,totalCoupons,couponWorth,salebackAmt,displayType,SUM(boughtQty) as soldCoupons FROM `coupons` 
-INNER JOIN coupons_sold 
-ORDER BY  id DESC;";
-$exe = mysqli_query($conn, $query);
-if (mysqli_num_rows($exe) > 0)
-{
-    $color = "green";
-    while ($data = mysqli_fetch_assoc($exe))
-    { 
-        if($data['displayType'] == 'hide') {
-            $color = "red";
-        }
-?>
-                 <tr style="color:<?php echo $color; ?>">
-                      <td><?php echo $data['date']; ?></td>
-                      <td><?php echo $data['time']; ?></td>
-                      <td><?php echo $data['id']; ?></td>
-                      <td><?php echo $data['couponName']; ?></td>
-                      <td><?php echo $data['couponPrice']; ?></td>
-                      <td><?php echo $data['totalCoupons']; ?></td>
-                      <td><?php echo $data['soldCoupons']; ?></td>
-                     
-                      
-                </tr>
-<?php
-    }
-?>
-        
-<?php
+	<!-- table starts -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tile">
+				<div class="tile-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-bordered" id="sampleTable">
+							<thead>
+								<tr>
+									<th>Coupon Name</th>
+									<th>Coupon Id</th>
+                  <th>Total Coupons</th>
+									<th>Sold Qty</th>
+									<th>Collected Amount</th>
 
-}
-else
-{
-    echo "Error while fetching coupon";
-}
+								</tr>
+							</thead>
+							<tbody>
+								<?php
 
-?>
+$sel = "SELECT totalCoupons,couponName,couponId,SUM(boughtQty) AS boughtQty ,SUM(paidAmt) AS paidAmt FROM `coupons_sold` INNER JOIN 
+coupons ON coupons_sold.couponId = coupons.id WHERE paymentStatus = 'complete' GROUP BY couponId ORDER BY coupons.id DESC";
 
-                   
-                   
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
+								$exe = mysqli_query($conn, $sel);
+								if ($data = mysqli_num_rows($exe) > 0) {
+
+
+									while ($data = mysqli_fetch_assoc($exe)) {
+								?>
+										<tr>
+											<td><?php echo $data['couponName']; ?></td>
+											<td><?php echo $data['couponId']; ?></td>
+											<td><?php echo $data['totalCoupons'];?></td>
+                      <td><?php echo $data['boughtQty']; ?></td>
+
+											<td><?php echo $data['paidAmt']; ?></td>
+
+
+										</tr>
+									<?php
+									}
+									?>
+								<?php
+								} else {
+									echo "Error while fetching coupon";
+								}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- table ends -->
+
+
+
+	<!-- Payemnt Summury ends -->
+      
     </main>
     
   
