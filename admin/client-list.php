@@ -62,7 +62,7 @@ if ($_SESSION["clientUId"] == '') {
 							<tbody>
 								<?php
 
-								$query = "SELECT * FROM `coupons_sold` WHERE paymentStatus='complete'  ORDER by couponId DESC";
+								$query = "SELECT * FROM `coupons_sold` WHERE paymentStatus='complete'  ORDER BY id DESC";
 
 
 								$clientUId = $_SESSION['clientUId'];
@@ -73,7 +73,7 @@ if ($_SESSION["clientUId"] == '') {
 									while ($data = mysqli_fetch_assoc($exe)) {
 										
 								?>
-										<tr style="color:<?php echo $color; ?>">
+										<tr>
 											<td><?php echo $data['boughtOn'] ?></td>
 											<td><?php echo $data['time'] ?></td>
 											<td><?php echo $data['clientUId'] ?></td>
