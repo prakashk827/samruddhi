@@ -687,7 +687,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 										</a>
 										<div class="schedule-slot-info-content">
 											<h3 class="schedule-slot-title">
-												Coupon Name: ${data[i].couponName}
+												 ${data[i].couponName}
 												
 											</h3>
 											<p> ${data[i].comment}</p>
