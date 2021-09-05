@@ -1,5 +1,10 @@
 <title>Notice Board</title>
-<?php include_once("includes/head.php"); ?>
+<?php
+include_once ("../db/db.php");
+session_start();  
+include_once("includes/head.php");
+
+?>
 
 
 <!-- Navbar starts-->
@@ -74,7 +79,7 @@
                                     </div>
 
                                     <div class="form-group col-md-4">
-                                        <label class="control-label">Result Announce Date <span style="color: red">*</span></label>
+                                        <label class="control-label">Result Announce Time <span style="color: red">*</span></label>
                                         <input class="form-control" type="time" id="announceTime" name="announceTime" data-bvalidator="required">
                                     </div>
 
@@ -101,6 +106,63 @@
             </div>
         </div>
     </div>
+
+	<!-- table starts -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="tile">
+				<div class="tile-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-bordered" id="sampleTable">
+							<thead>
+								<tr>
+									<th>Coupon Name</th>
+									<th>Result Announce date</th>
+                                    <th>Result Announce Time </th>
+									<th>Comment</th>
+									<th>Action</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+
+$sel = "SELECT * FROM `notice_board`";
+
+
+
+								$exe = mysqli_query($conn, $sel);
+								if ($data = mysqli_num_rows($exe) > 0) {
+
+
+									while ($data = mysqli_fetch_assoc($exe)) {
+								?>
+										<tr>
+											<td><?php echo $data['couponName']; ?></td>
+											<td><?php echo $data['announceDate']; ?></td>
+											<td><?php echo $data['announceTime'];?></td>
+                                            <td><?php echo $data['comment'];?></td>
+                                            <td> 
+                                                <button data-id="<?php echo $data['id'];?>" class="btn btn-danger btn-sm delete" >Delete</button>
+                                        </td>
+										</tr>
+									<?php
+									}
+									?>
+								<?php
+								} else {
+									echo "No records found";
+								}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- table ends -->
+
 </main>
 
 
@@ -112,6 +174,47 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $(".delete").click(function(){
+            var id =$(this).attr("data-id");
+
+                 /* Saving notice board starts */
+
+            $.ajax({
+                type: "DELETE",
+                url: serviceProvider + "/admin/notice-board?id="+id,
+                dataType: 'json',
+                data: `{"couponName":"${$("#couponName").val()}","announceDate":"${$("#announceDate").val()}","announceTime":"${$("#announceTime").val()}","comment":"${$("#comment").val()}"}`,
+                contentType: 'application/json',
+                cache: false,
+                success: function(data) {
+                    if (data.code == 200) {
+                        $('#loading').hide();
+                        var html = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>Success!</strong> ${data.message}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    </div>`;
+
+
+                        $("#warning").html(html);
+                    } else {
+                        $('#loading').hide();
+                        var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error </strong>  ${data.message}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    </div>`;
+
+                        $("#warning").html(html);
+                    }
+
+                }
+            });
+          
+
+            /* Saving notice board starts */
+           
+        });
         $('#loading').hide();
         var serviceProvider = 'https://samruddhi-lucky-draw.herokuapp.com';
         $("#save").click(function(e) {
@@ -151,7 +254,7 @@
 
                 }
             });
-            //'{"couponName":"Kothi","announceDate":"01-09-2021","announceTime":"03.34 pm","comment":"Nothing"}'
+          
 
             /* Saving notice board starts */
 
