@@ -47,6 +47,7 @@ if ($_SESSION["clientUId"] == '') {
 						<table class="table table-hover table-bordered" id="sampleTable">
 							<thead>
 								<tr>
+									<th>Id</th>
 									<th>Date</th>
 									<th>Time</th>
 									<th>ClientUId</th>
@@ -74,6 +75,7 @@ if ($_SESSION["clientUId"] == '') {
 										
 								?>
 										<tr>
+										<td><?php echo $data['id'] ?></td>
 											<td><?php echo $data['boughtOn'] ?></td>
 											<td><?php echo $data['time'] ?></td>
 											<td><?php echo $data['clientUId'] ?></td>
@@ -143,7 +145,7 @@ if ($_SESSION["clientUId"] == '') {
 <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-	var table = $('#sampleTable').DataTable({order:[[4,"desc"]]});
+	var table = $('#sampleTable').DataTable({order:[[1,"desc"]]});
 </script>
 <script>
 	$(document).ready(function() {
@@ -178,8 +180,7 @@ if ($_SESSION["clientUId"] == '') {
 			});
 		});
 
-		55
-		0
+		
 		//Payment
 		$(document).on('click', '.moreDetails', function() {
 
