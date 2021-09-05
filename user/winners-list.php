@@ -94,8 +94,8 @@ WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC "
                     <?php
 
                     if ($data['clientUId'] == $clientUId && $orderType == '') { ?>
-                        <form action="product-list.php" method="POST">
 
+                        <form action="product-list.php" method="POST">
                             <input type="hidden" name="coupounIdForModal" value="<?php echo $couponId; ?>">
                             <input type="submit" class="btn btn-success disableInputField" value="Buy Cloth">
                             <a href="sale-back.php"><button type="button" class="btn btn-danger disableInputField">Sale Back</button></a>
@@ -113,11 +113,11 @@ WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC "
 
                     <?php }
 
-                        $whatsapp = '*SAMRUDDHI LUCKY WINNER* %0a';
+                        $whatsapp  = '*SAMRUDDHI LUCKY WINNER* %0a';
                         $whatsapp .= '%0a%0a';
-                        $whatsapp .='_CONGRATULATION_ %0a'; 
-                        $whatsapp .='%0a%0a';
-                        $whatsapp .='*Lucky Draw Number:* '.$data['luckyNumber'].'%0a';
+                        $whatsapp .= '_CONGRATULATION_ %0a'; 
+                        $whatsapp .= '%0a%0a';
+                        $whatsapp .= '*Lucky Draw Number:* '.$data['luckyNumber'].'%0a';
                         $whatsapp .= '*Full Name:* '. $data['firstName'] . ' ' . $data['lastName'].'%0a';
                         $whatsapp .= '*Published date:* '. $data['date'] .'%0a';
                         $whatsapp .= '*Published Time:* '.$data['time'].'%0a';
@@ -127,9 +127,6 @@ WHERE published='yes' AND orderShipped = 'no'  ORDER BY winner_coupons.id DESC "
                         $whatsapp .= '*Place:* '.$data['city'].'%0a';
                         $whatsapp .= '*_To Buy Coupon Visit_*%0a';
                         $whatsapp .= 'http://www.svluckydraw.in/';
-
-
-
                     ?>
                     <a href="whatsapp://send?text=<?php echo $whatsapp ; ?>">
                         <button class="btn btn-sm btn-success">Share via WhatsApp <i class="fa fa-whatsapp" aria-hidden="true"></i></button>

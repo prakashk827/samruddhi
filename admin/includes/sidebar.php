@@ -14,6 +14,8 @@ $_SESSION['clientName']="Prakash";
       </div>
       <ul class="app-menu">
         <li><a class="app-menu__item" href="dashboard.php"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li><a class="app-menu__item" href="notice-board.php"><i class="app-menu__icon fa fa-bell"></i><span class="app-menu__label">Notice Board </span></a></li>
+     
         <li><a class="app-menu__item" href="todays-summury.php"><i class="app-menu__icon fa fa-clock-o"></i><span class="app-menu__label">Today's Summary </span></a></li>
         <li><a class="app-menu__item" href=" today-sold-coupons.php"><i class="app-menu__icon fa fa-tags"></i><span class="app-menu__label">Today's sold</span></a></li>
        

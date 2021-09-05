@@ -150,6 +150,37 @@ include_once('db/db.php');
 		</section>
 		<!-- banner end-->
 
+		<!-- Notice Board Starts -->
+		<section class="ts-schedule">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-lg-12">
+						<h2 class="section-title announceDate">
+							
+						</h2>
+					</div><!-- col end-->
+				</div><!-- row end-->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="tab-content schedule-tabs">
+							<div role="tabpanel" class="tab-pane active noticeBoard" id="date3">
+
+
+							
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div><!-- container end-->
+			<div class="speaker-shap">
+				<img class="shap2" src="images/shap/home_schedule_memphis1.png" alt="">
+				<img class="shap1" src="images/shap/home_schedule_memphis2.png" alt="">
+			</div>
+		</section>
+		<!-- Notice board Ends -->
+
 		<!-- ts intro start -->
 		<section class="ts-event-outcome event-intro">
 			<div class="container">
@@ -435,7 +466,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 									<div class="promotional-code">
 										<p class="promo-code-text">Expired on <?php echo date("d/m/Y", strtotime($data['endDate'])); ?></p>
 										<p>Coupon worth Rs : <?php echo $data['couponWorth'] ?> <br>
-										Sale Back Amount Rs : <?php echo $data['salebackAmt']?>
+											Sale Back Amount Rs : <?php echo $data['salebackAmt'] ?>
 										</p>
 										<p></p>
 										<a href="user/" title="Register / Login to buy" class="btn pricing-btn">Buy Coupon</a>
@@ -628,7 +659,56 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 
 	<!-- Body inner end -->
 </body>
+<script>
+	$(document).ready(function() {
+		var serviceProvider = 'https://samruddhi-lucky-draw.herokuapp.com';
+		$('.ts-schedule').css("display",'none');
+		/* Getting coupon Name starts */
+		$.ajax({
+			type: "GET",
+			url: serviceProvider + "/admin/notice-board",
+			cache: false,
+			success: function(data) {
+				if(data.length >= 1){
+					$(".announceDate").html("Result Announcement Dates and Timings");
+					$('.ts-schedule').css("display",'');
+				}
+				var html = '';
+				for (var i = 0; i < data.length; i++) {
 
+					html += `<div class="schedule-listing">
+									 <div class="schedule-slot-time">
+										<span>${data[i].announceDate} </span>
+										${data[i].announceTime}
+									</div>
+									<div class="schedule-slot-info">
+										<a href="#">
+											<img class="schedule-slot-speakers" src="https://static.vecteezy.com/system/resources/previews/000/554/868/large_2x/calendar-schedule-vector-icon.jpg" alt="">
+										</a>
+										<div class="schedule-slot-info-content">
+											<h3 class="schedule-slot-title">
+												Coupon Name: ${data[i].couponName}
+												
+											</h3>
+											<p> ${data[i].comment}</p>
+										</div>
+										
+									</div>
+									</div> <br>`;
+
+
+
+					$(".noticeBoard").html(html);
+
+
+				}
+
+
+			}
+		});
+		/* Getting coupon Name ends */
+	});
+</script>
 
 <!-- index-515:53-->
 
