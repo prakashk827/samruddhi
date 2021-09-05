@@ -181,7 +181,7 @@ $sel = "SELECT * FROM `notice_board`";
 
             $.ajax({
                 type: "DELETE",
-                url: serviceProvider + "/admin/notice-board?id="+id,
+                url: serviceProvider + "/admin/notice-board/"+id,
                 dataType: 'json',
                 data: `{"couponName":"${$("#couponName").val()}","announceDate":"${$("#announceDate").val()}","announceTime":"${$("#announceTime").val()}","comment":"${$("#comment").val()}"}`,
                 contentType: 'application/json',
