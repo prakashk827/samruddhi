@@ -36,9 +36,9 @@ class database{
 	// public $con; 
 	
 	public $host="localhost";
-	public $userName="u663901735_samruddhi";
+	public $userName="u214739240_samruddhi";
 	public $password="c7f718@All";
-	public $databaseName="u663901735_samruddhi";
+	public $databaseName="u214739240_samruddhi";
 	public $con; 
 
 	public function __construct()
