@@ -142,7 +142,9 @@ if ($_SESSION["clientUId"] == '') {
 </script>
 <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+<script>
+	var table = $('#sampleTable').DataTable({order:[[4,"desc"]]});
+</script>
 <script>
 	$(document).ready(function() {
 
