@@ -62,7 +62,7 @@ if ($_SESSION["clientUId"] == '') {
 							<tbody>
 								<?php
 
-								$query = "SELECT * FROM `coupons_sold` WHERE paymentStatus='complete'  ORDER by id DESC";
+								$query = "SELECT * FROM `coupons_sold` WHERE paymentStatus='complete'  ORDER by couponId DESC";
 
 
 								$clientUId = $_SESSION['clientUId'];
