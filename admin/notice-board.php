@@ -127,10 +127,7 @@ include_once("includes/head.php");
 							<tbody>
 								<?php
 
-$sel = "SELECT * FROM `notice_board`";
-
-
-
+                                $sel = "SELECT * FROM `notice_board`";
 								$exe = mysqli_query($conn, $sel);
 								if ($data = mysqli_num_rows($exe) > 0) {
 
@@ -175,6 +172,7 @@ $sel = "SELECT * FROM `notice_board`";
 <script type="text/javascript">
     $(document).ready(function() {
         $(".delete").click(function(){
+            $('#loading').show();
             var id =$(this).attr("data-id");
 
                  /* Saving notice board starts */
@@ -187,6 +185,7 @@ $sel = "SELECT * FROM `notice_board`";
                 contentType: 'application/json',
                 cache: false,
                 success: function(data) {
+                    console.log(data);
                     if (data.code == 200) {
                         $('#loading').hide();
                         var html = `<div class="alert alert-success alert-dismissible fade show" role="alert">
