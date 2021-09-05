@@ -48,7 +48,7 @@ include_once ("../db/db.php");
 						<select class="form-control" name="couponId" required>
 							<option value="">Select Coupon</option>
 							<?php
-    $sel = "SELECT * FROM `coupons` WHERE status = 'active' ORDER BY id DESC";
+    $sel = "SELECT * FROM `coupons` WHERE displayType = 'show' ORDER BY id DESC";
     $exe = mysqli_query($conn, $sel);
     
     if (mysqli_num_rows($exe) > 0) {
