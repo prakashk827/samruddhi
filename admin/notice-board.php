@@ -196,6 +196,7 @@ include_once("includes/head.php");
 
 
                         $("#warning").html(html);
+                        window.location.href = 'notice-board.php';
                     } else {
                         $('#loading').hide();
                         var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -240,6 +241,7 @@ include_once("includes/head.php");
 
 
                         $("#warning").html(html);
+                        window.location.href = 'notice-board.php';
                     } else {
                         $('#loading').hide();
                         var html = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
