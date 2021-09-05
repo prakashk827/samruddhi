@@ -83,8 +83,8 @@ if ($_SESSION["clientUId"] == '') {
 											<td><?php echo $data['luckyNumber'] ?></td>
 											<td><?php echo $data['boughtQty'];  ?></td>
 											<td><?php echo $data['paidAmt'];  ?></td>
-											<td><?php echo $data['status'];  ?></td>
 											<td><?php echo $data['transactionId']; ?></td>
+											<td><?php echo $data['status'];  ?></td>
 											<th>
 												<button class="btn btn-success btn-sm moreDetails" data-clientUId="<?php echo $data['clientUId']; ?>">Show</button>
 											</th>
