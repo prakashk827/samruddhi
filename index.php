@@ -84,10 +84,11 @@ include_once('db/db.php');
 							<li class="dropdown nav-item active"><a href="#" class="" data-toggle="dropdown">Contact Us</i></a>
 							</li>
 
-							<li class="header-ticket nav-item"><a class="ticket-btn btn" href="user/"> Login </a></li>
+							<li class="header-ticket nav-item">
+								<a class="ticket-btn btn" href="user-type.php" class="btn">Login </a>
+				</nav></li>
 						</ul>
 					</div>
-				</nav>
 			</div>
 			<!-- container end-->
 		</header>
@@ -107,7 +108,7 @@ include_once('db/db.php');
 
 
 								<div class="banner-btn wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="800ms">
-									<a href="user" class="btn">Login </a> <a href="#" class="btn fill">Shipping</a>
+									<a href="user-type.php" class="btn">Login </a> <a href="#" class="btn fill">Shipping</a>
 								</div>
 
 							</div>
