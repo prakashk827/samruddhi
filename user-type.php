@@ -64,7 +64,7 @@
                   <li>
                      <div class="error-body">
                        
-                        <a href="index.php" class="btn">NEW CUSTOMER</a>
+                        <a style="margin:2%;" href="index.php" class="btn">NEW CUSTOMER</a>
                             
                         <a href="user/" class="btn">OLD CUSTOMER</a>
 
