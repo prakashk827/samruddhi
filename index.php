@@ -86,297 +86,347 @@ include_once('db/db.php');
 
 							<li class="header-ticket nav-item">
 								<a class="ticket-btn btn" href="user-type.php" class="btn">Login </a>
-				</nav></li>
-						</ul>
-					</div>
+				</nav>
+				</li>
+				</ul>
 			</div>
-			<!-- container end-->
-		</header>
-		<!--/ Header end -->
-
-		<!-- banner start-->
-		<section class="hero-area hero-speakers">
-			<div class="banner-item overlay" style="background-image: url(images/background.jpg);">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-7">
-							<div class="banner-content-wrap">
-
-								<p class="banner-info wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">Buy Rs.10 coupon and win up to Rs.1000
-									Cloths or Gift</p>
-								<h1 class="banner-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">SAMRUDDHI VASTHRALAYA LUCKY DRAW</h1>
-
-
-								<div class="banner-btn wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="800ms">
-									<a href="user-type.php" class="btn">Login </a> <a href="#" class="btn fill">Shipping</a>
-								</div>
-
-							</div>
-							<!-- Banner content wrap end -->
-						</div>
-						<!-- col end-->
-						<div class="col-lg-4 offset-lg-1">
-							<div class="hero-form-content">
-								<h2>Register Now</h2>
-								<p>
-									<!--  Coming Soon -->
-								</p>
-								<form action="insert/createClientAccount.php" method="POST" class="hero-form" data-bvalidator-validate>
-									<input class="form-control form-control-name" placeholder="Full Name" name="fName" id="fname" type="text" data-bvalidator="required">
-									<input class="form-control form-control-phone" placeholder="Last Name" name="lName" id="f-phone" type="hidden" value="">
-									<input class="form-control form-control" placeholder="Mobile Number" name="mobile" id="mobile" type="text" data-bvalidator="required" maxlength="10">
-									<input class="form-control form-control" placeholder="Password" name="pwd" id="pwd" type="password" data-bvalidator="required">
-
-									<input class="form-control form-control" placeholder="Place" name="city" id="city" type="text" data-bvalidator="required">
-
-									<select name="agree" id="agree" data-bvalidator="required">
-										<option value="">Please Select</option>
-										<option value="ticket">I agreed to T&C</option>
-
-									</select>
-
-									<button class="btn" type="submit">Register</button>
-
-								</form>
-								<!-- form end-->
-							</div>
-							<!-- hero content end-->
-						</div>
-						<!-- col end-->
-					</div>
-					<!-- row end-->
-				</div>
-				<!-- Container end -->
-			</div>
-		</section>
-		<!-- banner end-->
-
-		<!-- Notice Board Starts -->
-		<section class="ts-schedule">
-			<div class="container">
-
-				<div class="row">
-					<div class="col-lg-12">
-						<h2 class="section-title announceDate">
-							
-						</h2>
-					</div><!-- col end-->
-				</div><!-- row end-->
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="tab-content schedule-tabs">
-							<div role="tabpanel" class="tab-pane active noticeBoard" id="date3">
-
-
-							
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div><!-- container end-->
-			<div class="speaker-shap">
-				<img class="shap2" src="images/shap/home_schedule_memphis1.png" alt="">
-				<img class="shap1" src="images/shap/home_schedule_memphis2.png" alt="">
-			</div>
-		</section>
-		<!-- Notice board Ends -->
-
-		<!-- ts intro start -->
-		<section class="ts-event-outcome event-intro">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="">
-							<div class="outcome-content ts-exp-content">
-								<h2 class="column-title">
-									<span>ಸಮ್ರುದ್ಧಿ ವಸ್ತ್ರಾಲಯ</span>
-									<b>ಆಯ್ಕೆ ವಿಧಾನ</b>
-								</h2>
-								<p>
-									ಪ್ರತೀ ನೂರು ಕೂಪನ್ ಗಳಿಗೆ ಲಕ್ಕಿ ಡ್ರಾ ಮಾಡಲಾಗುತ್ತದೆ, ಆಯ್ಕೆಯಾದ ಒಬ್ಬ ವಿಜೇತನಿಗೆ ಅಮೂಲ್ಯವಾದ ಉಡುಗೊರೆ
-									ಅಥವಾ ಕ್ಯಾಶ್ ಬ್ಯಾಕ್ ಅನ್ನು ನೀಡಲಾಗುತ್ತದೆ.
-								</p>
-								<a href="#" class="btn">Leanr More</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="outcome-content">
-							<div class="outcome-img overlay">
-								<img class="" src="images/about/learn_img.jpg" alt="">
-							</div>
-							<h3 class="img-title text-white">
-								<!-- <a href="#" class="text-white">Learn Things</a> -->
-							</h3>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="outcome-content">
-							<div class="outcome-img overlay">
-								<img class="" src="images/about/connect_img.jpg" alt="">
-							</div>
-							<h3 class="img-title">
-								<!-- <a href="#" class="text-white">connect People</a> -->
-							</h3>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-		<!-- ts intro end-->
-		<!-- ts funfact start-->
-		<section class="ts-funfact" style="background-image: url(images/funfact_bg.jpg)">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-6">
-						<div class="ts-single-funfact">
-							<?php
-							$sel = "SELECT COUNT(id) as totalClients from client_profile";
-							$exe = mysqli_query($conn, $sel);
-							$totalClients = mysqli_fetch_assoc($exe);
-
-							?>
-							<h3 class="funfact-num">
-								<span class="counterUp" data-counter="<?php echo $totalClients['totalClients']; ?>"><?php echo $totalClients['totalClients']; ?>
-
-
-
-							</h3>
-							<h4 class="funfact-title">Active Clients</h4>
-						</div>
-					</div>
-					<!-- col end-->
-					<div class="col-lg-3 col-md-6">
-						<div class="ts-single-funfact">
-							<?php
-							$sel = "SELECT SUM(totalCoupons) as totalCoupons from coupons";
-							$exe = mysqli_query($conn, $sel);
-							$totalCoupons = mysqli_fetch_assoc($exe);
-
-							?>
-							<h3 class="funfact-num">
-								<span class="counterUp" data-counter="<?php echo $totalCoupons['totalCoupons']; ?>"><?php echo $totalCoupons['totalCoupons']; ?></span>
-							</h3>
-							<h4 class="funfact-title">Total Coupons</h4>
-						</div>
-					</div>
-					<!-- col end-->
-					<div class="col-lg-3 col-md-6">
-						<div class="ts-single-funfact">
-							<?php
-							$sel = "SELECT SUM(boughtQty) as boughtQty from coupons_sold";
-							$exe = mysqli_query($conn, $sel);
-							$soldCoupons = mysqli_fetch_assoc($exe);
-
-							?>
-							<h3 class="funfact-num">
-								<span class="counterUp" data-counter="<?php echo $soldCoupons['boughtQty']; ?>"><?php echo $soldCoupons['boughtQty']; ?></span>
-							</h3>
-							<h4 class="funfact-title">Sold Coupons</h4>
-						</div>
-					</div>
-					<!-- col end-->
-					<?php
-					$sel = "SELECT COUNT(id) as winners from winner_coupons";
-					$exe = mysqli_query($conn, $sel);
-					$winners = mysqli_fetch_assoc($exe);
-
-					?>
-					<div class="col-lg-3 col-md-6">
-						<div class="ts-single-funfact">
-							<h3 class="funfact-num">
-								<span class="counterUp" data-counter="<?php echo $winners['winners']; ?>"><?php echo $winners['winners']; ?></span>
-							</h3>
-							<h4 class="funfact-title">Total Winners</h4>
-						</div>
-					</div>
-					<!-- col end-->
-				</div>
-				<!-- row end-->
-			</div>
-			<!-- container end-->
-		</section>
-		<!-- ts funfact end-->
-		<!-- ts speaker start-->
-		<section id="ts-speakers" class="ts-speakers" style="background-image: url(images/speakers/speaker_bg.png)">
-			<div class="container">
-				<div class="row" id="luckyWinnersDiv">
-					<div class="col-lg-8 mx-auto">
-						<h2 class="section-title text-center">
-							<!-- <span>Listen to the</span> -->
-							ಈ ದಿನದ ಅದ್ರುಷ್ಠವಂತರು <br> Today's Lucky Draw Winners
-						</h2>
-					</div>
-					<!-- col end-->
-				</div>
-				<!-- row end-->
-				<div class="row">
-					<?php
-					$sel = "SELECT winner_coupons.date,firstName,lastName,image,city FROM client_profile INNER JOIN winner_coupons ON client_profile.clientUId = winner_coupons.clientUId 
-INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId ORDER BY winner_coupons.id DESC  ";
-					$exe = mysqli_query($conn, $sel);
-					while ($winner = mysqli_fetch_assoc($exe)) {
-					?>
-						<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
-							<div class="ts-speaker">
-								<div class="speaker-img img-responsive">
-									<img style="width:250px;height:250px; object-fit: cover;" title="Icon will displayed in case user not provide his image" src="<?php echo 'user/images/clientProfile/' . $winner['image'] ?>" alt="Lucky draw winner">
-								</div>
-								<div class="ts-speaker-info">
-									<h3 class="ts-title">
-										<a><?php echo $winner['firstName'] . ' ' . $winner['lastName'] ?></a>
-									</h3>
-									<p>
-										<span style="color: red;">City : </span><?php echo  $winner['city']  == '' ? 'Not Provided' : $winner['city']; ?>
-										<br> Announced on : <?php echo $winner['date'] ?>
-									</p>
-
-								</div>
-							</div>
-						</div>
-					<?php
-					}
-
-					?>
-
-
-					<!-- col end-->
-				</div>
-				<!-- row end-->
-			</div>
-			<!-- popup end-->
-
-	</div>
-	<!-- col end-->
-
-	<!-- col end-->
-
-	<!-- col end-->
-	</div>
-	<!-- row end-->
-	</div>
-	<!-- popup end-->
-	</div>
-	<!-- col end-->
-
-	<!-- col end-->
-
-
-	<!-- col end-->
-	</div>
-	<!-- row end-->
 	</div>
 	<!-- container end-->
+	</header>
+	<!--/ Header end -->
 
-	<!-- shap img-->
-	<div class="speaker-shap">
-		<img class="shap1" src="images/shap/home_speaker_memphis1.png" alt="">
-		<img class="shap2" src="images/shap/home_speaker_memphis2.png" alt="">
-		<img class="shap3" src="images/shap/home_speaker_memphis3.png" alt="">
-	</div>
-	<!-- shap img end-->
+	<!-- banner start-->
+	<section class="hero-area hero-speakers">
+		<div class="banner-item overlay" style="background-image: url(images/background.jpg);">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7">
+						<div class="banner-content-wrap">
+
+							<p class="banner-info wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="500ms">Buy Rs.10 coupon and win up to Rs.1000
+								Cloths or Gift</p>
+							<h1 class="banner-title wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="700ms">SAMRUDDHI VASTHRALAYA LUCKY DRAW</h1>
+
+
+							<div class="banner-btn wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="800ms">
+								<a href="user-type.php" class="btn">Login </a> <a href="#" class="btn fill">Shipping</a>
+							</div>
+
+						</div>
+						<!-- Banner content wrap end -->
+					</div>
+					<!-- col end-->
+					<div class="col-lg-4 offset-lg-1">
+						<div class="hero-form-content">
+							<h2>Register Now</h2>
+							<p>
+								<!--  Coming Soon -->
+							</p>
+							<form action="insert/createClientAccount.php" method="POST" class="hero-form" data-bvalidator-validate>
+								<input class="form-control form-control-name" placeholder="Full Name" name="fName" id="fname" type="text" data-bvalidator="required">
+								<input class="form-control form-control-phone" placeholder="Last Name" name="lName" id="f-phone" type="hidden" value="">
+								<input class="form-control form-control" placeholder="Mobile Number" name="mobile" id="mobile" type="text" data-bvalidator="required" maxlength="10">
+								<input class="form-control form-control" placeholder="Password" name="pwd" id="pwd" type="password" data-bvalidator="required">
+
+								<input class="form-control form-control" placeholder="Place" name="city" id="city" type="text" data-bvalidator="required">
+
+								<select name="agree" id="agree" data-bvalidator="required">
+									<option value="">Please Select</option>
+									<option value="ticket">I agreed to T&C</option>
+
+								</select>
+
+								<button class="btn" type="submit">Register</button>
+
+							</form>
+							<!-- form end-->
+						</div>
+						<!-- hero content end-->
+					</div>
+					<!-- col end-->
+				</div>
+				<!-- row end-->
+			</div>
+			<!-- Container end -->
+		</div>
+	</section>
+	<!-- banner end-->
+
+	<!-- Notice Board Starts -->
+	<section class="ts-schedule">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="section-title announceDate">
+
+					</h2>
+				</div><!-- col end-->
+			</div><!-- row end-->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="tab-content schedule-tabs">
+						<div role="tabpanel" class="tab-pane active noticeBoard" id="date3">
+
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div><!-- container end-->
+		<div class="speaker-shap">
+			<img class="shap2" src="images/shap/home_schedule_memphis1.png" alt="">
+			<img class="shap1" src="images/shap/home_schedule_memphis2.png" alt="">
+		</div>
+	</section>
+	<!-- Notice board Ends -->
+
+	<!-- HOW IT WORKS STARTS --> 
+
+	<section class="ts-event-outcome event-intro">
+		<div class="container">
+			<div class="row">
+				
+			<div class="col-lg-4">
+					<div class="outcome-content">
+						<div class="outcome-img">
+							<img  class="" src="./images/so-how-does-it-work.png" alt="">
+						</div>
+						<h3 class="img-title">
+							<!-- <a href="#" class="text-white">connect People</a> -->
+						</h3>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<div class="">
+						<div class="outcome-content ts-exp-content">
+							<h2 class="column-title">
+								<b>How Does It Works ?</b> 
+								
+							</h2>
+							<ul style="padding-left: 30px;">
+									<li>If you are new customer then give your details and click on <span style="color:#ff007a;"> Register Now</span> button</li>
+									<li>If you are old customer click on <span style="color:#ff007a;">Login</span>  button to login.</li>
+									<li>Select any coupon which you want to buy.</li>
+									<li>Pay through your UPI, Debit or Credic card to get your lucky coupon.</li>
+								</ul>
+							<br>
+							<ul style="padding-left: 30px;">
+								<li>ನೀವು ಹೊಸ ಗ್ರಾಹಕರಾಗಿದ್ದಲ್ಲಿ ನಿಮ್ಮ ಕೆಲವು ಮಾಹಿತಿಯನ್ನು ನೀಡಿ ,<span style="color:#ff007a;">ರೆಜಿಸ್ಟರ್ ಬಟನ್ </span> ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ರೆಜಿಸ್ಟರ್ ಆಗಿ.</li>
+								<li>ನೀವು ಹಳೆಯ ಗ್ರಾಹಕರಾಗಿದ್ದರೆ, <span style="color:#ff007a;">ಲಾಗಿನ್ ರೆಜಿಸ್ಟರ್ ಬಟನ್ </span> ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ,ಲಾಗಿನ್ ಆಗಿ.</li>
+								<li>ನಿಮಗೆ ಬೇಕಾದ ಕೋಪನ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.</li>
+								<li>UPI,Debit Card, Credit Card ನಿಂದ ಹಣವನ್ನು ಪಾವತಿಸಿ, ಲಕ್ಕಿ ಕೋಪನ್ ಅನ್ನು ನಿಮ್ಮದಾಗಿಸಿಕೊಳ್ಳಿ.</li>
+							</ul>
+							<!-- <a href="#" class="btn">Leanr More</a> -->
+						</div>
+					</div>
+				</div>
+			
+				
+
+			</div>
+		</div>
+	</section>
+
+	<!-- HOW IT WORKS ENDS -->
+
+	<!-- ts intro start -->
+	<section class="ts-event-outcome event-intro">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="">
+						<div class="outcome-content ts-exp-content">
+							<h2 class="column-title">
+								<span>ಸಮ್ರುದ್ಧಿ ವಸ್ತ್ರಾಲಯ</span>
+								<b>ಆಯ್ಕೆ ವಿಧಾನ</b>
+							</h2>
+							<p>
+								ಪ್ರತೀ ನೂರು ಕೂಪನ್ ಗಳಿಗೆ ಲಕ್ಕಿ ಡ್ರಾ ಮಾಡಲಾಗುತ್ತದೆ, ಆಯ್ಕೆಯಾದ ಒಬ್ಬ ವಿಜೇತನಿಗೆ ಅಮೂಲ್ಯವಾದ ಉಡುಗೊರೆ
+								ಅಥವಾ ಕ್ಯಾಶ್ ಬ್ಯಾಕ್ ಅನ್ನು ನೀಡಲಾಗುತ್ತದೆ.
+							</p>
+							<a href="#" class="btn">Leanr More</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="outcome-content">
+						<div class="outcome-img  ">
+							<img class="" src="images/about/learn_img.jpg" alt="">
+						</div>
+						<h3 class="img-title text-white">
+							<!-- <a href="#" class="text-white">Learn Things</a> -->
+						</h3>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="outcome-content">
+						<div class="outcome-img ">
+							<img class="" src="images/about/connect_img.jpg" alt="">
+						</div>
+						<h3 class="img-title">
+							<!-- <a href="#" class="text-white">connect People</a> -->
+						</h3>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- ts intro end-->
+	<!-- ts funfact start-->
+	<section class="ts-funfact" style="background-image: url(images/funfact_bg.jpg)">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="ts-single-funfact">
+						<?php
+						$sel = "SELECT COUNT(id) as totalClients from client_profile";
+						$exe = mysqli_query($conn, $sel);
+						$totalClients = mysqli_fetch_assoc($exe);
+
+						?>
+						<h3 class="funfact-num">
+							<span class="counterUp" data-counter="<?php echo $totalClients['totalClients']; ?>"><?php echo $totalClients['totalClients']; ?>
+
+
+
+						</h3>
+						<h4 class="funfact-title">Active Clients</h4>
+					</div>
+				</div>
+				<!-- col end-->
+				<div class="col-lg-3 col-md-6">
+					<div class="ts-single-funfact">
+						<?php
+						$sel = "SELECT SUM(totalCoupons) as totalCoupons from coupons";
+						$exe = mysqli_query($conn, $sel);
+						$totalCoupons = mysqli_fetch_assoc($exe);
+
+						?>
+						<h3 class="funfact-num">
+							<span class="counterUp" data-counter="<?php echo $totalCoupons['totalCoupons']; ?>"><?php echo $totalCoupons['totalCoupons']; ?></span>
+						</h3>
+						<h4 class="funfact-title">Total Coupons</h4>
+					</div>
+				</div>
+				<!-- col end-->
+				<div class="col-lg-3 col-md-6">
+					<div class="ts-single-funfact">
+						<?php
+						$sel = "SELECT SUM(boughtQty) as boughtQty from coupons_sold";
+						$exe = mysqli_query($conn, $sel);
+						$soldCoupons = mysqli_fetch_assoc($exe);
+
+						?>
+						<h3 class="funfact-num">
+							<span class="counterUp" data-counter="<?php echo $soldCoupons['boughtQty']; ?>"><?php echo $soldCoupons['boughtQty']; ?></span>
+						</h3>
+						<h4 class="funfact-title">Sold Coupons</h4>
+					</div>
+				</div>
+				<!-- col end-->
+				<?php
+				$sel = "SELECT COUNT(id) as winners from winner_coupons";
+				$exe = mysqli_query($conn, $sel);
+				$winners = mysqli_fetch_assoc($exe);
+
+				?>
+				<div class="col-lg-3 col-md-6">
+					<div class="ts-single-funfact">
+						<h3 class="funfact-num">
+							<span class="counterUp" data-counter="<?php echo $winners['winners']; ?>"><?php echo $winners['winners']; ?></span>
+						</h3>
+						<h4 class="funfact-title">Total Winners</h4>
+					</div>
+				</div>
+				<!-- col end-->
+			</div>
+			<!-- row end-->
+		</div>
+		<!-- container end-->
+	</section>
+	<!-- ts funfact end-->
+	<!-- ts speaker start-->
+	<section id="ts-speakers" class="ts-speakers" style="background-image: url(images/speakers/speaker_bg.png)">
+		<div class="container">
+			<div class="row" id="luckyWinnersDiv">
+				<div class="col-lg-8 mx-auto">
+					<h2 class="section-title text-center">
+						<!-- <span>Listen to the</span> -->
+						ಈ ದಿನದ ಅದ್ರುಷ್ಠವಂತರು <br> Today's Lucky Draw Winners
+					</h2>
+				</div>
+				<!-- col end-->
+			</div>
+			<!-- row end-->
+			<div class="row">
+				<?php
+				$sel = "SELECT winner_coupons.date,firstName,lastName,image,city FROM client_profile INNER JOIN winner_coupons ON client_profile.clientUId = winner_coupons.clientUId 
+INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId ORDER BY winner_coupons.id DESC  ";
+				$exe = mysqli_query($conn, $sel);
+				while ($winner = mysqli_fetch_assoc($exe)) {
+				?>
+					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
+						<div class="ts-speaker">
+							<div class="speaker-img img-responsive">
+								<img style="width:250px;height:250px; object-fit: cover;" title="Icon will displayed in case user not provide his image" src="<?php echo 'user/images/clientProfile/' . $winner['image'] ?>" alt="Lucky draw winner">
+							</div>
+							<div class="ts-speaker-info">
+								<h3 class="ts-title">
+									<a><?php echo $winner['firstName'] . ' ' . $winner['lastName'] ?></a>
+								</h3>
+								<p>
+									<span style="color: red;">City : </span><?php echo  $winner['city']  == '' ? 'Not Provided' : $winner['city']; ?>
+									<br> Announced on : <?php echo $winner['date'] ?>
+								</p>
+
+							</div>
+						</div>
+					</div>
+				<?php
+				}
+
+				?>
+
+
+				<!-- col end-->
+			</div>
+			<!-- row end-->
+		</div>
+		<!-- popup end-->
+
+		</div>
+		<!-- col end-->
+
+		<!-- col end-->
+
+		<!-- col end-->
+		</div>
+		<!-- row end-->
+		</div>
+		<!-- popup end-->
+		</div>
+		<!-- col end-->
+
+		<!-- col end-->
+
+
+		<!-- col end-->
+		</div>
+		<!-- row end-->
+		</div>
+		<!-- container end-->
+
+		<!-- shap img-->
+		<div class="speaker-shap">
+			<img class="shap1" src="images/shap/home_speaker_memphis1.png" alt="">
+			<img class="shap2" src="images/shap/home_speaker_memphis2.png" alt="">
+			<img class="shap3" src="images/shap/home_speaker_memphis3.png" alt="">
+		</div>
+		<!-- shap img end-->
 	</section>
 	<!-- ts speaker end-->
 
@@ -411,7 +461,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 			
 		</div>
 	
-	</section> -->
+	</section>
 	<!-- ts experience end-->
 
 	<!-- ts experience start-->
@@ -663,16 +713,16 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 <script>
 	$(document).ready(function() {
 		var serviceProvider = 'https://samruddhi-lucky-draw.herokuapp.com';
-		$('.ts-schedule').css("display",'none');
+		$('.ts-schedule').css("display", 'none');
 		/* Getting coupon Name starts */
 		$.ajax({
 			type: "GET",
 			url: serviceProvider + "/admin/notice-board",
 			cache: false,
 			success: function(data) {
-				if(data.length >= 1){
+				if (data.length >= 1) {
 					$(".announceDate").html("Result Announcement Dates and Timings");
-					$('.ts-schedule').css("display",'');
+					$('.ts-schedule').css("display", '');
 				}
 				var html = '';
 				for (var i = 0; i < data.length; i++) {
