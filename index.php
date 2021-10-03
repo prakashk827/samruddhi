@@ -203,7 +203,7 @@ include_once('db/db.php');
 					<div class="">
 						<div class="outcome-content ts-exp-content">
 							<h2 class="column-title">
-								<b>How Does It Works ?</b> 
+								<b>How Does It Work ?</b> 
 								
 							</h2>
 							<ul style="padding-left: 30px;">
