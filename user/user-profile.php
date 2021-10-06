@@ -59,7 +59,7 @@ if(! isset($_SESSION["clientUId"])) {
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         </ul>
       </div>
       <div class="row">
@@ -85,7 +85,7 @@ if(! isset($_SESSION["clientUId"])) {
                     <th><h2>Profile</h2></th>
                 </tr>
                 <tr>
-                  <th><img class="img-fluid" width="150px" src="<?php echo 'images/clientProfile/'.$image ?>" alt=""></th>
+                  <th><img  class="img-fluid" width="200px" height="200px" src="<?php echo 'images/clientProfile/'.$image ?>" alt=""></th>
                 </tr>
                   <tr>
                     <th>Full Name</th>
