@@ -232,6 +232,92 @@ include_once('db/db.php');
 
 	<!-- HOW IT WORKS ENDS -->
 
+
+	<!-- ts pricing start-->
+	<section class="ts-pricing gradient" style="background-image: url(images/pricing/pricing_img.jpg)">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="section-title white">
+						<span>Latest Coupons</span> Buy Today
+					</h2>
+				</div>
+				<!-- section title end-->
+			</div>
+			<!-- col end-->
+			<!-- row end-->
+			<div class="row">
+				<?php
+				$todayDate = date('Y-m-d');
+				$query = "SELECT * FROM coupons WHERE endDate > '$todayDate' ORDER BY id DESC LIMIT 3";
+				$exe = mysqli_query($conn, $query);
+				if (mysqli_num_rows($exe) > 0) {
+					while ($data = mysqli_fetch_assoc($exe)) {
+
+				?>
+						<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
+							<div class="pricing-item">
+								<img class="pricing-dot " src="images/pricing/dot.png" alt="">
+								<div class="ts-pricing-box">
+
+									<div class="ts-pricing-header">
+										<h2 class="ts-pricing-name">
+											<?php echo $data['couponName']; ?>
+										</h2>
+										<h3 class="ts-pricing-price">
+											<span class="currency">Rs</span>
+											<?php echo $data['couponPrice']; ?>/-
+										</h3>
+									</div>
+									<div class="ts-pricing-progress">
+										<p class="amount-progres-text">Available coupons for this price</p>
+										<div class="ts-progress">
+											<div class="ts-progress-inner" style="width: 100%"></div>
+										</div>
+										<p class="ts-pricing-value">
+											<?php echo $data['soldCoupons'] . "/" . $data['totalCoupons'] ?>
+										</p>
+									</div>
+									<div class="promotional-code">
+										<p class="promo-code-text">Expired on <?php echo date("d/m/Y", strtotime($data['endDate'])); ?></p>
+										<p>Coupon worth Rs : <?php echo $data['couponWorth'] ?> <br>
+											Sale Back Amount Rs : <?php echo $data['salebackAmt'] ?>
+										</p>
+										<p></p>
+										<a href="user/" title="Register / Login to buy" class="btn pricing-btn">Buy Coupon</a>
+										<p class="vate-text">All prices includes 5% TAX</p>
+									</div>
+								</div>
+								<!-- ts pricing box-->
+								<img class="pricing-dot1 " src="images/pricing/dot.png" alt="">
+							</div>
+						</div>
+				<?php
+					}
+				} else{
+					?>
+						
+						
+						<div class="col-lg-12">
+					<h2 class="section-title white">
+						<span>Coming soon</span> 
+					</h2>
+				</div>
+				<?php
+				}
+				?>
+
+			</div>
+		</div>
+		<!-- container end-->
+		<div class="speaker-shap wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
+			<img class="shap2" src="images/shap/pricing_memphis1.png" alt="">
+		</div>
+	</section>
+	<!-- ts pricing end-->
+
+
+
 	<!-- ts intro start -->
 	<section class="ts-event-outcome event-intro">
 		<div class="container">
@@ -348,6 +434,12 @@ include_once('db/db.php');
 		</div>
 		<!-- container end-->
 	</section>
+
+	
+
+
+
+	
 	<!-- ts funfact end-->
 	<!-- ts speaker start-->
 	<section id="ts-speakers" class="ts-speakers" style="background-image: url(images/speakers/speaker_bg.png)">
@@ -469,78 +561,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 
 	<!-- ts experience end-->
 
-	<!-- ts pricing start-->
-	<section class="ts-pricing gradient" style="background-image: url(images/pricing/pricing_img.jpg)">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<h2 class="section-title white">
-						<span>Latest Coupons</span> Buy Today
-					</h2>
-				</div>
-				<!-- section title end-->
-			</div>
-			<!-- col end-->
-			<!-- row end-->
-			<div class="row">
-				<?php
-				$todayDate = date('Y-m-d');
-				$query = "SELECT * FROM coupons WHERE endDate > '$todayDate' ORDER BY id DESC LIMIT 3";
-				$exe = mysqli_query($conn, $query);
-				if (mysqli_num_rows($exe) > 0) {
-					while ($data = mysqli_fetch_assoc($exe)) {
-
-				?>
-						<div class="col-lg-4 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
-							<div class="pricing-item">
-								<img class="pricing-dot " src="images/pricing/dot.png" alt="">
-								<div class="ts-pricing-box">
-
-									<div class="ts-pricing-header">
-										<h2 class="ts-pricing-name">
-											<?php echo $data['couponName']; ?>
-										</h2>
-										<h3 class="ts-pricing-price">
-											<span class="currency">Rs</span>
-											<?php echo $data['couponPrice']; ?>/-
-										</h3>
-									</div>
-									<div class="ts-pricing-progress">
-										<p class="amount-progres-text">Available coupons for this price</p>
-										<div class="ts-progress">
-											<div class="ts-progress-inner" style="width: 100%"></div>
-										</div>
-										<p class="ts-pricing-value">
-											<?php echo $data['soldCoupons'] . "/" . $data['totalCoupons'] ?>
-										</p>
-									</div>
-									<div class="promotional-code">
-										<p class="promo-code-text">Expired on <?php echo date("d/m/Y", strtotime($data['endDate'])); ?></p>
-										<p>Coupon worth Rs : <?php echo $data['couponWorth'] ?> <br>
-											Sale Back Amount Rs : <?php echo $data['salebackAmt'] ?>
-										</p>
-										<p></p>
-										<a href="user/" title="Register / Login to buy" class="btn pricing-btn">Buy Coupon</a>
-										<p class="vate-text">All prices includes 5% TAX</p>
-									</div>
-								</div>
-								<!-- ts pricing box-->
-								<img class="pricing-dot1 " src="images/pricing/dot.png" alt="">
-							</div>
-						</div>
-				<?php
-					}
-				}
-				?>
-
-			</div>
-		</div>
-		<!-- container end-->
-		<div class="speaker-shap wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
-			<img class="shap2" src="images/shap/pricing_memphis1.png" alt="">
-		</div>
-	</section>
-	<!-- ts pricing end-->
+	
 	<!-- ts blog start-->
 
 	<!-- ts blog end-->
