@@ -290,7 +290,7 @@ if (mysqli_num_rows($exe) > 0) {
 													type: 'POST',
 													
 													success: function (response) {
-															
+														$("#warning").css("display",'none');
 														//Payment failed starts
 														if (response == 200) {
 
