@@ -191,7 +191,7 @@ if (mysqli_num_rows($exe) > 0) {
 												// Razorpay starts
 											$("#warning").html("Order creted.Please wait..");
 											var options = {
-												"key": "rzp_test_dNYs2vEQKMjA1R",
+												"key": "rzp_live_3fu80DFDiZbJ4L",
 												"amount": response.amount,
 												"currency": "INR",
 												"name": response.notes.couponName,
@@ -259,6 +259,7 @@ if (mysqli_num_rows($exe) > 0) {
 
 
 											var rzp1 = new Razorpay(options);
+											
 											rzp1.on('payment.failed', function (response) {
 												console.log("Order failed...");
 												console.log(response);
@@ -322,6 +323,7 @@ if (mysqli_num_rows($exe) > 0) {
 											});
 
 											rzp1.open();
+											
 											e.preventDefault();
 
 
