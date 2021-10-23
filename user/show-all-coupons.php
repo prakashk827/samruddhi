@@ -51,23 +51,18 @@ if ($_SESSION["clientUId"] == '') {
 
 		<?php
 	
-		$todayDate = date('Y-m-d');
-		$query = "SELECT * FROM `coupons` WHERE totalCoupons != soldCoupons 
-		AND displayType != 'hide' AND endDate > '$todayDate' ORDER BY id DESC";
+		
+		$query = "SELECT DATEDIFF(endDate, startDate) AS daysLeft, coupons.*  FROM `coupons`  WHERE totalCoupons != soldCoupons 
+		AND displayType != 'hide' AND endDate > CURRENT_DATE ORDER BY id DESC";
+
+ 
 		$exe = mysqli_query($conn, $query);
 
 		if (mysqli_num_rows($exe) > 0) {
 
 			while ($data = mysqli_fetch_assoc($exe)) {
 
-				
-
-				
-
-
-
-
-				if ($daysLeft > 0) {
+				if ( $data['daysLeft'] > 0) {
 		?>
 					<div class="col-md-6">
 						<div class="tile" id="gradient">
@@ -79,7 +74,7 @@ if ($_SESSION["clientUId"] == '') {
 									<sup>Rs </sup><?php echo $data['couponPrice'] ?>/-
 								</h1>
 								<h4 style="color: #F74005">
-									<blink><?php echo $daysLeft ?> Days Left to Expire.</blink>
+									<blink><?php  echo $data['daysLeft'] ?> Days Left to Expire.</blink>
 								</h4>
 								<p style="color: white">
 									<?php echo 'Coupon worth Rs : ' . $data['couponWorth'] ?><br>
