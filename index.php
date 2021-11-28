@@ -462,10 +462,12 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 				while ($winner = mysqli_fetch_assoc($exe)) {
 				?>
 					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
-						<div class="ts-speaker">
+					<!-- show photo as box -->
+					<!-- <div class="ts-speaker"> -->
 							<div class="speaker-img img-responsive">
 								<img style="width:250px;height:250px; object-fit: cover;" title="Icon will displayed in case user not provide his image" src="<?php echo 'user/images/clientProfile/' . $winner['image'] ?>" alt="Lucky draw winner">
 							</div>
+							
 							<div class="ts-speaker-info">
 								<h3 class="ts-title">
 									<a><?php echo $winner['firstName'] . ' ' . $winner['lastName'] ?></a>
@@ -476,7 +478,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 								</p>
 
 							</div>
-						</div>
+						<!-- </div> -->
 					</div>
 				<?php
 				}
