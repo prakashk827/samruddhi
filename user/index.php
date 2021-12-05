@@ -93,10 +93,10 @@ session_destroy(); //destroy the session
                   if (data == 200) {
                       
                       $("#warning").css("display", 'none');
-                      window.location.href = 'edit-profile.php';
+                      window.location.href='show-all-coupons.php';
                   } else if (data == 201) {
-                    
-                      window.location.href='user-profile.php';
+                   
+                      window.location.href='show-all-coupons.php';
                      
                   } else if (data == 400) {
                     
