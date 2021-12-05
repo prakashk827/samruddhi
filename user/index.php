@@ -22,14 +22,18 @@ session_destroy(); //destroy the session
     </section>
     <section class="login-content">
     
-        <h2 style="color:white;">
+        <!-- <h2 style="color:white;">
           <center>SAMRUDDHI <br> VASTHRALAYA</center>
-        </h2>
+        </h2> -->
+        <center> <h1 style="color:white;">Login</h1></center>
+       
      
       <div class="login-box">
           <form class="login-form" method="post" data-bvalidator-validate>
-          <h3 class="login-head"></i>Login</h3>
-          <p class="alert alert-primary" data-dismiss="alert">If you forgot password contact admin</p>
+          <!-- <h3 class="login-head"></i>Login</h3> -->
+          <p sy>Any problem ?</p>
+          <button class="btn btn-success"><a style="color:white" href="tel:8553621521">Call Us</a></button>
+          <br> <br>
           <div class="form-group">
              <label class="control-label">Registered Mobile Number</label>
             <input class="form-control" type="text" name="mobile" id="mobile" data-bvalidator="required">
@@ -40,7 +44,7 @@ session_destroy(); //destroy the session
           </div>
           <div class="form-group">
             <div class="utility">
-                 <p class="semibold-text mb-2"><a href="../index.php">Register Here</a></p>
+                 <p class="semibold-text mb-2"><a href="register.php">Register Here</a></p>
                 <p class="semibold-text mb-2"><a href="forgot-password.php">Fotgot Password?</a></p>
             </div>
           </div>
@@ -51,6 +55,8 @@ session_destroy(); //destroy the session
              <p id="wait" class="alert alert-warning">Please wait..!</p>
             
           </div>
+          <br> 
+          
         </form>
        </div>
     </section>
