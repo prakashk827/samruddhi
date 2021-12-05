@@ -10,7 +10,7 @@ if($_POST['mobile'] !='' &&  $_POST['pwd'] != ''){
 	 $status = 'active';
 	 $blocked = 'no';
 	 $date = date("d-m-Y");
-	 $image = 'profile.png';
+	 $image = null ;
 	 $date = date('Y-m-d');
 	 $time = date("h:i:sa");
 

@@ -183,16 +183,16 @@ include_once('db/db.php');
 	</section>
 	<!-- Notice board Ends -->
 
-	<!-- HOW IT WORKS STARTS --> 
+	<!-- HOW IT WORKS STARTS -->
 
 	<section class="ts-event-outcome event-intro">
 		<div class="container">
 			<div class="row">
-				
-			<div class="col-lg-4">
+
+				<div class="col-lg-4">
 					<div class="outcome-content">
 						<div class="outcome-img">
-							<img  class="" src="./images/so-how-does-it-work.png" alt="">
+							<img class="" src="./images/so-how-does-it-work.png" alt="">
 						</div>
 						<h3 class="img-title">
 							<!-- <a href="#" class="text-white">connect People</a> -->
@@ -203,15 +203,15 @@ include_once('db/db.php');
 					<div class="">
 						<div class="outcome-content ts-exp-content">
 							<h2 class="column-title">
-								<b>How Does It Work ?</b> 
-								
+								<b>How Does It Work ?</b>
+
 							</h2>
 							<ul style="padding-left: 30px;">
-									<li>If you are new customer then give your details and click on <span style="color:#ff007a;"> Register Now</span> button</li>
-									<li>If you are old customer click on <span style="color:#ff007a;">Login</span>  button to login.</li>
-									<li>Select any coupon which you want to buy.</li>
-									<li>Pay through your UPI, Debit or Credic card to get your lucky coupon.</li>
-								</ul>
+								<li>If you are new customer then give your details and click on <span style="color:#ff007a;"> Register Now</span> button</li>
+								<li>If you are old customer click on <span style="color:#ff007a;">Login</span> button to login.</li>
+								<li>Select any coupon which you want to buy.</li>
+								<li>Pay through your UPI, Debit or Credic card to get your lucky coupon.</li>
+							</ul>
 							<br>
 							<ul style="padding-left: 30px;">
 								<li>ನೀವು ಹೊಸ ಗ್ರಾಹಕರಾಗಿದ್ದಲ್ಲಿ ನಿಮ್ಮ ಕೆಲವು ಮಾಹಿತಿಯನ್ನು ನೀಡಿ ,<span style="color:#ff007a;">ರೆಜಿಸ್ಟರ್ ಬಟನ್ </span> ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ರೆಜಿಸ್ಟರ್ ಆಗಿ.</li>
@@ -223,8 +223,8 @@ include_once('db/db.php');
 						</div>
 					</div>
 				</div>
-			
-				
+
+
 
 			</div>
 		</div>
@@ -292,17 +292,17 @@ include_once('db/db.php');
 								<img class="pricing-dot1 " src="images/pricing/dot.png" alt="">
 							</div>
 						</div>
-				<?php
+					<?php
 					}
-				} else{
+				} else {
 					?>
-						
-						
-						<div class="col-lg-12">
-					<h2 class="section-title white">
-						<span>Coming soon</span> 
-					</h2>
-				</div>
+
+
+					<div class="col-lg-12">
+						<h2 class="section-title white">
+							<span>Coming soon</span>
+						</h2>
+					</div>
 				<?php
 				}
 				?>
@@ -435,11 +435,11 @@ include_once('db/db.php');
 		<!-- container end-->
 	</section>
 
-	
 
 
 
-	
+
+
 	<!-- ts funfact end-->
 	<!-- ts speaker start-->
 	<section id="ts-speakers" class="ts-speakers" style="background-image: url(images/speakers/speaker_bg.png)">
@@ -462,22 +462,48 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 				while ($winner = mysqli_fetch_assoc($exe)) {
 				?>
 					<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="400ms">
-					<!-- show photo as box -->
-					<!-- <div class="ts-speaker"> -->
-							<div class="speaker-img img-responsive">
-								<img style="width:250px;height:250px; object-fit: cover;" title="Icon will displayed in case user not provide his image" src="<?php echo 'user/images/clientProfile/' . $winner['image'] ?>" alt="Lucky draw winner">
-							</div>
-							
-							<div class="ts-speaker-info">
-								<h3 class="ts-title">
-									<a><?php echo $winner['firstName'] . ' ' . $winner['lastName'] ?></a>
-								</h3>
-								<p>
-									<span style="color: red;">City : </span><?php echo  $winner['city']  == '' ? 'Not Provided' : $winner['city']; ?>
-									<br> Announced on : <?php echo $winner['date'] ?>
-								</p>
+						<!-- show photo as box -->
+						<!-- <div class="ts-speaker"> -->
+						<div class="speaker-img img-responsive">
 
-							</div>
+							<?php
+
+
+							if (file_exists('user/images/clientProfile/' . $winner['image'])) {
+							?>
+								<img style="width:250px;height:250px; object-fit: cover;" src="<?php echo 'user/images/clientProfile/' . $winner['image'] ?>" alt="Lucky draw winner">
+							<?php
+							} else {
+							?>
+
+								<img style="width:250px;height:250px; object-fit: cover;" src="<?php echo 'user/images/clientProfile/profile.png' ?>" alt="Lucky draw winner">
+							<?php	}
+							?>
+
+							<?php 
+							if($winner['image'] == null){
+								?>
+								<img style="width:250px;height:250px; object-fit: cover;" src="<?php echo 'user/images/clientProfile/profile.png' ?>" alt="Lucky draw winner">
+							<?php 
+							}
+							?>
+
+
+
+
+
+						</div>
+
+						<div class="ts-speaker-info">
+							<h3 class="ts-title">
+								<a><?php echo $winner['firstName'] . ' ' . $winner['lastName'] ?></a>
+							</h3>
+							<p>
+								<span style="color: red;">City : </span><?php echo  $winner['city']  == '' ? 'Not Provided' : $winner['city']; ?>
+								<br> Announced on : <?php echo $winner['date'] ?>
+							</p>
+
+						</div>
 						<!-- </div> -->
 					</div>
 				<?php
@@ -563,7 +589,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 
 	<!-- ts experience end-->
 
-	
+
 	<!-- ts blog start-->
 
 	<!-- ts blog end-->
