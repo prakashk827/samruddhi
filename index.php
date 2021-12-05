@@ -284,7 +284,7 @@ include_once('db/db.php');
 											Sale Back Amount Rs : <?php echo $data['salebackAmt'] ?>
 										</p>
 										<p></p>
-										<a href="user/" title="Register / Login to buy" class="btn pricing-btn">Buy Coupon</a>
+										<a href="user-type.php" title="Register / Login to buy" class="btn pricing-btn">Buy Coupon</a>
 										<p class="vate-text">All prices includes 5% TAX</p>
 									</div>
 								</div>
@@ -484,8 +484,7 @@ INNER JOIN client_address ON client_profile.clientUId = client_address.clientUId
 							if($winner['image'] == null){
 								?>
 								<img style="width:250px;height:250px; object-fit: cover;" src="<?php echo 'user/images/clientProfile/profile.png' ?>" alt="Lucky draw winner">
-							<?php 
-							}
+							<?php }
 							?>
 
 
